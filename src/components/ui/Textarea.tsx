@@ -18,7 +18,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(function 
       {label && (
         <label
           htmlFor={textareaId}
-          className="font-sans text-sm font-semibold text-mm-steel-800"
+          className="font-sans text-sm font-semibold text-heading"
         >
           {label}
           {props.required && <span className="ml-1 text-alarm">*</span>}
@@ -29,12 +29,12 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(function 
         ref={ref}
         id={textareaId}
         className={cn(
-          'min-h-24 w-full resize-y rounded-control border-[1.5px] bg-page px-3.5 py-3 font-sans text-base leading-relaxed text-heading transition-colors',
-          'placeholder:text-mm-steel-400',
+          'min-h-24 w-full resize-y rounded-control border-[1.5px] bg-input px-3.5 py-3 font-sans text-base leading-relaxed text-heading transition-colors',
+          'placeholder:text-muted',
           'focus:outline-none',
           error
             ? 'border-alarm focus:border-alarm focus:ring-[3px] focus:ring-alarm/15'
-            : 'border-mm-steel-300 focus:border-mm-blue-600 focus:ring-[3px] focus:ring-mm-blue-600/20',
+            : 'border-input-border focus:border-primary focus:ring-[3px] focus:ring-primary/20',
           'disabled:cursor-not-allowed disabled:opacity-50',
           className
         )}
@@ -44,7 +44,7 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(function 
       />
 
       {hint && !error && (
-        <p id={`${textareaId}-hint`} className="font-sans text-xs text-mm-steel-500">
+        <p id={`${textareaId}-hint`} className="font-sans text-xs text-muted">
           {hint}
         </p>
       )}

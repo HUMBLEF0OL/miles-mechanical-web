@@ -13,12 +13,12 @@ export function ReviewCard({ quote, author, city, initial, className }: ReviewCa
   return (
     <Card className={cn('flex flex-col', className)}>
       <RatingStars className="mb-3.5" />
-      <p className="text-mm-steel-800 mb-[18px] flex-1 text-[15px] leading-relaxed">
+      <p className="text-sub mb-[18px] flex-1 text-[15px] leading-relaxed">
         &ldquo;{quote}&rdquo;
       </p>
       <div className="flex items-center gap-3">
         <div
-          className="bg-mm-blue-100 text-mm-blue-600 rounded-control flex size-[38px] flex-none items-center justify-center text-sm font-bold"
+          className="bg-primary-tint text-primary-ink rounded-control flex size-[38px] flex-none items-center justify-center text-sm font-bold"
           aria-hidden="true"
         >
           {initial}

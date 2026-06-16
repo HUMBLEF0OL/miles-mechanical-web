@@ -69,7 +69,7 @@ export default async function ServiceAreaPage({ params }: PageProps) {
         {/* ── 1. Localized hero ──────────────────────────────────────────── */}
         <section
           aria-labelledby="area-hero-heading"
-          className="relative grid grid-cols-1 overflow-hidden rounded-card bg-mm-blue-900 lg:grid-cols-[1.2fr_1fr]"
+          className="relative grid grid-cols-1 overflow-hidden rounded-card bg-hero lg:grid-cols-[1.2fr_1fr]"
         >
           <div
             aria-hidden
@@ -77,7 +77,7 @@ export default async function ServiceAreaPage({ params }: PageProps) {
           />
 
           {/* Left: localized headline + CTAs */}
-          <div className="relative px-7 py-12 text-white sm:px-11 sm:py-14">
+          <div className="relative px-7 py-12 text-hero-ink sm:px-11 sm:py-14">
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-mm-ember-300 sm:text-sm">
               Serving {area.city}, TX
             </p>
@@ -89,7 +89,7 @@ export default async function ServiceAreaPage({ params }: PageProps) {
               {area.heroHeadline}
             </h1>
 
-            <p className="mt-5 max-w-[52ch] font-sans text-lg leading-relaxed text-mm-blue-300">
+            <p className="mt-5 max-w-[52ch] font-sans text-lg leading-relaxed text-hero-body">
               {area.heroSubcopy}
             </p>
 
@@ -97,8 +97,8 @@ export default async function ServiceAreaPage({ params }: PageProps) {
               <Link
                 href={`/${locale}/contact`}
                 className={cn(
-                  'inline-flex h-14 items-center justify-center gap-2.5 rounded-control bg-mm-ember-600 px-8',
-                  'font-sans text-lg font-semibold text-white transition-colors hover:bg-mm-ember-700',
+                  'inline-flex h-14 items-center justify-center gap-2.5 rounded-control bg-ember px-8',
+                  'font-sans text-lg font-semibold text-white transition-colors hover:bg-ember-strong',
                   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2',
                 )}
               >
@@ -109,8 +109,8 @@ export default async function ServiceAreaPage({ params }: PageProps) {
               <a
                 href={`tel:${business.phoneTel}`}
                 className={cn(
-                  'inline-flex h-14 items-center justify-center gap-2.5 rounded-control border-[1.5px] border-white/40 px-8',
-                  'font-sans text-lg font-semibold text-white transition-colors hover:bg-white/10',
+                  'inline-flex h-14 items-center justify-center gap-2.5 rounded-control border-[1.5px] border-hero-line px-8',
+                  'font-sans text-lg font-semibold text-hero-ink transition-colors hover:bg-white/10',
                   'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2',
                 )}
               >
@@ -122,7 +122,7 @@ export default async function ServiceAreaPage({ params }: PageProps) {
 
           {/* Right: asset-light "we come to you" service-area panel.
               No storefront -> no map pin (per task + wireframe note). */}
-          <div className="relative flex flex-col items-center justify-center gap-4 overflow-hidden border-t border-white/10 bg-[linear-gradient(160deg,var(--color-mm-blue-700),var(--color-mm-blue-900))] px-10 py-12 text-center lg:border-l lg:border-t-0">
+          <div className="relative flex flex-col items-center justify-center gap-4 overflow-hidden border-t border-hero-line bg-gradient-to-br from-hero-strong to-hero px-10 py-12 text-center lg:border-l lg:border-t-0">
             <Logo
               variant="mark-no-badge"
               tone="dark"
@@ -133,10 +133,10 @@ export default async function ServiceAreaPage({ params }: PageProps) {
             <span className="relative flex size-16 items-center justify-center rounded-control bg-white/10 text-mm-ember-300">
               <Icon name="truck" size={34} aria-hidden />
             </span>
-            <p className="relative font-display text-2xl font-extrabold uppercase tracking-[-0.01em] text-white">
+            <p className="relative font-display text-2xl font-extrabold uppercase tracking-[-0.01em] text-hero-ink">
               We come to you
             </p>
-            <p className="relative max-w-[34ch] font-sans text-[15px] leading-relaxed text-mm-blue-200">
+            <p className="relative max-w-[34ch] font-sans text-[15px] leading-relaxed text-hero-body">
               No storefront, no showroom markup — a mobile {business.tagline} crew
               that shows up at your {area.city} door, on time.
             </p>
@@ -148,11 +148,11 @@ export default async function ServiceAreaPage({ params }: PageProps) {
           <div>
             <h2
               id="local-heading"
-              className="font-display text-3xl font-extrabold uppercase tracking-[-0.01em] text-mm-blue-900 sm:text-4xl"
+              className="font-display text-3xl font-extrabold uppercase tracking-[-0.01em] text-heading sm:text-4xl"
             >
               HVAC built for {area.city} homes
             </h2>
-            <div className="mt-3 h-1 w-16 bg-mm-ember-600" aria-hidden />
+            <div className="mt-3 h-1 w-16 bg-ember" aria-hidden />
           </div>
 
           <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1.4fr_1fr]">
@@ -160,14 +160,14 @@ export default async function ServiceAreaPage({ params }: PageProps) {
               {area.intro.map((paragraph) => (
                 <p
                   key={paragraph.slice(0, 32)}
-                  className="font-sans text-[17px] leading-relaxed text-mm-steel-700"
+                  className="font-sans text-[17px] leading-relaxed text-sub"
                 >
                   {paragraph}
                 </p>
               ))}
 
               {/* localAngle as a highlighted note */}
-              <div className="flex items-start gap-3 rounded-control border border-mm-ember-200 bg-mm-ember-50 px-5 py-4 text-mm-ember-800">
+              <div className="flex items-start gap-3 rounded-control border border-ember bg-ember-tint px-5 py-4 text-ember">
                 <Icon name="info" size={20} className="mt-0.5 shrink-0" aria-hidden />
                 <p className="font-sans text-[15px] leading-relaxed">{area.localAngle}</p>
               </div>
@@ -175,10 +175,10 @@ export default async function ServiceAreaPage({ params }: PageProps) {
 
             {/* Neighbourhoods as chips */}
             <div className="rounded-card border border-line bg-subtle p-6 sm:p-7">
-              <h3 className="font-display text-lg font-bold uppercase tracking-[-0.01em] text-mm-blue-900">
+              <h3 className="font-display text-lg font-bold uppercase tracking-[-0.01em] text-heading">
                 Neighbourhoods we serve
               </h3>
-              <p className="mt-1.5 font-sans text-sm text-mm-steel-600">
+              <p className="mt-1.5 font-sans text-sm text-muted">
                 Genuine local coverage across {area.city} and nearby.
               </p>
               <ul className="mt-4 flex flex-wrap gap-2">
@@ -200,7 +200,7 @@ export default async function ServiceAreaPage({ params }: PageProps) {
               <div className="space-y-4">
                 <h2
                   id="proof-heading"
-                  className="font-display text-2xl font-extrabold uppercase tracking-[-0.01em] text-mm-blue-900"
+                  className="font-display text-2xl font-extrabold uppercase tracking-[-0.01em] text-heading"
                 >
                   From a {area.city} neighbour
                 </h2>
@@ -219,7 +219,7 @@ export default async function ServiceAreaPage({ params }: PageProps) {
 
             {/* Services in this city */}
             <div className="space-y-4">
-              <h3 className="font-display text-2xl font-extrabold uppercase tracking-[-0.01em] text-mm-blue-900">
+              <h3 className="font-display text-2xl font-extrabold uppercase tracking-[-0.01em] text-heading">
                 Services we run in {area.city}
               </h3>
               <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2">
@@ -228,8 +228,8 @@ export default async function ServiceAreaPage({ params }: PageProps) {
                     <Link
                       href={`/${locale}/services/${service.slug}`}
                       className={cn(
-                        'group flex items-center gap-3 rounded-control border border-line bg-page px-4 py-3.5',
-                        'transition-colors hover:border-mm-blue-300 hover:bg-mm-blue-50',
+                        'group flex items-center gap-3 rounded-control border border-line bg-card px-4 py-3.5',
+                        'transition-colors hover:border-primary hover:bg-primary-tint',
                         'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2',
                       )}
                     >
@@ -237,19 +237,19 @@ export default async function ServiceAreaPage({ params }: PageProps) {
                         className={cn(
                           'flex size-10 flex-none items-center justify-center rounded-control',
                           service.accent === 'heat'
-                            ? 'bg-mm-ember-100 text-mm-ember-600'
-                            : 'bg-mm-blue-100 text-mm-blue-600',
+                            ? 'bg-ember-tint text-ember'
+                            : 'bg-primary-tint text-primary',
                         )}
                       >
                         <Icon name={service.icon} size={22} aria-hidden />
                       </span>
-                      <span className="min-w-0 flex-1 font-sans text-[15px] font-semibold text-mm-blue-900">
+                      <span className="min-w-0 flex-1 font-sans text-[15px] font-semibold text-heading">
                         {service.title}
                       </span>
                       <Icon
                         name="chevron-down"
                         size={18}
-                        className="-rotate-90 flex-none text-mm-steel-400 transition-transform group-hover:translate-x-0.5"
+                        className="-rotate-90 flex-none text-faint transition-transform group-hover:translate-x-0.5"
                         aria-hidden
                       />
                     </Link>

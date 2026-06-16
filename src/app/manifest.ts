@@ -11,7 +11,7 @@ export default function manifest(): MetadataRoute.Manifest {
     start_url: '/',
     display: 'standalone',
     background_color: '#ffffff',
-    theme_color: '#0a0a0a',
+    theme_color: '#0b2a45', // brand-900 — Miles Mechanical deep blue (PWA chrome)
     icons: [
       { src: '/icon.svg', sizes: 'any', type: 'image/svg+xml' },
       { src: '/apple-icon', sizes: '180x180', type: 'image/png' },

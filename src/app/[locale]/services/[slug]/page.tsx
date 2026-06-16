@@ -53,40 +53,40 @@ export default async function ServiceDetailPage({ params }: PageProps) {
   const tileClasses = isEmergency
     ? 'bg-alarm text-white'
     : service.accent === 'heat'
-      ? 'bg-mm-ember-100 text-mm-ember-600'
-      : 'bg-mm-blue-100 text-mm-blue-600'
+      ? 'bg-ember-tint text-ember'
+      : 'bg-primary-tint text-primary-ink'
   const eyebrowClasses = isEmergency ? 'text-alarm-300' : 'text-mm-ember-300'
   const checkAccent = isEmergency
     ? 'text-alarm'
     : service.accent === 'heat'
-      ? 'text-mm-ember-600'
-      : 'text-mm-blue-600'
+      ? 'text-ember'
+      : 'text-primary'
 
   return (
     <main className="container-page space-y-16 py-12 sm:space-y-20 sm:py-16">
       {/* 1 ─ Breadcrumb ─────────────────────────────────────────────────── */}
       <nav aria-label="Breadcrumb">
-        <ol className="flex flex-wrap items-center gap-2 font-sans text-sm text-mm-steel-500">
+        <ol className="flex flex-wrap items-center gap-2 font-sans text-sm text-muted">
           <li>
             <Link
               href={`/${locale}`}
-              className="rounded-control hover:text-mm-blue-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2"
+              className="rounded-control hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2"
             >
               Home
             </Link>
           </li>
-          <li aria-hidden className="text-mm-steel-300">
+          <li aria-hidden className="text-faint">
             /
           </li>
           <li>
             <Link
               href={`/${locale}/services`}
-              className="rounded-control hover:text-mm-blue-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2"
+              className="rounded-control hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2"
             >
               Services
             </Link>
           </li>
-          <li aria-hidden className="text-mm-steel-300">
+          <li aria-hidden className="text-faint">
             /
           </li>
           <li aria-current="page" className="font-semibold text-heading">
@@ -98,7 +98,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
       {/* 2 ─ Service hero ───────────────────────────────────────────────── */}
       <section
         aria-labelledby="service-hero-heading"
-        className="relative overflow-hidden rounded-card bg-mm-blue-900 px-7 py-12 text-white sm:px-11 sm:py-14"
+        className="relative overflow-hidden rounded-card bg-hero px-7 py-12 text-hero-ink sm:px-11 sm:py-14"
       >
         <div
           aria-hidden
@@ -136,7 +136,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
             {service.heroHeadline}
           </h1>
 
-          <p className="mt-5 max-w-[46ch] font-sans text-lg leading-relaxed text-mm-blue-200">
+          <p className="mt-5 max-w-[46ch] font-sans text-lg leading-relaxed text-hero-body">
             {service.heroSubcopy}
           </p>
 
@@ -151,8 +151,8 @@ export default async function ServiceDetailPage({ params }: PageProps) {
             <a
               href={`tel:${business.phoneTel}`}
               className={cn(
-                'inline-flex h-14 items-center justify-center gap-2.5 rounded-control border-[1.5px] border-white/40 px-8',
-                'font-sans text-lg font-semibold text-white transition-colors hover:bg-white/10',
+                'inline-flex h-14 items-center justify-center gap-2.5 rounded-control border-[1.5px] border-hero-line px-8',
+                'font-sans text-lg font-semibold text-hero-ink transition-colors hover:bg-white/10',
                 'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2',
               )}
             >
@@ -168,11 +168,11 @@ export default async function ServiceDetailPage({ params }: PageProps) {
         <div>
           <h2
             id="included-heading"
-            className="font-display text-2xl font-extrabold uppercase tracking-[-0.01em] text-mm-blue-900 sm:text-3xl"
+            className="font-display text-2xl font-extrabold uppercase tracking-[-0.01em] text-heading sm:text-3xl"
           >
             What&apos;s included
           </h2>
-          <div className="mt-3 h-1 w-16 bg-mm-ember-600" aria-hidden />
+          <div className="mt-3 h-1 w-16 bg-ember" aria-hidden />
         </div>
 
         <ul className="grid grid-cols-1 gap-4 sm:grid-cols-2">
@@ -187,7 +187,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
                 className={cn('mt-0.5 shrink-0', checkAccent)}
                 aria-hidden
               />
-              <span className="font-sans text-[15px] leading-relaxed text-mm-steel-700">
+              <span className="font-sans text-[15px] leading-relaxed text-sub">
                 {item}
               </span>
             </li>
@@ -200,11 +200,11 @@ export default async function ServiceDetailPage({ params }: PageProps) {
         <div>
           <h2
             id="process-heading"
-            className="font-display text-2xl font-extrabold uppercase tracking-[-0.01em] text-mm-blue-900 sm:text-3xl"
+            className="font-display text-2xl font-extrabold uppercase tracking-[-0.01em] text-heading sm:text-3xl"
           >
             How it works
           </h2>
-          <div className="mt-3 h-1 w-16 bg-mm-ember-600" aria-hidden />
+          <div className="mt-3 h-1 w-16 bg-ember" aria-hidden />
         </div>
 
         <ol className="grid grid-cols-1 gap-5 sm:grid-cols-3">
@@ -234,11 +234,11 @@ export default async function ServiceDetailPage({ params }: PageProps) {
         <div>
           <h2
             id="faq-heading"
-            className="font-display text-2xl font-extrabold uppercase tracking-[-0.01em] text-mm-blue-900 sm:text-3xl"
+            className="font-display text-2xl font-extrabold uppercase tracking-[-0.01em] text-heading sm:text-3xl"
           >
             Frequently asked
           </h2>
-          <div className="mt-3 h-1 w-16 bg-mm-ember-600" aria-hidden />
+          <div className="mt-3 h-1 w-16 bg-ember" aria-hidden />
         </div>
 
         <div className="space-y-3">
@@ -252,7 +252,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
                 <Icon
                   name="chevron-down"
                   size={20}
-                  className="shrink-0 text-mm-steel-500 transition-transform duration-200 group-open:rotate-180"
+                  className="shrink-0 text-muted transition-transform duration-200 group-open:rotate-180"
                   aria-hidden
                 />
               </summary>
@@ -276,11 +276,11 @@ export default async function ServiceDetailPage({ params }: PageProps) {
       >
         <h2
           id="areas-heading"
-          className="font-display text-2xl font-extrabold uppercase tracking-[-0.01em] text-mm-blue-900"
+          className="font-display text-2xl font-extrabold uppercase tracking-[-0.01em] text-heading"
         >
           We serve the {business.region}
         </h2>
-        <p className="mt-3 max-w-[60ch] font-sans text-[15px] leading-relaxed text-mm-steel-700">
+        <p className="mt-3 max-w-[60ch] font-sans text-[15px] leading-relaxed text-sub">
           {service.title} across the metro — we come to you. Find your city:
         </p>
         <ul className="mt-6 flex flex-wrap gap-3">
@@ -288,7 +288,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
             <li key={area.slug}>
               <Link
                 href={`/${locale}/areas/${area.slug}`}
-                className="inline-flex items-center gap-2 rounded-control border-[1.5px] border-mm-blue-600 px-5 py-2.5 font-sans text-sm font-semibold text-mm-blue-600 transition-colors hover:bg-mm-blue-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2"
+                className="inline-flex items-center gap-2 rounded-control border-[1.5px] border-primary px-5 py-2.5 font-sans text-sm font-semibold text-primary transition-colors hover:bg-primary-tint focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2"
               >
                 <Icon name="truck" size={16} aria-hidden />
                 {area.city}

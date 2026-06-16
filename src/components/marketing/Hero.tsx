@@ -26,7 +26,7 @@ export function Hero() {
   return (
     <section
       aria-labelledby="hero-heading"
-      className="relative grid grid-cols-1 overflow-hidden rounded-card bg-mm-blue-900 lg:grid-cols-[1.15fr_1fr]"
+      className="relative grid grid-cols-1 overflow-hidden rounded-card bg-hero lg:grid-cols-[1.15fr_1fr]"
     >
       {/* Warm ember glow watermark behind the headline */}
       <div
@@ -35,8 +35,8 @@ export function Hero() {
       />
 
       {/* ── Left: headline + CTAs ──────────────────────────────────────── */}
-      <div className="relative px-7 py-12 text-white sm:px-11 sm:py-14">
-        <div className="mb-6 inline-flex items-center gap-2 rounded-control border border-white/20 bg-white/10 px-3.5 py-1.5 font-sans text-xs font-semibold">
+      <div className="relative px-7 py-12 text-hero-ink sm:px-11 sm:py-14">
+        <div className="mb-6 inline-flex items-center gap-2 rounded-control border border-hero-line bg-white/10 px-3.5 py-1.5 font-sans text-xs font-semibold">
           <span className="tracking-widest text-mm-ember-300" aria-hidden>
             ★★★★★
           </span>
@@ -54,7 +54,7 @@ export function Hero() {
           <span className="text-mm-ember-500">Done right.</span>
         </h1>
 
-        <p className="mt-5 max-w-[46ch] font-sans text-lg leading-relaxed text-mm-blue-300">
+        <p className="mt-5 max-w-[46ch] font-sans text-lg leading-relaxed text-hero-body">
           Family-owned in Dallas for 20+ years. Fair pricing, licensed work, and
           we actually answer after hours.
         </p>
@@ -70,7 +70,7 @@ export function Hero() {
             href={`tel:${business.phoneTel}`}
             className={cn(
               'inline-flex h-14 items-center justify-center gap-2.5 rounded-control border-[1.5px] border-white/40 px-8',
-              'font-sans text-lg font-semibold text-white transition-colors hover:bg-white/10',
+              'font-sans text-lg font-semibold text-hero-ink transition-colors hover:bg-white/10',
               'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2'
             )}
           >
@@ -79,10 +79,10 @@ export function Hero() {
           </a>
         </div>
 
-        <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2 font-sans text-sm font-semibold text-mm-blue-300">
+        <div className="mt-8 flex flex-wrap gap-x-6 gap-y-2 font-sans text-sm font-semibold text-hero-body">
           {HERO_CREDENTIALS.map((label) => (
             <span key={label} className="inline-flex items-center gap-1.5">
-              <Icon name="check" size={16} className="text-mm-blue-400" aria-hidden />
+              <Icon name="check" size={16} className="text-hero-muted" aria-hidden />
               {label}
             </span>
           ))}
@@ -90,7 +90,7 @@ export function Hero() {
       </div>
 
       {/* ── Right: credentials proof panel ─────────────────────────────── */}
-      <div className="relative flex flex-col justify-center gap-5 overflow-hidden border-t border-white/10 bg-[linear-gradient(160deg,var(--color-mm-blue-700),var(--color-mm-blue-900))] px-10 py-12 lg:border-l lg:border-t-0">
+      <div className="relative flex flex-col justify-center gap-5 overflow-hidden border-t border-hero-line bg-gradient-to-br from-hero-strong to-hero px-10 py-12 lg:border-l lg:border-t-0">
         {/* Faint M mark watermark */}
         <Logo
           variant="mark-no-badge"
@@ -101,21 +101,21 @@ export function Hero() {
         />
 
         <div className="relative flex items-baseline gap-3">
-          <span className="font-display text-6xl font-black leading-none text-white">
+          <span className="font-display text-6xl font-black leading-none text-hero-ink">
             {business.rating}
           </span>
           <RatingStars count={business.reviewCount} size="text-xl" />
         </div>
 
-        <div className="relative h-px bg-white/15" aria-hidden />
+        <div className="relative h-px bg-hero-line" aria-hidden />
 
         <ul className="relative flex flex-col gap-3">
           {PROOF_POINTS.map((point) => (
             <li
               key={point}
-              className="inline-flex items-center gap-2.5 font-sans text-[15px] font-semibold text-mm-blue-50"
+              className="inline-flex items-center gap-2.5 font-sans text-[15px] font-semibold text-hero-body"
             >
-              <Icon name="check" size={18} className="text-mm-blue-400" aria-hidden />
+              <Icon name="check" size={18} className="text-hero-muted" aria-hidden />
               {point}
             </li>
           ))}

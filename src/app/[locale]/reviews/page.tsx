@@ -32,7 +32,7 @@ export default async function ReviewsPage({ params }: PageProps) {
       {/* ── 1. Aggregate hero (FR-RV-1) ─────────────────────────────────── */}
       <section
         aria-labelledby="reviews-heading"
-        className="relative grid grid-cols-1 overflow-hidden rounded-card bg-mm-blue-900 lg:grid-cols-[1.1fr_1fr]"
+        className="relative grid grid-cols-1 overflow-hidden rounded-card bg-hero lg:grid-cols-[1.1fr_1fr]"
       >
         <div
           aria-hidden
@@ -40,7 +40,7 @@ export default async function ReviewsPage({ params }: PageProps) {
         />
 
         {/* Left: eyebrow + headline + subcopy */}
-        <div className="relative px-7 py-12 text-white sm:px-11 sm:py-14">
+        <div className="relative px-7 py-12 text-hero-ink sm:px-11 sm:py-14">
           {HERO.eyebrow && (
             <p className="mb-4 font-sans text-xs font-semibold uppercase tracking-[0.18em] text-mm-ember-300 sm:text-sm">
               {HERO.eyebrow}
@@ -54,13 +54,13 @@ export default async function ReviewsPage({ params }: PageProps) {
             {HERO.headline}
           </h1>
 
-          <p className="mt-5 max-w-[48ch] font-sans text-lg leading-relaxed text-mm-blue-300">
+          <p className="mt-5 max-w-[48ch] font-sans text-lg leading-relaxed text-hero-body">
             {HERO.subcopy}
           </p>
         </div>
 
         {/* Right: aggregate rating proof panel */}
-        <div className="relative flex flex-col justify-center gap-5 overflow-hidden border-t border-white/10 bg-[linear-gradient(160deg,var(--color-mm-blue-700),var(--color-mm-blue-900))] px-10 py-12 lg:border-l lg:border-t-0">
+        <div className="relative flex flex-col justify-center gap-5 overflow-hidden border-t border-hero-line bg-gradient-to-br from-hero-strong to-hero px-10 py-12 lg:border-l lg:border-t-0">
           <Logo
             variant="mark-no-badge"
             tone="dark"
@@ -70,17 +70,17 @@ export default async function ReviewsPage({ params }: PageProps) {
           />
 
           <div className="relative flex items-baseline gap-3">
-            <span className="font-display text-7xl font-black leading-none text-white">
+            <span className="font-display text-7xl font-black leading-none text-hero-ink">
               {business.rating}
             </span>
             <RatingStars size="text-2xl" />
           </div>
 
-          <p className="relative font-sans text-base font-semibold text-mm-blue-50">
+          <p className="relative font-sans text-base font-semibold text-hero-body">
             {business.reviewCount} Google reviews · rated {business.rating} out of 5
           </p>
 
-          <div className="relative h-px bg-white/15" aria-hidden />
+          <div className="relative h-px bg-hero-line" aria-hidden />
 
           <a
             href={googleReviewsUrl}
@@ -100,11 +100,11 @@ export default async function ReviewsPage({ params }: PageProps) {
         <div>
           <h2
             id="testimonials-heading"
-            className="font-display text-2xl font-extrabold uppercase tracking-[-0.01em] text-mm-blue-900 sm:text-3xl"
+            className="font-display text-2xl font-extrabold uppercase tracking-[-0.01em] text-heading sm:text-3xl"
           >
             What your neighbours say
           </h2>
-          <div className="mt-3 h-1 w-16 bg-mm-ember-600" aria-hidden />
+          <div className="mt-3 h-1 w-16 bg-ember" aria-hidden />
         </div>
 
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
@@ -125,7 +125,7 @@ export default async function ReviewsPage({ params }: PageProps) {
             href={googleReviewsUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex h-14 items-center justify-center gap-2.5 rounded-control border-[1.5px] border-mm-blue-600 bg-page px-8 font-sans text-lg font-semibold text-mm-blue-600 transition-colors hover:bg-mm-blue-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2"
+            className="inline-flex h-14 items-center justify-center gap-2.5 rounded-control border-[1.5px] border-primary bg-page px-8 font-sans text-lg font-semibold text-primary transition-colors hover:bg-primary-tint focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2"
           >
             <Icon name="reviews" size={20} aria-hidden />
             See all reviews on Google ↗
@@ -136,15 +136,15 @@ export default async function ReviewsPage({ params }: PageProps) {
       {/* ── 4. Credential strip (FR-RV-3) + Request service CTA ─────────── */}
       <section
         aria-labelledby="trust-cta-heading"
-        className="rounded-card border border-mm-blue-100 bg-mm-blue-50 px-7 py-10 sm:px-11 sm:py-12"
+        className="rounded-card border border-line-soft bg-primary-tint px-7 py-10 sm:px-11 sm:py-12"
       >
         <h2
           id="trust-cta-heading"
-          className="font-display text-2xl font-extrabold uppercase tracking-[-0.01em] text-mm-blue-900 sm:text-3xl"
+          className="font-display text-2xl font-extrabold uppercase tracking-[-0.01em] text-primary-ink sm:text-3xl"
         >
           Backed by more than reviews
         </h2>
-        <div className="mt-3 h-1 w-16 bg-mm-ember-600" aria-hidden />
+        <div className="mt-3 h-1 w-16 bg-ember" aria-hidden />
 
         <ul className="mt-7 flex flex-wrap gap-3">
           {credentials.map((label) => (
@@ -157,14 +157,14 @@ export default async function ReviewsPage({ params }: PageProps) {
         <div className="mt-9 flex flex-col gap-3 sm:flex-row sm:items-center">
           <Link
             href="/contact"
-            className="inline-flex h-14 w-full items-center justify-center gap-2 rounded-control bg-mm-blue-600 px-8 font-sans text-lg font-semibold text-white transition-colors hover:bg-mm-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 sm:w-auto"
+            className="inline-flex h-14 w-full items-center justify-center gap-2 rounded-control bg-primary px-8 font-sans text-lg font-semibold text-white transition-colors hover:bg-primary-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 sm:w-auto"
           >
             Request service
           </Link>
 
           <a
             href={`tel:${business.phoneTel}`}
-            className="inline-flex h-14 items-center justify-center gap-2.5 rounded-control border-[1.5px] border-mm-blue-600 px-8 font-sans text-lg font-semibold text-mm-blue-600 transition-colors hover:bg-mm-blue-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2"
+            className="inline-flex h-14 items-center justify-center gap-2.5 rounded-control border-[1.5px] border-primary px-8 font-sans text-lg font-semibold text-primary transition-colors hover:bg-primary-tint focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2"
           >
             <Icon name="phone" size={18} aria-hidden />
             Call {business.phoneDisplay}

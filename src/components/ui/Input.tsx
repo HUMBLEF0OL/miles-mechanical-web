@@ -16,7 +16,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
   return (
     <div className="flex flex-col gap-2">
       {label && (
-        <label htmlFor={inputId} className="font-sans text-sm font-semibold text-mm-steel-800">
+        <label htmlFor={inputId} className="font-sans text-sm font-semibold text-heading">
           {label}
           {props.required && <span className="ml-1 text-alarm">*</span>}
         </label>
@@ -26,12 +26,12 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
         ref={ref}
         id={inputId}
         className={cn(
-          'h-12 w-full rounded-control border-[1.5px] bg-page px-3.5 font-sans text-base text-heading transition-colors',
-          'placeholder:text-mm-steel-400',
+          'h-12 w-full rounded-control border-[1.5px] bg-input px-3.5 font-sans text-base text-heading transition-colors',
+          'placeholder:text-muted',
           'focus:outline-none',
           error
             ? 'border-alarm focus:border-alarm focus:ring-[3px] focus:ring-alarm/15'
-            : 'border-mm-steel-300 focus:border-mm-blue-600 focus:ring-[3px] focus:ring-mm-blue-600/20',
+            : 'border-input-border focus:border-primary focus:ring-[3px] focus:ring-primary/20',
           'disabled:cursor-not-allowed disabled:opacity-50',
           className
         )}
@@ -41,7 +41,7 @@ export const Input = forwardRef<HTMLInputElement, InputProps>(function Input(
       />
 
       {hint && !error && (
-        <p id={`${inputId}-hint`} className="font-sans text-xs text-mm-steel-500">
+        <p id={`${inputId}-hint`} className="font-sans text-xs text-muted">
           {hint}
         </p>
       )}

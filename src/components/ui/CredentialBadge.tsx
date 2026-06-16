@@ -9,7 +9,7 @@ export function CredentialBadge({ label, className }: CredentialBadgeProps) {
   return (
     <span
       className={cn(
-        'border-mm-blue-200 bg-page text-mm-blue-700 rounded-control inline-flex items-center gap-2 border px-4 py-2.5 text-sm font-semibold',
+        'border-primary bg-primary-tint text-primary-ink rounded-control inline-flex items-center gap-2 border px-4 py-2.5 text-sm font-semibold',
         className
       )}
     >
@@ -22,7 +22,7 @@ export function CredentialBadge({ label, className }: CredentialBadgeProps) {
         strokeWidth="2.2"
         strokeLinecap="round"
         strokeLinejoin="round"
-        className="text-mm-blue-600"
+        className="text-primary"
         aria-hidden="true"
       >
         <path d="M20 6 9 17l-5-5" />

@@ -50,7 +50,7 @@ function SectionHeading({
       </p>
       <h2
         id={id}
-        className="mt-2 font-display text-3xl font-extrabold uppercase tracking-[-0.01em] text-mm-blue-900 sm:text-4xl"
+        className="mt-2 font-display text-3xl font-extrabold uppercase tracking-[-0.01em] text-heading sm:text-4xl"
       >
         {title}
       </h2>
@@ -108,7 +108,7 @@ export default async function HomePage({
           </div>
           <Link
             href="/reviews"
-            className="mb-8 inline-flex items-center gap-1.5 rounded-control text-sm font-semibold text-mm-blue-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2"
+            className="mb-8 inline-flex items-center gap-1.5 rounded-control text-sm font-semibold text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2"
           >
             Read all reviews &rarr;
           </Link>
@@ -134,16 +134,16 @@ export default async function HomePage({
             <Link
               key={area.slug}
               href={`/areas/${area.slug}`}
-              className="group flex flex-col rounded-card border border-line bg-page p-6 transition-colors hover:border-mm-blue-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2"
+              className="group flex flex-col rounded-card border border-line bg-card p-6 transition-colors hover:border-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2"
             >
-              <div className="mb-4 flex size-12 items-center justify-center rounded-control bg-mm-blue-100 text-mm-blue-600">
+              <div className="mb-4 flex size-12 items-center justify-center rounded-control bg-primary-tint text-primary-ink">
                 <Icon name="truck" size={26} aria-hidden />
               </div>
               <h3 className="font-sans text-lg font-bold text-heading">{area.city}</h3>
               <p className="mt-2 flex-1 text-sm leading-relaxed text-sub">
                 {area.localAngle}
               </p>
-              <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-mm-blue-600">
+              <span className="mt-4 inline-flex items-center gap-1.5 text-sm font-semibold text-primary">
                 HVAC in {area.city} &rarr;
               </span>
             </Link>
@@ -170,7 +170,7 @@ export default async function HomePage({
         <div className="min-w-[260px] flex-1">
           <h2
             id="final-cta-heading"
-            className="font-display text-3xl font-extrabold uppercase tracking-[-0.01em] text-mm-blue-900 sm:text-4xl"
+            className="font-display text-3xl font-extrabold uppercase tracking-[-0.01em] text-heading sm:text-4xl"
           >
             Ready when you are.
           </h2>
@@ -182,14 +182,14 @@ export default async function HomePage({
         <div className="flex flex-wrap gap-3">
           <Link
             href="/contact"
-            className="inline-flex h-14 items-center justify-center gap-2 rounded-control bg-mm-blue-600 px-8 font-sans text-lg font-semibold text-white transition-colors hover:bg-mm-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2"
+            className="inline-flex h-14 items-center justify-center gap-2 rounded-control bg-primary px-8 font-sans text-lg font-semibold text-white transition-colors hover:bg-primary-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2"
           >
             <Icon name="schedule" size={20} aria-hidden />
             Request service
           </Link>
           <a
             href={`tel:${business.phoneTel}`}
-            className="inline-flex h-14 items-center justify-center gap-2.5 rounded-control border-[1.5px] border-mm-blue-600 px-8 font-sans text-lg font-semibold text-mm-blue-600 transition-colors hover:bg-mm-blue-100 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2"
+            className="inline-flex h-14 items-center justify-center gap-2.5 rounded-control border-[1.5px] border-primary px-8 font-sans text-lg font-semibold text-primary transition-colors hover:bg-primary-tint focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2"
           >
             <Icon name="phone" size={18} aria-hidden />
             Call {business.phoneDisplay}

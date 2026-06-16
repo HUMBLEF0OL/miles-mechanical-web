@@ -18,8 +18,8 @@ export interface ServiceCardProps {
 }
 
 const ACCENT_TILE: Record<ServiceAccent, string> = {
-  cool: 'bg-mm-blue-100 text-mm-blue-600',
-  heat: 'bg-mm-ember-100 text-mm-ember-600',
+  cool: 'bg-primary-tint text-primary-ink',
+  heat: 'bg-ember-tint text-ember',
 }
 
 /**
@@ -40,8 +40,8 @@ export function ServiceCard({
 }: ServiceCardProps) {
   const tileClasses = emergency ? 'bg-alarm text-white' : ACCENT_TILE[accent]
   const linkClasses = emergency
-    ? 'text-mm-ember-400 font-bold'
-    : 'text-mm-blue-600 font-semibold'
+    ? 'text-ember font-bold'
+    : 'text-primary font-semibold'
 
   return (
     <Card tone={emergency ? 'dark' : 'default'} className="flex flex-col">
@@ -56,12 +56,12 @@ export function ServiceCard({
       <h3
         className={cn(
           'mb-2 font-sans text-lg font-bold',
-          emergency ? 'text-white' : 'text-heading',
+          emergency ? 'text-hero-ink' : 'text-heading',
         )}
       >
         {title}
       </h3>
-      <p className={cn('mb-4 text-sm leading-relaxed', emergency ? 'text-mm-blue-200' : 'text-sub')}>
+      <p className={cn('mb-4 text-sm leading-relaxed', emergency ? 'text-hero-body' : 'text-sub')}>
         {description}
       </p>
       <Link

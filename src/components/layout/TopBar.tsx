@@ -13,7 +13,7 @@ export function TopBar({ className }: TopBarProps) {
   return (
     <div
       className={cn(
-        'bg-mm-blue-900 text-mm-blue-200 text-sm',
+        'bg-hero text-hero-body text-sm',
         className,
       )}
     >
@@ -23,7 +23,7 @@ export function TopBar({ className }: TopBarProps) {
         </span>
         <span className="hidden items-center gap-4 sm:inline-flex">
           <span>{business.hoursDisplay}</span>
-          <span className="font-bold text-mm-ember-300">
+          <span className="font-bold text-ember">
             {business.emergency} emergency
           </span>
         </span>

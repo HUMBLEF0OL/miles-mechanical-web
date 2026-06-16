@@ -37,6 +37,29 @@ const SEMANTIC = [
   { name: 'info', cls: 'bg-info' },
 ] as const
 
+// Theme-aware semantic tokens (resolve light/dark via theme.css). Toggle the
+// theme to verify both palettes from this page.
+const SURFACES = [
+  { name: 'app', cls: 'bg-app' },
+  { name: 'page', cls: 'bg-page' },
+  { name: 'panel', cls: 'bg-panel' },
+  { name: 'card', cls: 'bg-card' },
+  { name: 'inset', cls: 'bg-inset' },
+] as const
+
+const ROLES = [
+  { name: 'primary', cls: 'bg-primary' },
+  { name: 'primary-strong', cls: 'bg-primary-strong' },
+  { name: 'primary-tint', cls: 'bg-primary-tint' },
+  { name: 'ember', cls: 'bg-ember' },
+  { name: 'ember-strong', cls: 'bg-ember-strong' },
+  { name: 'ember-tint', cls: 'bg-ember-tint' },
+  { name: 'alarm-tint', cls: 'bg-alarm-tint' },
+  { name: 'success-tint', cls: 'bg-success-tint' },
+  { name: 'warning-tint', cls: 'bg-warning-tint' },
+  { name: 'input', cls: 'bg-input' },
+] as const
+
 const SERVICES: ReadonlyArray<{
   iconName: IconName
   title: string
@@ -266,6 +289,38 @@ export default function StyleguidePage() {
                 {SEMANTIC.map((s) => (
                   <Swatch key={s.name} label={s.name} cls={s.cls} />
                 ))}
+              </div>
+            </div>
+            <div>
+              <SubLabel>Surfaces (theme-aware — app → page → panel → card)</SubLabel>
+              <div className="grid grid-cols-5 gap-3">
+                {SURFACES.map((s) => (
+                  <Swatch key={s.name} label={s.name} cls={s.cls} />
+                ))}
+              </div>
+            </div>
+            <div>
+              <SubLabel>Roles & tints (theme-aware)</SubLabel>
+              <div className="grid grid-cols-5 gap-3">
+                {ROLES.map((s) => (
+                  <Swatch key={s.name} label={s.name} cls={s.cls} />
+                ))}
+              </div>
+            </div>
+            <div>
+              <SubLabel>Hero band (theme-aware dark marketing surface)</SubLabel>
+              <div className="overflow-hidden rounded-card border border-line bg-hero p-6">
+                <p className="font-display text-xl font-extrabold uppercase tracking-tight text-hero-ink">
+                  Honest HVAC, done right.
+                </p>
+                <p className="mt-2 max-w-md font-sans text-sm text-hero-body">
+                  Hero body copy sits on <code className="font-mono">bg-hero</code> using{' '}
+                  <code className="font-mono">text-hero-body</code>.
+                </p>
+                <p className="mt-1 font-sans text-xs text-hero-muted">
+                  Muted hero meta — <code className="font-mono">text-hero-muted</code>
+                </p>
+                <div className="mt-4 h-px bg-hero-line" aria-hidden />
               </div>
             </div>
           </div>

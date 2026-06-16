@@ -18,7 +18,9 @@ export default function OpengraphImage() {
         alignItems: 'flex-start',
         justifyContent: 'center',
         padding: '80px',
-        background: 'linear-gradient(135deg, #4f46e5 0%, #0a0a0a 100%)',
+        // Brand cool→warm sweep (AC→heating): brand-900 → brand-600 → ember-600.
+        // Text sits over the blue region; ember reaches only the bottom-right corner.
+        background: 'linear-gradient(135deg, #0b2a45 0%, #155c93 60%, #dd4e16 100%)',
         color: '#ffffff',
       }}
     >

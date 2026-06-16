@@ -7,7 +7,7 @@ import { Icon } from '@/components/ui/Icon'
 import { services, areas } from '@/content'
 
 const FOOTER_LINK_CLASSES =
-  'rounded-control transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 focus-visible:ring-offset-mm-blue-900'
+  'rounded-control transition-colors hover:text-hero-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 focus-visible:ring-offset-hero'
 
 const COMPANY_LINKS = [
   { label: 'About', href: '/about' },
@@ -32,7 +32,7 @@ export function SiteFooter({ className }: SiteFooterProps) {
   return (
     <footer
       className={cn(
-        'rounded-card bg-mm-blue-900 p-12 text-mm-blue-200',
+        'rounded-card bg-hero p-12 text-hero-body',
         className,
       )}
     >
@@ -67,7 +67,7 @@ export function SiteFooter({ className }: SiteFooterProps) {
               {area.city}
             </Link>
           ))}
-          <span className="text-mm-blue-300">+ surrounding cities</span>
+          <span className="text-hero-muted">+ surrounding cities</span>
         </FooterColumn>
 
         {/* Company + contact */}
@@ -79,19 +79,19 @@ export function SiteFooter({ className }: SiteFooterProps) {
           ))}
           <a
             href={`tel:${business.phoneTel}`}
-            className="mt-1 inline-flex items-center gap-2 rounded-control font-bold text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 focus-visible:ring-offset-mm-blue-900"
+            className="mt-1 inline-flex items-center gap-2 rounded-control font-bold text-hero-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 focus-visible:ring-offset-hero"
           >
-            <Icon name="phone" size={16} className="text-mm-ember-500" />
+            <Icon name="phone" size={16} className="text-ember" />
             {business.phoneDisplay}
           </a>
-          <span className="font-semibold text-mm-ember-300">
+          <span className="font-semibold text-ember">
             {business.emergency} emergency line
           </span>
         </FooterColumn>
       </div>
 
       {/* Bottom row */}
-      <div className="mt-9 flex flex-wrap justify-between gap-3 border-t border-white/10 pt-5 text-xs text-mm-blue-300">
+      <div className="mt-9 flex flex-wrap justify-between gap-3 border-t border-hero-line pt-5 text-xs text-hero-muted">
         <span>
           &copy; {business.name} {business.tagline} {currentYear} &middot;
           Licensed &amp; insured
@@ -110,7 +110,7 @@ interface FooterColumnProps {
 function FooterColumn({ title, children }: FooterColumnProps) {
   return (
     <div>
-      <p className="mb-[14px] font-sans text-xs font-bold uppercase tracking-[0.14em] text-white">
+      <p className="mb-[14px] font-sans text-xs font-bold uppercase tracking-[0.14em] text-hero-ink">
         {title}
       </p>
       <div className="flex flex-col gap-[9px] text-sm">{children}</div>

@@ -22,7 +22,7 @@ const NAV_LINKS = [
 
 // Anchor styled as the primary Button (avoids a <button> nested in a link).
 const CTA_CLASSES =
-  'inline-flex h-11 items-center justify-center rounded-control bg-mm-blue-600 px-6 font-sans font-semibold text-white transition-colors hover:bg-mm-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2'
+  'inline-flex h-11 items-center justify-center rounded-control bg-primary px-6 font-sans font-semibold text-white transition-colors hover:bg-primary-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2'
 
 /**
  * SiteHeader — primary marketing header (§10): logo, desktop nav, a phone
@@ -46,7 +46,7 @@ export function SiteHeader({ className }: SiteHeaderProps) {
             <Link
               key={link.href}
               href={link.href}
-              className="rounded-control font-sans text-sm font-semibold text-mm-steel-700 transition-colors hover:text-mm-blue-600 focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 focus-visible:outline-none"
+              className="rounded-control font-sans text-sm font-semibold text-sub transition-colors hover:text-primary focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 focus-visible:outline-none"
             >
               {link.label}
             </Link>
@@ -56,7 +56,7 @@ export function SiteHeader({ className }: SiteHeaderProps) {
         <div className="flex items-center gap-3">
           <a
             href={`tel:${business.phoneTel}`}
-            className="hidden items-center gap-2 rounded-control font-sans text-sm font-bold text-mm-blue-600 transition-colors hover:text-mm-blue-700 focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 focus-visible:outline-none sm:inline-flex"
+            className="hidden items-center gap-2 rounded-control font-sans text-sm font-bold text-primary transition-colors hover:text-primary-strong focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 focus-visible:outline-none sm:inline-flex"
           >
             <Icon name="phone" size={16} />
             {business.phoneDisplay}
@@ -72,7 +72,7 @@ export function SiteHeader({ className }: SiteHeaderProps) {
             aria-expanded={isMenuOpen}
             aria-controls="site-mobile-menu"
             onClick={() => setIsMenuOpen((open) => !open)}
-            className="inline-flex h-12 w-12 items-center justify-center rounded-control text-mm-steel-700 transition-colors hover:bg-subtle focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 focus-visible:outline-none md:hidden"
+            className="inline-flex h-12 w-12 items-center justify-center rounded-control text-sub transition-colors hover:bg-subtle focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 focus-visible:outline-none md:hidden"
           >
             <Icon name="menu" size={24} />
           </button>
@@ -91,7 +91,7 @@ export function SiteHeader({ className }: SiteHeaderProps) {
                 <Link
                   href={link.href}
                   onClick={() => setIsMenuOpen(false)}
-                  className="flex min-h-12 items-center rounded-control font-sans text-base font-semibold text-mm-steel-700 transition-colors hover:text-mm-blue-600 focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-inset focus-visible:outline-none"
+                  className="flex min-h-12 items-center rounded-control font-sans text-base font-semibold text-sub transition-colors hover:text-primary focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-inset focus-visible:outline-none"
                 >
                   {link.label}
                 </Link>
@@ -100,7 +100,7 @@ export function SiteHeader({ className }: SiteHeaderProps) {
             <li>
               <a
                 href={`tel:${business.phoneTel}`}
-                className="flex min-h-12 items-center gap-2 rounded-control font-sans text-base font-bold text-mm-blue-600 transition-colors hover:text-mm-blue-700 focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-inset focus-visible:outline-none"
+                className="flex min-h-12 items-center gap-2 rounded-control font-sans text-base font-bold text-primary transition-colors hover:text-primary-strong focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-inset focus-visible:outline-none"
               >
                 <Icon name="phone" size={18} />
                 {business.phoneDisplay}

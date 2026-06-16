@@ -27,6 +27,13 @@ brand pass across metadata and components.
 
 ## Done
 
+- **2026-06-16 — Semantic color-token migration + brand metadata pass.** Migrated
+  pages and components off raw-hue utilities (`bg-mm-blue-600`) onto semantic role
+  tokens (`bg-primary`, `text-faint`, `bg-card`); expanded `theme.css`'s semantic
+  layer (surfaces/hero/state) and refreshed the design-system HTML reference.
+  Re-branded PWA/icon/OG metadata off the Next boilerplate palette (`#4f46e5`,
+  `#0a0a0a`) to Miles Mechanical blue/ember, and tokenized the EmergencyCTA
+  gradient (`--color-alarm-700` → `--color-alarm`). Typecheck/lint/harness green.
 - **2026-06-16 — Pre-commit state-staleness gate.** Added
   `scripts/check-state-staleness.mjs`, wired into `.husky/pre-commit`: a commit
   staging `src/` code must also stage `PROGRESS.md` (Atomicity). Retagged the

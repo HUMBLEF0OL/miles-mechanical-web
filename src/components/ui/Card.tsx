@@ -11,7 +11,7 @@ interface CardProps {
 
 const TONE_STYLES: Record<CardTone, string> = {
   default: 'border-line bg-page',
-  dark: 'bg-mm-blue-900 text-white border-mm-blue-900',
+  dark: 'bg-hero text-hero-ink border-hero-line',
 }
 
 export function Card({ tone = 'default', className, children }: CardProps) {

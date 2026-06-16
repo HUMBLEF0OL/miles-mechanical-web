@@ -56,13 +56,13 @@ export default async function Page({ params }: PageProps) {
       {/* ── 1. Page hero ──────────────────────────────────────────────── */}
       <section aria-labelledby="contact-heading" className="max-w-3xl">
         {pages.contact.hero.eyebrow ? (
-          <p className="font-sans text-xs font-semibold uppercase tracking-[0.18em] text-mm-ember-600 sm:text-sm">
+          <p className="font-sans text-xs font-semibold uppercase tracking-[0.18em] text-ember sm:text-sm">
             {pages.contact.hero.eyebrow}
           </p>
         ) : null}
         <h1
           id="contact-heading"
-          className="mt-3 font-display text-4xl font-black uppercase leading-[0.95] tracking-[-0.01em] text-mm-blue-900 sm:text-5xl"
+          className="mt-3 font-display text-4xl font-black uppercase leading-[0.95] tracking-[-0.01em] text-heading sm:text-5xl"
         >
           {pages.contact.hero.headline}
         </h1>
@@ -76,17 +76,17 @@ export default async function Page({ params }: PageProps) {
         {/* Standard call affordance — mm-blue, NOT alarm red. */}
         <div className="flex flex-wrap items-center gap-6 rounded-card border border-line bg-subtle px-7 py-7 sm:px-9">
           <div className="min-w-[240px] flex-1">
-            <p className="font-sans text-xs font-semibold uppercase tracking-[0.18em] text-mm-ember-600">
+            <p className="font-sans text-xs font-semibold uppercase tracking-[0.18em] text-ember">
               Fastest way to reach us
             </p>
             <h2
               id="call-heading"
-              className="mt-2 font-display text-3xl font-extrabold uppercase leading-none tracking-[-0.01em] text-mm-blue-900 sm:text-4xl"
+              className="mt-2 font-display text-3xl font-extrabold uppercase leading-none tracking-[-0.01em] text-heading sm:text-4xl"
             >
               Call or text — we pick up
             </h2>
             <p className="mt-2.5 inline-flex items-center gap-2 font-sans text-[15px] leading-snug text-sub">
-              <Icon name="clock" size={16} className="text-mm-blue-500" aria-hidden />
+              <Icon name="clock" size={16} className="text-primary" aria-hidden />
               {business.hoursDisplay} · same-day where we can
             </p>
           </div>
@@ -95,7 +95,7 @@ export default async function Page({ params }: PageProps) {
           <a
             href={`tel:${business.phoneTel}`}
             aria-label={`Call Miles Mechanical at ${business.phoneDisplay}`}
-            className="inline-flex min-h-14 items-center gap-3 rounded-control bg-mm-blue-600 px-7 py-4 font-display text-2xl font-extrabold tracking-[-0.01em] text-white shadow-e2 transition-colors hover:bg-mm-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 sm:text-3xl"
+            className="inline-flex min-h-14 items-center gap-3 rounded-control bg-primary px-7 py-4 font-display text-2xl font-extrabold tracking-[-0.01em] text-white shadow-e2 transition-colors hover:bg-primary-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 sm:text-3xl"
           >
             <Icon name="call" size={26} aria-hidden />
             {business.phoneDisplay}
@@ -113,24 +113,24 @@ export default async function Page({ params }: PageProps) {
 
       {/* ── 4. What happens next (FR-LC-3) ────────────────────────────── */}
       <section aria-labelledby="next-heading">
-        <div className="rounded-card border border-line bg-mm-blue-100 px-7 py-8 sm:px-9 sm:py-9">
+        <div className="rounded-card border border-line bg-primary-tint px-7 py-8 sm:px-9 sm:py-9">
           <h2
             id="next-heading"
-            className="font-display text-2xl font-extrabold uppercase tracking-[-0.01em] text-mm-blue-900 sm:text-3xl"
+            className="font-display text-2xl font-extrabold uppercase tracking-[-0.01em] text-primary-ink sm:text-3xl"
           >
             {whatHappensNext.title}
           </h2>
-          <div className="mt-3 h-1 w-16 bg-mm-ember-600" aria-hidden />
+          <div className="mt-3 h-1 w-16 bg-ember" aria-hidden />
           <ol className="mt-6 space-y-4">
             {whatHappensNext.steps.map((step, index) => (
               <li key={step} className="flex items-start gap-4">
                 <span
                   aria-hidden
-                  className="flex h-8 w-8 shrink-0 items-center justify-center rounded-control bg-mm-blue-600 font-display text-base font-extrabold text-white"
+                  className="flex h-8 w-8 shrink-0 items-center justify-center rounded-control bg-primary font-display text-base font-extrabold text-white"
                 >
                   {index + 1}
                 </span>
-                <p className="font-sans text-[15px] leading-relaxed text-mm-blue-900">
+                <p className="font-sans text-[15px] leading-relaxed text-primary-ink">
                   {step}
                 </p>
               </li>
@@ -143,38 +143,38 @@ export default async function Page({ params }: PageProps) {
       <section aria-labelledby="facts-heading">
         <h2
           id="facts-heading"
-          className="font-display text-2xl font-extrabold uppercase tracking-[-0.01em] text-mm-blue-900 sm:text-3xl"
+          className="font-display text-2xl font-extrabold uppercase tracking-[-0.01em] text-heading sm:text-3xl"
         >
           Hours, area &amp; contact
         </h2>
-        <div className="mt-3 h-1 w-16 bg-mm-ember-600" aria-hidden />
+        <div className="mt-3 h-1 w-16 bg-ember" aria-hidden />
         <dl className="mt-6 grid grid-cols-1 gap-4 sm:grid-cols-2">
           {CONTACT_FACTS.map((fact) => (
             <div
               key={fact.label}
-              className="flex items-start gap-4 rounded-card border border-line bg-page p-6 shadow-e1"
+              className="flex items-start gap-4 rounded-card border border-line bg-card p-6 shadow-e1"
             >
               <span
                 aria-hidden
-                className="flex h-11 w-11 shrink-0 items-center justify-center rounded-control bg-mm-blue-100 text-mm-blue-600"
+                className="flex h-11 w-11 shrink-0 items-center justify-center rounded-control bg-primary-tint text-primary"
               >
                 <Icon name={fact.icon} size={22} />
               </span>
               <div>
-                <dt className="font-sans text-xs font-semibold uppercase tracking-[0.14em] text-mm-steel-500">
+                <dt className="font-sans text-xs font-semibold uppercase tracking-[0.14em] text-muted">
                   {fact.label}
                 </dt>
                 {fact.label === 'Email' ? (
-                  <dd className="mt-1 font-display text-lg font-extrabold tracking-[-0.01em] text-mm-blue-900">
+                  <dd className="mt-1 font-display text-lg font-extrabold tracking-[-0.01em] text-heading">
                     <a
                       href={`mailto:${business.email}`}
-                      className="break-all transition-colors hover:text-mm-blue-600 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
+                      className="break-all transition-colors hover:text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500"
                     >
                       {fact.value}
                     </a>
                   </dd>
                 ) : (
-                  <dd className="mt-1 font-display text-lg font-extrabold tracking-[-0.01em] text-mm-blue-900">
+                  <dd className="mt-1 font-display text-lg font-extrabold tracking-[-0.01em] text-heading">
                     {fact.value}
                   </dd>
                 )}

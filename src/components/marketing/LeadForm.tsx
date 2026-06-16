@@ -45,19 +45,19 @@ export function LeadForm() {
         <span className="mx-auto mb-5 flex size-14 items-center justify-center rounded-control bg-success/10 text-success">
           <Icon name="check" size={30} aria-hidden />
         </span>
-        <h2 className="font-display text-3xl font-extrabold uppercase leading-none text-mm-blue-900">
+        <h2 className="font-display text-3xl font-extrabold uppercase leading-none text-heading">
           Request received
         </h2>
-        <p className="mx-auto mt-4 max-w-prose font-sans text-[15px] leading-relaxed text-mm-steel-700">
+        <p className="mx-auto mt-4 max-w-prose font-sans text-[15px] leading-relaxed text-sub">
           <strong className="font-semibold">What happens next:</strong> your request goes
           straight to Mr. Miles — no call centre, no bots. A real person calls you back,
           usually within the hour during business hours.
         </p>
-        <p className="mt-6 font-sans text-sm text-mm-steel-500">
+        <p className="mt-6 font-sans text-sm text-muted">
           Need us sooner?{' '}
           <a
             href={`tel:${business.phoneTel}`}
-            className="rounded-control font-bold text-mm-blue-600 hover:text-mm-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2"
+            className="rounded-control font-bold text-primary hover:text-primary-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2"
           >
             Call {business.phoneDisplay}
           </a>
@@ -76,17 +76,17 @@ export function LeadForm() {
       <div className="rounded-card border border-line bg-subtle p-8 sm:p-10">
         <h2
           id="lead-form-heading"
-          className="font-display text-3xl font-extrabold uppercase leading-none text-mm-blue-900"
+          className="font-display text-3xl font-extrabold uppercase leading-none text-heading"
         >
           Request service
         </h2>
-        <p className="mt-3 font-sans text-[15px] leading-relaxed text-mm-steel-700">
+        <p className="mt-3 font-sans text-[15px] leading-relaxed text-sub">
           Tell us what&apos;s going on. We&apos;ll call you back fast — usually
           within the hour during business hours.
         </p>
 
         {/* What happens next info note */}
-        <div className="mt-6 flex items-start gap-3 rounded-control bg-mm-blue-100 px-4.5 py-4 text-mm-blue-700">
+        <div className="mt-6 flex items-start gap-3 rounded-control bg-primary-tint px-4.5 py-4 text-primary-ink">
           <Icon name="info" size={20} className="mt-px shrink-0" aria-hidden />
           <p className="font-sans text-[13px] leading-normal">
             <strong className="font-semibold">What happens next:</strong> your
@@ -141,7 +141,7 @@ export function LeadForm() {
           Send my request
         </Button>
 
-        <p className="text-center font-sans text-xs text-mm-steel-500">
+        <p className="text-center font-sans text-xs text-muted">
           Delivered straight to the business. We never share your details.
         </p>
       </div>

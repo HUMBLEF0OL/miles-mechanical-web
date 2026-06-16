@@ -13,11 +13,11 @@ interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
 }
 
 const VARIANT_STYLES: Record<ButtonVariant, string> = {
-  primary: 'bg-mm-blue-600 text-white hover:bg-mm-blue-700',
+  primary: 'bg-primary text-white hover:bg-primary-strong',
   secondary:
-    'bg-page text-mm-blue-600 border-[1.5px] border-mm-blue-600 hover:bg-mm-blue-100',
-  ghost: 'text-mm-blue-600 hover:bg-mm-blue-100',
-  ember: 'bg-mm-ember-600 text-white hover:bg-mm-ember-700',
+    'bg-card text-primary border-[1.5px] border-primary hover:bg-primary-tint',
+  ghost: 'text-primary hover:bg-primary-tint',
+  ember: 'bg-ember text-white hover:bg-ember-strong',
   emergency: 'bg-alarm text-white font-bold hover:bg-alarm-700',
 }
 
@@ -43,7 +43,7 @@ export function Button({
       className={cn(
         'inline-flex items-center justify-center gap-2 rounded-control font-sans font-semibold',
         'transition-colors focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 focus-visible:outline-none',
-        'disabled:cursor-not-allowed disabled:bg-mm-steel-100 disabled:text-mm-steel-400 disabled:border-transparent disabled:pointer-events-none',
+        'disabled:cursor-not-allowed disabled:bg-inset disabled:text-faint disabled:border-transparent disabled:pointer-events-none',
         VARIANT_STYLES[variant],
         SIZE_STYLES[size],
         className

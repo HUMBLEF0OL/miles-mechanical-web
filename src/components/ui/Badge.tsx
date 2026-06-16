@@ -10,12 +10,12 @@ interface BadgeProps {
 }
 
 const VARIANT_STYLES: Record<BadgeVariant, string> = {
-  default: 'bg-mm-steel-100 text-mm-steel-700',
-  info: 'bg-mm-blue-100 text-mm-blue-700',
-  success: 'bg-success/10 text-success',
-  warning: 'bg-warning/10 text-warning',
-  alarm: 'bg-alarm/10 text-alarm',
-  ember: 'bg-mm-ember-100 text-mm-ember-700',
+  default: 'bg-inset text-sub',
+  info: 'bg-primary-tint text-primary-ink',
+  success: 'bg-success-tint text-success',
+  warning: 'bg-warning-tint text-warning',
+  alarm: 'bg-alarm-tint text-alarm-ink',
+  ember: 'bg-ember-tint text-ember',
 }
 
 export function Badge({ variant = 'default', className, children }: BadgeProps) {

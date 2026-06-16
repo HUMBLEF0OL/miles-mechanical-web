@@ -51,13 +51,28 @@
   --color-mm-steel-800: #1e2a35;
   --color-mm-steel-900: #141c24;
 
-  /* Semantic state colors */
-  --color-success: #1e8a57;
-  --color-warning: #c6820b;
+  /* Semantic state colors — theme-aware (resolve from theme.css) */
+  --color-success: var(--th-success);
+  --color-success-tint: var(--th-success-tint);
+  --color-warning: var(--th-warning);
+  --color-warning-tint: var(--th-warning-tint);
   --color-alarm-300: #f4969c; /* lighter alarm — emergency accents on dark surfaces (AA contrast) */
-  --color-alarm: #d81e2c;
+  --color-alarm: var(--th-alarm);
+  --color-alarm-tint: var(--th-alarm-tint);
+  --color-alarm-ink: var(--th-alarm-ink);
   --color-alarm-700: #b5141f; /* darker alarm — emergency hover/pressed */
   --color-info: #155c93;
+
+  /* Semantic primary (blue — cool) */
+  --color-primary: var(--th-primary);
+  --color-primary-strong: var(--th-primary-strong);
+  --color-primary-tint: var(--th-primary-tint);
+  --color-primary-ink: var(--th-primary-ink);
+
+  /* Semantic ember (warm accent — heating) */
+  --color-ember: var(--th-ember);
+  --color-ember-strong: var(--th-ember-strong);
+  --color-ember-tint: var(--th-ember-tint);
 
   /* Semantic text colors */
   --color-heading: var(--th-heading);
@@ -67,10 +82,25 @@
   --color-ghost: var(--th-ghost);
   --color-code: var(--th-code);
 
-  /* Semantic backgrounds */
+  /* Semantic backgrounds (app shell → page → panel → card) */
+  --color-app: var(--th-app);
   --color-page: var(--th-page);
   --color-subtle: var(--th-subtle);
+  --color-panel: var(--th-panel);
+  --color-card: var(--th-card);
   --color-inset: var(--th-inset);
+
+  /* Inputs */
+  --color-input: var(--th-input);
+  --color-input-border: var(--th-input-border);
+
+  /* Hero (dark marketing band — adapts per theme) */
+  --color-hero: var(--th-hero);
+  --color-hero-strong: var(--th-hero-strong);
+  --color-hero-ink: var(--th-hero-ink);
+  --color-hero-body: var(--th-hero-body);
+  --color-hero-muted: var(--th-hero-muted);
+  --color-hero-line: var(--th-hero-line);
 
   /* Semantic borders */
   --color-line: var(--th-line);
@@ -92,10 +122,10 @@
   --radius-badge: 14px;
   --radius-4xl: 2rem;
 
-  /* Elevation */
-  --shadow-e1: 0 1px 2px rgba(20, 28, 36, 0.08);
+  /* Elevation — e1/e3 are theme-aware (resolve from theme.css) */
+  --shadow-e1: var(--th-shadow);
   --shadow-e2: 0 4px 12px rgba(20, 28, 36, 0.1);
-  --shadow-e3: 0 10px 28px rgba(20, 28, 36, 0.14);
+  --shadow-e3: var(--th-shadow-2);
 
   /* Animations */
   --animate-fade-in: fade-in 0.2s ease-out;

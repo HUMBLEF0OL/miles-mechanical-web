@@ -20,7 +20,7 @@ export function RatingStars({ rating, count, size = 'text-base', className }: Ra
   return (
     <div className={cn('inline-flex items-center gap-2', className)}>
       <span
-        className={cn('text-mm-ember-500 tracking-widest', size)}
+        className={cn('text-ember tracking-widest', size)}
         role="img"
         aria-label={
           rating !== undefined ? `${rating} out of 5 stars` : '5 out of 5 stars'

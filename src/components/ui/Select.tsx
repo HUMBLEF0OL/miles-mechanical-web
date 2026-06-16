@@ -16,7 +16,7 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(function Select
   return (
     <div className="flex flex-col gap-2">
       {label && (
-        <label htmlFor={selectId} className="font-sans text-sm font-semibold text-mm-steel-800">
+        <label htmlFor={selectId} className="font-sans text-sm font-semibold text-heading">
           {label}
           {props.required && <span className="ml-1 text-alarm">*</span>}
         </label>
@@ -27,11 +27,11 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(function Select
           ref={ref}
           id={selectId}
           className={cn(
-            'h-12 w-full appearance-none rounded-control border-[1.5px] bg-page pl-3.5 pr-10 font-sans text-base text-heading transition-colors',
+            'h-12 w-full appearance-none rounded-control border-[1.5px] bg-input pl-3.5 pr-10 font-sans text-base text-heading transition-colors',
             'focus:outline-none',
             error
               ? 'border-alarm focus:border-alarm focus:ring-[3px] focus:ring-alarm/15'
-              : 'border-mm-steel-300 focus:border-mm-blue-600 focus:ring-[3px] focus:ring-mm-blue-600/20',
+              : 'border-input-border focus:border-primary focus:ring-[3px] focus:ring-primary/20',
             'disabled:cursor-not-allowed disabled:opacity-50',
             className
           )}
@@ -50,14 +50,14 @@ export const Select = forwardRef<HTMLSelectElement, SelectProps>(function Select
           strokeWidth="2"
           strokeLinecap="round"
           strokeLinejoin="round"
-          className="pointer-events-none absolute right-3.5 top-1/2 size-[18px] -translate-y-1/2 text-mm-steel-500"
+          className="pointer-events-none absolute right-3.5 top-1/2 size-[18px] -translate-y-1/2 text-muted"
         >
           <path d="m6 9 6 6 6-6" />
         </svg>
       </div>
 
       {hint && !error && (
-        <p id={`${selectId}-hint`} className="font-sans text-xs text-mm-steel-500">
+        <p id={`${selectId}-hint`} className="font-sans text-xs text-muted">
           {hint}
         </p>
       )}

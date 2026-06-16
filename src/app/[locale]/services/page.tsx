@@ -40,18 +40,18 @@ export default async function ServicesPage({ params }: PageProps) {
       {/* ── Page hero (FR-CR-2) ─────────────────────────────────────────── */}
       <section aria-labelledby="services-heading" className="max-w-3xl">
         {HERO.eyebrow ? (
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-mm-ember-600 sm:text-sm">
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-ember sm:text-sm">
             {HERO.eyebrow}
           </p>
         ) : null}
         <h1
           id="services-heading"
-          className="mt-3 font-display text-4xl font-black uppercase leading-[0.95] tracking-[-0.01em] text-mm-blue-900 sm:text-5xl"
+          className="mt-3 font-display text-4xl font-black uppercase leading-[0.95] tracking-[-0.01em] text-heading sm:text-5xl"
         >
           {HERO.headline}
         </h1>
         {/* Ember accent bar motif */}
-        <div className="mt-5 h-1 w-16 rounded-full bg-mm-ember-600" aria-hidden />
+        <div className="mt-5 h-1 w-16 rounded-full bg-ember" aria-hidden />
         <p className="mt-5 max-w-2xl text-lg leading-relaxed text-sub">{HERO.subcopy}</p>
       </section>
 
@@ -75,7 +75,7 @@ export default async function ServicesPage({ params }: PageProps) {
       {/* ── Closing "Request service" CTA band ──────────────────────────── */}
       <section
         aria-labelledby="services-cta-heading"
-        className="mt-12 overflow-hidden rounded-card bg-mm-blue-900 px-7 py-10 text-white sm:mt-16 sm:px-11 sm:py-12"
+        className="mt-12 overflow-hidden rounded-card bg-hero px-7 py-10 text-hero-ink sm:mt-16 sm:px-11 sm:py-12"
       >
         <div className="flex flex-col gap-6 lg:flex-row lg:items-center lg:justify-between">
           <div>
@@ -85,7 +85,7 @@ export default async function ServicesPage({ params }: PageProps) {
             >
               Not sure which service you need?
             </h2>
-            <p className="mt-3 max-w-xl text-mm-blue-300">
+            <p className="mt-3 max-w-xl text-hero-body">
               Tell us the symptoms and we&rsquo;ll point you to the right fix — honest pricing,
               licensed work, no sales pressure.
             </p>
@@ -94,14 +94,14 @@ export default async function ServicesPage({ params }: PageProps) {
           <div className="flex flex-shrink-0 flex-wrap gap-3">
             <Link
               href="/contact"
-              className="inline-flex h-14 items-center justify-center gap-2.5 rounded-control bg-mm-ember-600 px-8 font-sans text-lg font-semibold text-white transition-colors hover:bg-mm-ember-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2"
+              className="inline-flex h-14 items-center justify-center gap-2.5 rounded-control bg-ember px-8 font-sans text-lg font-semibold text-white transition-colors hover:bg-ember-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2"
             >
               Request service
             </Link>
 
             <a
               href={`tel:${business.phoneTel}`}
-              className="inline-flex h-14 items-center justify-center gap-2.5 rounded-control border-[1.5px] border-white/40 px-8 font-sans text-lg font-semibold text-white transition-colors hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2"
+              className="inline-flex h-14 items-center justify-center gap-2.5 rounded-control border-[1.5px] border-hero-line px-8 font-sans text-lg font-semibold text-hero-ink transition-colors hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2"
             >
               <Icon name="phone" size={18} aria-hidden />
               Call {business.phoneDisplay}

@@ -35,7 +35,7 @@ export function StickyCallBar({ className }: StickyCallBarProps) {
   return (
     <div
       className={cn(
-        'fixed inset-x-0 bottom-0 z-40 flex gap-2.5 bg-mm-blue-900 px-3.5 pt-3 md:hidden',
+        'fixed inset-x-0 bottom-0 z-40 flex gap-2.5 bg-hero px-3.5 pt-3 md:hidden',
         // safe-area aware bottom padding (iOS home indicator)
         'pb-[max(0.75rem,env(safe-area-inset-bottom))]',
         className
@@ -48,7 +48,7 @@ export function StickyCallBar({ className }: StickyCallBarProps) {
           'flex min-h-12 flex-1 items-center justify-center gap-2 rounded-control',
           'bg-alarm font-sans text-base font-bold text-white',
           'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white',
-          'focus-visible:ring-offset-2 focus-visible:ring-offset-mm-blue-900',
+          'focus-visible:ring-offset-2 focus-visible:ring-offset-hero',
           'active:opacity-90'
         )}
       >
@@ -59,9 +59,9 @@ export function StickyCallBar({ className }: StickyCallBarProps) {
         href="/contact"
         className={cn(
           'flex min-h-12 flex-1 items-center justify-center rounded-control',
-          'bg-mm-blue-600 font-sans text-base font-bold text-white',
+          'bg-primary font-sans text-base font-bold text-white',
           'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white',
-          'focus-visible:ring-offset-2 focus-visible:ring-offset-mm-blue-900',
+          'focus-visible:ring-offset-2 focus-visible:ring-offset-hero',
           'active:opacity-90'
         )}
       >

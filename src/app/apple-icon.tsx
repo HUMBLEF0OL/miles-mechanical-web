@@ -14,7 +14,7 @@ export default function AppleIcon() {
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        background: '#4f46e5',
+        background: '#155c93', // brand-600 — Miles Mechanical blue (matches logo badge)
         color: '#ffffff',
         fontSize: 110,
         fontWeight: 700,

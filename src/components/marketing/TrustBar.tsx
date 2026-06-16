@@ -16,7 +16,7 @@ export function TrustBar({ href = '#', className }: TrustBarProps) {
       )}
     >
       <div className="flex items-baseline gap-3">
-        <span className="font-display text-mm-blue-900 text-6xl font-black leading-none">
+        <span className="font-display text-heading text-6xl font-black leading-none">
           {business.rating}
         </span>
         <div className="flex flex-col gap-1">
@@ -36,7 +36,7 @@ export function TrustBar({ href = '#', className }: TrustBarProps) {
 
       <a
         href={href}
-        className="text-mm-blue-600 rounded-control whitespace-nowrap text-sm font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2"
+        className="text-primary rounded-control whitespace-nowrap text-sm font-semibold focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2"
       >
         Read all reviews &rarr;
       </a>

@@ -13,8 +13,10 @@ export interface EmergencyCTAProps {
  * Left: eyebrow + Archivo headline + subtext. Right: a white click-to-call
  * button that pulses to draw attention to the after-hours line.
  *
- * The B5141F→D81E2C gradient is a brand gradient and is intentionally rendered
- * via an inline style with literal hex per the design-system spec.
+ * The alarm-red gradient is a brand gradient rendered via inline style (CSS
+ * gradients can't be expressed as a single Tailwind utility). It reads the alarm
+ * tokens — `--color-alarm-700` → `--color-alarm` — so it stays in sync with the
+ * palette and tracks the theme like the click-to-call button's `text-alarm`.
  */
 export function EmergencyCTA({ className }: EmergencyCTAProps) {
   return (
@@ -24,7 +26,9 @@ export function EmergencyCTA({ className }: EmergencyCTAProps) {
         'flex w-full flex-wrap items-center gap-6 rounded-card px-9 py-8 text-white',
         className,
       )}
-      style={{ background: 'linear-gradient(100deg, #B5141F, #D81E2C)' }}
+      style={{
+        background: 'linear-gradient(100deg, var(--color-alarm-700), var(--color-alarm))',
+      }}
     >
       <div className="min-w-[260px] flex-1">
         <p className="font-sans text-xs font-bold uppercase tracking-[0.18em] text-mm-ember-100">
@@ -42,7 +46,7 @@ export function EmergencyCTA({ className }: EmergencyCTAProps) {
         href={`tel:${business.phoneTel}`}
         aria-label={`Call Miles Mechanical 24/7 emergency line at ${business.phoneDisplay}`}
         className={cn(
-          'inline-flex min-h-12 items-center gap-2.5 rounded-control bg-page px-7 py-4',
+          'inline-flex min-h-12 items-center gap-2.5 rounded-control bg-white px-7 py-4',
           'font-sans text-lg font-bold text-alarm shadow-e2',
           'animate-pulse-alarm',
           'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2',
