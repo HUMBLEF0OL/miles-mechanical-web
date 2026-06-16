@@ -1,0 +1,11 @@
+{
+  "nav": { "home": "Home", "about": "About" },
+  "common": { "loading": "Loading...", "error": "Something went wrong" },
+  "errors": { "notFound": "Page not found", "unauthorized": "Unauthorized" },
+  "seo": {
+    "home": {
+      "title": "Home",
+      "description": "A Next.js 16 boilerplate for agent-driven development — typed, localized, and SEO-ready out of the box."
+    }
+  }
+}

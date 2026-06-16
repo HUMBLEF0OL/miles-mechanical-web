@@ -1,0 +1,56 @@
+# Dependencies
+node_modules/
+.pnp
+.pnp.js
+
+# Next.js
+.next/
+out/
+build/
+next-env.d.ts
+
+# Production
+/build
+
+# Environment
+.env
+.env*.local
+
+# Testing
+coverage/
+playwright-report/
+blob-report/
+test-results/
+
+# IDE
+.vscode/*
+!.vscode/extensions.json
+!.vscode/settings.recommended.json
+.idea/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Debug logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# Claude Code machine-local settings
+.claude/settings.local.json
+
+# Claude Code agent scratch memory (auto-generated, session-local; durable
+# project knowledge belongs in DECISIONS.md / PROGRESS.md instead)
+.claude/agent-memory/
+
+# Misc
+*.pem
+.vercel
+*.tsbuildinfo
+
+# TypeScript incremental cache
+*.tsbuildinfo

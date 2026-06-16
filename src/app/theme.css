@@ -1,0 +1,48 @@
+/* ─── Semantic Color Tokens ───────────────────────────────────────────────────
+   Single source of truth for light and dark palette values.
+   Registered as Tailwind color utilities in globals.css via @theme:
+     text-heading, text-muted, bg-page, border-line, etc.
+
+   Update these per-project to change the entire palette in one place.
+──────────────────────────────────────────────────────────────────────────── */
+
+:root {
+  /* Text */
+  --th-heading: #111827; /* gray-900 — headings, strong labels */
+  --th-sub: #4b5563; /* gray-600 — secondary body text */
+  --th-muted: #6b7280; /* gray-500 — descriptions, placeholders */
+  --th-faint: #9ca3af; /* gray-400 — meta info, table headers */
+  --th-ghost: #d1d5db; /* gray-300 — step numbers, decorative */
+  --th-code: #0284c7; /* brand-600 — code paths, monospace accents */
+
+  /* Backgrounds */
+  --th-page: #ffffff; /* white — page and card background */
+  --th-subtle: #f3f4f6; /* gray-100 — subtle fill, badges */
+  --th-inset: #e5e7eb; /* gray-200 — grid gap, inset areas */
+
+  /* Borders */
+  --th-line: #e5e7eb; /* gray-200 — standard borders */
+  --th-line-soft: #f3f4f6; /* gray-100 — subtle borders, dividers */
+
+  /* Layout */
+  --radius: 0.5rem;
+}
+
+.dark {
+  /* Text */
+  --th-heading: #f3f4f6; /* gray-100 */
+  --th-sub: #9ca3af; /* gray-400 */
+  --th-muted: #9ca3af; /* gray-400 */
+  --th-faint: #6b7280; /* gray-500 */
+  --th-ghost: #4b5563; /* gray-600 */
+  --th-code: #0ea5e9; /* brand-500 */
+
+  /* Backgrounds */
+  --th-page: #030712; /* gray-950 */
+  --th-subtle: #1f2937; /* gray-800 */
+  --th-inset: #1f2937; /* gray-800 */
+
+  /* Borders */
+  --th-line: #1f2937; /* gray-800 */
+  --th-line-soft: #1f2937; /* gray-800 */
+}

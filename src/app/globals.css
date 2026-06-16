@@ -1,0 +1,96 @@
+@import 'tailwindcss';
+@import './theme.css';
+
+/* ─── Dark Mode (class strategy via next-themes) ────────────────────────── */
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+/* ─── Design Tokens ──────────────────────────────────────────────────────────
+   Brand colors, semantic colors (from theme.css), typography, and animations.
+──────────────────────────────────────────────────────────────────────────── */
+
+@theme {
+  /* Brand colors */
+  --color-brand-50: #f0f9ff;
+  --color-brand-100: #e0f2fe;
+  --color-brand-500: #0ea5e9;
+  --color-brand-600: #0284c7;
+  --color-brand-900: #0c4a6e;
+
+  /* Semantic text colors */
+  --color-heading: var(--th-heading);
+  --color-sub: var(--th-sub);
+  --color-muted: var(--th-muted);
+  --color-faint: var(--th-faint);
+  --color-ghost: var(--th-ghost);
+  --color-code: var(--th-code);
+
+  /* Semantic backgrounds */
+  --color-page: var(--th-page);
+  --color-subtle: var(--th-subtle);
+  --color-inset: var(--th-inset);
+
+  /* Semantic borders */
+  --color-line: var(--th-line);
+  --color-line-soft: var(--th-line-soft);
+
+  /* Typography */
+  --font-sans: ui-sans-serif, system-ui, sans-serif;
+  --font-mono: ui-monospace, 'Cascadia Code', monospace;
+
+  /* Spacing */
+  --spacing-18: 4.5rem;
+  --spacing-22: 5.5rem;
+
+  /* Border radius */
+  --radius-4xl: 2rem;
+
+  /* Animations */
+  --animate-fade-in: fade-in 0.2s ease-out;
+  --animate-slide-in: slide-in 0.3s ease-out;
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-in {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+/* ─── Base Styles ────────────────────────────────────────────────────────── */
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-page text-heading;
+    font-family: var(--font-sans);
+  }
+
+  :focus-visible {
+    @apply outline-brand-500 outline-2 outline-offset-2;
+  }
+}
+
+/* ─── Custom Utilities ───────────────────────────────────────────────────── */
+
+@utility container-page {
+  @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+}

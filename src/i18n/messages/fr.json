@@ -1,0 +1,11 @@
+{
+  "nav": { "home": "Accueil", "about": "À propos" },
+  "common": { "loading": "Chargement...", "error": "Une erreur est survenue" },
+  "errors": { "notFound": "Page introuvable", "unauthorized": "Non autorisé" },
+  "seo": {
+    "home": {
+      "title": "Accueil",
+      "description": "Un boilerplate Next.js 16 pour le développement piloté par agents — typé, localisé et optimisé pour le SEO dès le départ."
+    }
+  }
+}
