@@ -78,7 +78,9 @@ HTTP client exists), see the matching per-skill file.
 - **MUST** keep a per-module `ARCHITECTURE.md` in every top-level `src/`
   directory. `[auto]` (`check:harness` predicate) `[src:architecture]` `[exp:never]`
 - **MUST** keep `PROGRESS.md` current — it is the cross-session State
-  subsystem. `[review]` `[src:state]` `[exp:never]`
+  subsystem. That it is updated in the same commit as any `src/` change is
+  `[auto]` (`scripts/check-state-staleness.mjs`, wired into `.husky/pre-commit`);
+  whether the entry is _meaningful_ remains `[review]`. `[src:state]` `[exp:never]`
 - **MUST** log durable decisions and harness-induced failure logs in
   `DECISIONS.md` (current "why"), keeping `PROGRESS.md` for volatile state only.
   `[review]` `[src:state]` `[exp:never]`
@@ -113,7 +115,8 @@ All checkpoints are `[review]` `[src:approvals]` `[exp:never]`:
 
 | Layer                       | Enforces                                                              |
 | --------------------------- | --------------------------------------------------------------------- |
-| `eslint.config.mjs`         | `[auto]` lint rules (`no-var`, `no-console`, `'use client'` in pages) |
-| `scripts/check-harness.mjs` | `[auto]` structural rules (file/section/line-count predicates)        |
-| `.husky/pre-commit`         | Runs both on every commit (ACID Consistency)                          |
-| Human reviewer              | All `[review]` rules                                                  |
+| `eslint.config.mjs`               | `[auto]` lint rules (`no-var`, `no-console`, `'use client'` in pages) |
+| `scripts/check-harness.mjs`       | `[auto]` structural rules (file/section/line-count predicates)        |
+| `scripts/check-state-staleness.mjs` | `[auto]` State currency: `src/` change ⇒ `PROGRESS.md` staged too   |
+| `.husky/pre-commit`               | Runs all three on every commit (ACID Consistency)                     |
+| Human reviewer                    | All `[review]` rules                                                  |

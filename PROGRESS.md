@@ -22,11 +22,16 @@
 
 ## Current Focus
 
-_What the team/agent is actively working on right now (one or two lines)._
+Hardening the deterministic harness layer and finishing the Miles Mechanical
+brand pass across metadata and components.
 
 ## Done
 
-_Completed and verified work. Add a date and a one-line summary per entry._
+- **2026-06-16 — Pre-commit state-staleness gate.** Added
+  `scripts/check-state-staleness.mjs`, wired into `.husky/pre-commit`: a commit
+  staging `src/` code must also stage `PROGRESS.md` (Atomicity). Retagged the
+  `PROGRESS.md`-currency rule `[auto]` in `CONSTRAINTS.md`. Verified pass/fail/skip
+  via a throwaway `GIT_INDEX_FILE`; `check:harness`, lint, typecheck green.
 
 ## In Progress
 

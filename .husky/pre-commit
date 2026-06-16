@@ -11,6 +11,11 @@ node scripts/check-harness.mjs || exit 1
 # so build-breaking code can't enter history. Skip with SKIP_TYPECHECK=1 git commit.
 [ "${SKIP_TYPECHECK}" = "1" ] || npm run typecheck || exit 1
 
+# State-currency gate (State subsystem) — if this commit stages src/ code, it MUST
+# also stage PROGRESS.md (Atomicity: one logical change updates state in the same
+# commit). Skip with SKIP_STATE_CHECK=1 git commit for a state-irrelevant change.
+node scripts/check-state-staleness.mjs || exit 1
+
 # NOTE: design-token sync is the on-demand `/sync-tokens` workflow (figma agent +
 # Figma MCP, needs FIGMA_API_KEY) — not a per-commit gate. It is intentionally not
 # run here: it would need network/API access on every commit, contradicting the
