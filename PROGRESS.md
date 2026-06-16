@@ -34,7 +34,9 @@ brand pass across metadata and components.
   build without manual env config while the production localhost guard still
   fails loud. Added `normalizeOrigin()` to strip trailing slashes (matches
   `site.ts` `trailingSlash: false`), preventing double-slash canonical/OG/sitemap
-  URLs. Build (40 pages)/harness (15 checks) green.
+  URLs. Guard error-message example now points at the owned
+  `milesmechanicalac.vercel.app` origin (the custom domain is not yet owned —
+  Scope §6 dep #5). Build (40 pages)/harness (15 checks) green.
   live marketing site into line with `docs/design-system/Miles Mechanical Hi-Fi.html`.
   Drove a per-template gap audit (Hi-Fi source ⟷ live), then implemented: IBM Plex
   Mono ember eyebrows/kickers site-wide (mono + `tracking-[0.16em]`, `text-ember` on

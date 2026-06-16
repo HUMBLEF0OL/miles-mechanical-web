@@ -79,7 +79,7 @@ function readAppUrl(): string {
   ) {
     throw new Error(
       'NEXT_PUBLIC_APP_URL is unset (defaulting to localhost) in a production build. ' +
-      'Set it to the real public origin (e.g. https://www.milesmechanicalac.com) or ' +
+      'Set it to the real public origin (e.g. https://milesmechanicalac.vercel.app) or ' +
       'every canonical, Open Graph, sitemap, and JSON-LD URL will be wrong.'
     )
   }
