@@ -8,12 +8,13 @@ import {
   ReviewCard,
   TrustBar,
   EmergencyCTA,
+  Band,
 } from '@/components/marketing'
 import { CredentialBadge, Icon } from '@/components/ui'
 import { business } from '@/config/business'
 import {
   pages,
-  services,
+  featuredServices,
   featuredReviews,
   areas,
   credentials,
@@ -45,7 +46,7 @@ function SectionHeading({
 }) {
   return (
     <div className="mb-8">
-      <p className="font-sans text-xs font-semibold uppercase tracking-[0.18em] text-mm-ember-600 sm:text-sm">
+      <p className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-ember sm:text-sm">
         {eyebrow}
       </p>
       <h2
@@ -68,18 +69,31 @@ export default async function HomePage({
   setRequestLocale(locale)
 
   return (
-    <main className="container-page space-y-16 py-12 sm:space-y-20 sm:py-16">
-      {/* 1 — Hero (above-the-fold CTAs, FR-CR-1) */}
+    <main className="container-page space-y-16 pb-12 sm:space-y-20 sm:pb-16">
+      {/* 1 — Hero (above-the-fold CTAs, FR-CR-1). Full-bleed navy band; sits
+             flush under the header per the hi-fi extra-large spec. */}
       <Hero />
 
       {/* 2 — Trust strip (FR-RV-1) */}
       <TrustBar href="/reviews" />
 
-      {/* 3 — Services grid (FR-CR-2) */}
+      {/* 3 — Services grid (FR-CR-2) — a curated trio; full list on /services */}
       <section aria-labelledby="services-heading">
-        <SectionHeading id="services-heading" eyebrow="What we do" title="Our services" />
+        <div className="flex flex-wrap items-end justify-between gap-4">
+          <SectionHeading
+            id="services-heading"
+            eyebrow="What we do"
+            title="Cooling, heating & everything between"
+          />
+          <Link
+            href="/services"
+            className="mb-8 inline-flex items-center gap-1.5 rounded-control text-sm font-semibold text-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2"
+          >
+            See all services &rarr;
+          </Link>
+        </div>
         <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-          {services.map((service) => (
+          {featuredServices.map((service) => (
             <ServiceCard
               key={service.slug}
               iconName={service.icon}
@@ -162,19 +176,20 @@ export default async function HomePage({
         </ul>
       </section>
 
-      {/* 8 — Final CTA band */}
-      <section
+      {/* 8 — Final CTA band (full-bleed navy per the hi-fi extra-large spec) */}
+      <Band
         aria-labelledby="final-cta-heading"
-        className="flex flex-wrap items-center justify-between gap-6 rounded-card bg-subtle px-8 py-10 sm:px-10"
+        className="bg-hero text-hero-ink"
+        innerClassName="flex flex-wrap items-center justify-between gap-6 py-10"
       >
         <div className="min-w-[260px] flex-1">
           <h2
             id="final-cta-heading"
-            className="font-display text-3xl font-extrabold uppercase tracking-[-0.01em] text-heading sm:text-4xl"
+            className="font-display text-3xl font-extrabold uppercase tracking-[-0.01em] sm:text-4xl"
           >
             Ready when you are.
           </h2>
-          <p className="mt-2.5 text-base leading-relaxed text-sub">
+          <p className="mt-2.5 text-base leading-relaxed text-hero-body">
             Family-owned in the {business.region} for {business.yearsExperience}+ years.
             Fair pricing, licensed work, and a real person on the phone.
           </p>
@@ -182,20 +197,20 @@ export default async function HomePage({
         <div className="flex flex-wrap gap-3">
           <Link
             href="/contact"
-            className="inline-flex h-14 items-center justify-center gap-2 rounded-control bg-primary px-8 font-sans text-lg font-semibold text-white transition-colors hover:bg-primary-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2"
+            className="inline-flex h-14 items-center justify-center gap-2 rounded-control bg-ember px-8 font-sans text-lg font-semibold text-white transition-colors hover:bg-ember-strong focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2"
           >
             <Icon name="schedule" size={20} aria-hidden />
             Request service
           </Link>
           <a
             href={`tel:${business.phoneTel}`}
-            className="inline-flex h-14 items-center justify-center gap-2.5 rounded-control border-[1.5px] border-primary px-8 font-sans text-lg font-semibold text-primary transition-colors hover:bg-primary-tint focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2"
+            className="inline-flex h-14 items-center justify-center gap-2.5 rounded-control border-[1.5px] border-hero-line px-8 font-sans text-lg font-semibold text-hero-ink transition-colors hover:bg-white/10 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2"
           >
             <Icon name="phone" size={18} aria-hidden />
             Call {business.phoneDisplay}
           </a>
         </div>
-      </section>
+      </Band>
 
       <JsonLd
         data={webPageJsonLd({ title: SEO_TITLE, description: SEO_DESC, path: PATH, locale })}

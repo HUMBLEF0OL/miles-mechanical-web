@@ -11,7 +11,10 @@ interface ThemeToggleProps {
 }
 
 export function ThemeToggle({ className }: ThemeToggleProps) {
-  const { theme, setTheme } = useTheme()
+  // resolvedTheme reflects what's actually displayed (resolves "system" to the
+  // real light/dark value) — so the icon and label are correct on first paint
+  // regardless of the visitor's OS preference.
+  const { resolvedTheme, setTheme } = useTheme()
   const mounted = useSyncExternalStore(
     emptySubscribe,
     () => true,
@@ -19,10 +22,11 @@ export function ThemeToggle({ className }: ThemeToggleProps) {
   )
 
   if (!mounted) {
-    return <div className={cn('size-9', className)} />
+    // Reserve layout space; aria-hidden so SR users don't see a dead control pre-hydration.
+    return <div className={cn('size-9', className)} aria-hidden />
   }
 
-  const isDark = theme === 'dark'
+  const isDark = resolvedTheme === 'dark'
 
   return (
     <button

@@ -1,9 +1,9 @@
 @import 'tailwindcss';
 @import './theme.css';
 
-/* ─── Dark Mode (class strategy via next-themes) ────────────────────────── */
+/* ─── Dark Mode (data-theme strategy via next-themes) ───────────────────── */
 
-@custom-variant dark (&:where(.dark, .dark *));
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
 
 /* ─── Design Tokens ──────────────────────────────────────────────────────────
    Brand colors, semantic colors (from theme.css), typography, and animations.
@@ -56,11 +56,13 @@
   --color-success-tint: var(--th-success-tint);
   --color-warning: var(--th-warning);
   --color-warning-tint: var(--th-warning-tint);
-  --color-alarm-300: #f4969c; /* lighter alarm — emergency accents on dark surfaces (AA contrast) */
+  --color-alarm-300: #f4969c;
+  /* lighter alarm — emergency accents on dark surfaces (AA contrast) */
   --color-alarm: var(--th-alarm);
   --color-alarm-tint: var(--th-alarm-tint);
   --color-alarm-ink: var(--th-alarm-ink);
-  --color-alarm-700: #b5141f; /* darker alarm — emergency hover/pressed */
+  --color-alarm-700: #b5141f;
+  /* darker alarm — emergency hover/pressed */
   --color-info: #155c93;
 
   /* Semantic primary (blue — cool) */
@@ -93,6 +95,10 @@
   /* Inputs */
   --color-input: var(--th-input);
   --color-input-border: var(--th-input-border);
+  --color-field: var(--th-field);
+
+  /* Rating */
+  --color-star: var(--th-star);
 
   /* Hero (dark marketing band — adapts per theme) */
   --color-hero: var(--th-hero);
@@ -101,6 +107,8 @@
   --color-hero-body: var(--th-hero-body);
   --color-hero-muted: var(--th-hero-muted);
   --color-hero-line: var(--th-hero-line);
+  --color-hero-chip: var(--th-hero-chip);
+  --color-hero-chip-bd: var(--th-hero-chip-bd);
 
   /* Semantic borders */
   --color-line: var(--th-line);
@@ -110,6 +118,12 @@
   --font-display: 'Archivo', var(--font-archivo), sans-serif;
   --font-sans: var(--font-plex-sans), 'IBM Plex Sans', system-ui, sans-serif;
   --font-mono: var(--font-plex-mono), 'IBM Plex Mono', monospace;
+
+  /* Layout — content reading column caps at 1240px (hi-fi extra-large spec);
+     full-bleed brand bands stretch edge-to-edge, content never does. Generates
+     the `max-w-content` utility. */
+  --container-content: 77.5rem;
+  /* 1240px */
 
   /* Spacing */
   --spacing-18: 4.5rem;
@@ -138,6 +152,7 @@
     opacity: 0;
     transform: translateY(4px);
   }
+
   to {
     opacity: 1;
     transform: translateY(0);
@@ -148,6 +163,7 @@
   from {
     transform: translateX(-100%);
   }
+
   to {
     transform: translateX(0);
   }
@@ -158,9 +174,11 @@
   0% {
     box-shadow: 0 0 0 0 rgba(216, 30, 44, 0.5);
   }
+
   70% {
     box-shadow: 0 0 0 16px rgba(216, 30, 44, 0);
   }
+
   100% {
     box-shadow: 0 0 0 0 rgba(216, 30, 44, 0);
   }
@@ -178,6 +196,9 @@
   body {
     @apply bg-page text-heading;
     font-family: var(--font-sans);
+    /* Guard against the ~scrollbar-width horizontal overflow that 100vw
+       full-bleed bands introduce; bands fill the width, page never scrolls X. */
+    overflow-x: hidden;
   }
 
   :focus-visible {
@@ -188,5 +209,28 @@
 /* ─── Custom Utilities ───────────────────────────────────────────────────── */
 
 @utility container-page {
-  @apply mx-auto w-full max-w-7xl px-4 sm:px-6 lg:px-8;
+  @apply mx-auto w-full max-w-content px-4 sm:px-6 lg:px-8;
+}
+
+/* Full-bleed band — breaks out of any constrained ancestor (e.g. a
+   `container-page` wrapper, regardless of its horizontal padding) to span the
+   full viewport width, so brand-navy / alarm bands stretch edge-to-edge per the
+   hi-fi extra-large spec. Centering a 100vw box with `left:50%; margin-left:
+   -50vw` is padding-independent (unlike a `margin-inline: calc(50% - 50vw)`
+   approach, which leaves the band inset by the parent's padding). Pair with
+   `band-inner` to re-cap the band's contents at the 1240px reading column. */
+@utility full-bleed {
+  position: relative;
+  left: 50%;
+  right: 50%;
+  width: 100vw;
+  margin-left: -50vw;
+  margin-right: -50vw;
+}
+
+/* Re-caps the contents of a `full-bleed` band back to the 1240px reading
+   column, matching `container-page` gutters, so text/grids never stretch even
+   though the band background runs full width. */
+@utility band-inner {
+  @apply mx-auto w-full max-w-content px-4 sm:px-6 lg:px-8;
 }

@@ -55,7 +55,7 @@ export default async function ServiceDetailPage({ params }: PageProps) {
     : service.accent === 'heat'
       ? 'bg-ember-tint text-ember'
       : 'bg-primary-tint text-primary-ink'
-  const eyebrowClasses = isEmergency ? 'text-alarm-300' : 'text-mm-ember-300'
+  const eyebrowClasses = isEmergency ? 'text-alarm-300' : 'text-ember-strong'
   const checkAccent = isEmergency
     ? 'text-alarm'
     : service.accent === 'heat'
@@ -95,10 +95,10 @@ export default async function ServiceDetailPage({ params }: PageProps) {
         </ol>
       </nav>
 
-      {/* 2 ─ Service hero ───────────────────────────────────────────────── */}
+      {/* 2 ─ Service hero (full-bleed navy band) ────────────────────────── */}
       <section
         aria-labelledby="service-hero-heading"
-        className="relative overflow-hidden rounded-card bg-hero px-7 py-12 text-hero-ink sm:px-11 sm:py-14"
+        className="full-bleed relative overflow-hidden bg-hero text-hero-ink"
       >
         <div
           aria-hidden
@@ -110,55 +110,57 @@ export default async function ServiceDetailPage({ params }: PageProps) {
           )}
         />
 
-        <div className="relative max-w-[52ch]">
-          <div
-            className={cn(
-              'mb-5 flex size-14 items-center justify-center rounded-control',
-              tileClasses,
-            )}
-          >
-            <Icon name={service.icon} size={30} aria-hidden />
-          </div>
-
-          <p
-            className={cn(
-              'font-sans text-xs font-semibold uppercase tracking-[0.18em] sm:text-sm',
-              eyebrowClasses,
-            )}
-          >
-            {service.heroEyebrow}
-          </p>
-
-          <h1
-            id="service-hero-heading"
-            className="mt-3 font-display text-4xl font-black uppercase leading-[0.95] tracking-[-0.01em] sm:text-5xl"
-          >
-            {service.heroHeadline}
-          </h1>
-
-          <p className="mt-5 max-w-[46ch] font-sans text-lg leading-relaxed text-hero-body">
-            {service.heroSubcopy}
-          </p>
-
-          <div className="mt-8 flex flex-wrap gap-3">
-            <Link href={`/${locale}/contact`} className="inline-flex">
-              <Button variant={isEmergency ? 'emergency' : 'primary'} size="lg">
-                Get a quote
-              </Button>
-            </Link>
-
-            {/* Outline tel CTA — real anchor for click-to-call semantics. */}
-            <a
-              href={`tel:${business.phoneTel}`}
+        <div className="band-inner py-12 sm:py-14">
+          <div className="relative max-w-[52ch]">
+            <div
               className={cn(
-                'inline-flex h-14 items-center justify-center gap-2.5 rounded-control border-[1.5px] border-hero-line px-8',
-                'font-sans text-lg font-semibold text-hero-ink transition-colors hover:bg-white/10',
-                'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2',
+                'mb-5 flex size-14 items-center justify-center rounded-control',
+                tileClasses,
               )}
             >
-              <Icon name="phone" size={18} aria-hidden />
-              Call {business.phoneDisplay}
-            </a>
+              <Icon name={service.icon} size={30} aria-hidden />
+            </div>
+
+            <p
+              className={cn(
+                'font-mono text-xs font-semibold uppercase tracking-[0.16em] sm:text-sm',
+                eyebrowClasses,
+              )}
+            >
+              {service.heroEyebrow}
+            </p>
+
+            <h1
+              id="service-hero-heading"
+              className="mt-3 font-display text-4xl font-black uppercase leading-[0.95] tracking-[-0.01em] sm:text-5xl"
+            >
+              {service.heroHeadline}
+            </h1>
+
+            <p className="mt-5 max-w-[46ch] font-sans text-lg leading-relaxed text-hero-body">
+              {service.heroSubcopy}
+            </p>
+
+            <div className="mt-8 flex flex-wrap gap-3">
+              <Link href={`/${locale}/contact`} className="inline-flex">
+                <Button variant={isEmergency ? 'emergency' : 'primary'} size="lg">
+                  Get a quote
+                </Button>
+              </Link>
+
+              {/* Outline tel CTA — real anchor for click-to-call semantics. */}
+              <a
+                href={`tel:${business.phoneTel}`}
+                className={cn(
+                  'inline-flex h-14 items-center justify-center gap-2.5 rounded-control border-[1.5px] border-hero-line px-8',
+                  'font-sans text-lg font-semibold text-hero-ink transition-colors hover:bg-white/10',
+                  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2',
+                )}
+              >
+                <Icon name="phone" size={18} aria-hidden />
+                Call {business.phoneDisplay}
+              </a>
+            </div>
           </div>
         </div>
       </section>

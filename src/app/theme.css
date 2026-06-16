@@ -12,58 +12,104 @@
 
 :root {
   /* ── Surfaces (app shell → page → panel → card) ───────────────────────── */
-  --th-app: #eceff2; /* steel — app/body shell behind the page */
-  --th-page: #ffffff; /* white — page background */
-  --th-subtle: #f6f8fa; /* steel-50 — subtle fill (alias of panel) */
-  --th-panel: #f6f8fa; /* steel-50 — raised panel surface */
-  --th-card: #ffffff; /* white — card surface */
-  --th-inset: #ecf0f3; /* steel-100 — grid gap, inset areas */
+  --th-app: #eceff2;
+  /* steel — app/body shell behind the page */
+  --th-page: #ffffff;
+  /* white — page background */
+  --th-subtle: #f6f8fa;
+  /* steel-50 — subtle fill (alias of panel) */
+  --th-panel: #f6f8fa;
+  /* steel-50 — raised panel surface */
+  --th-card: #ffffff;
+  /* white — card surface */
+  --th-inset: #ecf0f3;
+  /* steel-100 — grid gap, inset areas */
 
   /* ── Text ─────────────────────────────────────────────────────────────── */
-  --th-heading: #0b2a45; /* blue-900 — headings, strong labels (ink) */
-  --th-sub: #303e4b; /* steel-700 — body copy */
-  --th-muted: #6b7882; /* steel-500 — descriptions, placeholders */
-  --th-faint: #93a0aa; /* steel-400 — meta info, table headers */
-  --th-ghost: #bfc8cf; /* steel-300 — step numbers, decorative */
-  --th-code: #155c93; /* blue-600 — code paths, monospace accents */
+  --th-heading: #0b2a45;
+  /* blue-900 — headings, strong labels (ink) */
+  --th-sub: #303e4b;
+  /* steel-700 — body copy */
+  --th-muted: #6b7882;
+  /* steel-500 — descriptions, placeholders */
+  --th-faint: #93a0aa;
+  /* steel-400 — meta info, table headers */
+  --th-ghost: #bfc8cf;
+  /* steel-300 — step numbers, decorative */
+  --th-code: #155c93;
+  /* blue-600 — code paths, monospace accents */
 
   /* ── Borders ──────────────────────────────────────────────────────────── */
-  --th-line: #dce2e7; /* steel-200 — standard borders */
-  --th-line-soft: #ecf0f3; /* steel-100 — subtle borders, dividers */
+  --th-line: #dce2e7;
+  /* steel-200 — standard borders */
+  --th-line-soft: #ecf0f3;
+  /* steel-100 — subtle borders, dividers */
 
   /* ── Primary (blue — cool / air conditioning) ─────────────────────────── */
-  --th-primary: #155c93; /* blue-600 */
-  --th-primary-strong: #114b78; /* blue-700 — hover / pressed */
-  --th-primary-tint: #e6eff6; /* blue-100 — tinted fills, ghost hover */
-  --th-primary-ink: #114b78; /* blue-700 — text on primary tint */
+  --th-primary: #155c93;
+  /* blue-600 */
+  --th-primary-strong: #114b78;
+  /* blue-700 — hover / pressed */
+  --th-primary-tint: #e6eff6;
+  /* blue-100 — tinted fills, ghost hover */
+  --th-primary-ink: #114b78;
+  /* blue-700 — text on primary tint */
 
   /* ── Ember (warm accent — heating) ────────────────────────────────────── */
-  --th-ember: #dd4e16; /* ember-600 */
-  --th-ember-strong: #f0641f; /* ember-500 — bright accent */
-  --th-ember-tint: #fceadd; /* ember-100 — tinted fills */
+  --th-ember: #dd4e16;
+  /* ember-600 */
+  --th-ember-strong: #f0641f;
+  /* ember-500 — bright accent */
+  --th-ember-tint: #fceadd;
+  /* ember-100 — tinted fills */
 
   /* ── Alarm (emergency only) ───────────────────────────────────────────── */
-  --th-alarm: #d81e2c; /* alarm — emergency CTAs */
-  --th-alarm-tint: #fce9ea; /* alarm tint — emergency surfaces */
-  --th-alarm-ink: #b0483f; /* alarm ink — text on alarm tint */
+  --th-alarm: #d81e2c;
+  /* alarm — emergency CTAs */
+  --th-alarm-tint: #fce9ea;
+  /* alarm tint — emergency surfaces */
+  --th-alarm-ink: #b0483f;
+  /* alarm ink — text on alarm tint */
 
   /* ── Inputs ───────────────────────────────────────────────────────────── */
-  --th-input: #ffffff; /* field background */
-  --th-input-border: #bfc8cf; /* steel-300 — field border */
+  --th-input: #ffffff;
+  /* field background */
+  --th-input-border: #bfc8cf;
+  /* steel-300 — field border */
+  --th-field: #f4f5f7;
+  /* steel — secondary/disabled field fill */
+
+  /* ── Rating ───────────────────────────────────────────────────────────── */
+  --th-star: #f0641f;
+  /* ember-500 — rating stars */
 
   /* ── Hero (dark marketing band — adapts per theme) ────────────────────── */
-  --th-hero: #0b2a45; /* blue-900 — hero base */
-  --th-hero-strong: #114b78; /* blue-700 — hero gradient stop */
-  --th-hero-ink: #ffffff; /* white — hero headings */
-  --th-hero-body: #c6daeb; /* blue-200 — hero body copy */
-  --th-hero-muted: #93b8d9; /* blue-300 — hero meta / muted */
-  --th-hero-line: rgba(255, 255, 255, 0.12); /* hero hairline / dividers */
+  --th-hero: #0b2a45;
+  /* blue-900 — hero base */
+  --th-hero-strong: #114b78;
+  /* blue-700 — hero gradient stop */
+  --th-hero-ink: #ffffff;
+  /* white — hero headings */
+  --th-hero-body: #c6daeb;
+  /* blue-200 — hero body copy */
+  --th-hero-muted: #93b8d9;
+  /* blue-300 — hero meta / muted */
+  --th-hero-line: rgba(255, 255, 255, 0.12);
+  /* hero hairline / dividers */
+  --th-hero-chip: rgba(255, 255, 255, 0.1);
+  /* hero glass chip fill */
+  --th-hero-chip-bd: rgba(255, 255, 255, 0.2);
+  /* hero glass chip border */
 
   /* ── State (success / warning) ────────────────────────────────────────── */
-  --th-success: #1e8a57; /* green */
-  --th-success-tint: #e5f4ec; /* green tint */
-  --th-warning: #c6820b; /* amber */
-  --th-warning-tint: #fbf1db; /* amber tint */
+  --th-success: #1e8a57;
+  /* green */
+  --th-success-tint: #e5f4ec;
+  /* green tint */
+  --th-warning: #c6820b;
+  /* amber */
+  --th-warning-tint: #fbf1db;
+  /* amber tint */
 
   /* ── Elevation (theme-aware shadows) ──────────────────────────────────── */
   --th-shadow: 0 1px 2px rgba(20, 28, 36, 0.06);
@@ -73,26 +119,40 @@
   --radius: 0.375rem;
 }
 
-.dark {
+[data-theme='dark'] {
   /* ── Surfaces ─────────────────────────────────────────────────────────── */
-  --th-app: #06121e; /* deepest — app/body shell */
-  --th-page: #081a2c; /* page background */
-  --th-subtle: #0c2438; /* panel (alias) */
-  --th-panel: #0c2438; /* raised panel surface */
-  --th-card: #0f2a42; /* card surface */
-  --th-inset: #173049; /* inset / grid gap */
+  --th-app: #06121e;
+  /* deepest — app/body shell */
+  --th-page: #081a2c;
+  /* page background */
+  --th-subtle: #0c2438;
+  /* panel (alias) */
+  --th-panel: #0c2438;
+  /* raised panel surface */
+  --th-card: #0f2a42;
+  /* card surface */
+  --th-inset: #173049;
+  /* inset / grid gap */
 
   /* ── Text ─────────────────────────────────────────────────────────────── */
-  --th-heading: #ffffff; /* white (ink) */
-  --th-sub: #c2d6e6; /* light blue — body copy */
-  --th-muted: #86a0b6; /* muted blue-grey */
-  --th-faint: #7e97ad; /* fainter blue-grey */
-  --th-ghost: #21405c; /* dark border-blue — decorative */
-  --th-code: #f0641f; /* ember — code accents */
+  --th-heading: #ffffff;
+  /* white (ink) */
+  --th-sub: #c2d6e6;
+  /* light blue — body copy */
+  --th-muted: #86a0b6;
+  /* muted blue-grey */
+  --th-faint: #7e97ad;
+  /* fainter blue-grey */
+  --th-ghost: #21405c;
+  /* dark border-blue — decorative */
+  --th-code: #f0641f;
+  /* ember — code accents */
 
   /* ── Borders ──────────────────────────────────────────────────────────── */
-  --th-line: #21405c; /* border */
-  --th-line-soft: #173049; /* softer border */
+  --th-line: #21405c;
+  /* border */
+  --th-line-soft: #173049;
+  /* softer border */
 
   /* ── Primary (lightened for dark-surface contrast) ────────────────────── */
   --th-primary: #3d82c0;
@@ -113,6 +173,12 @@
   /* ── Inputs ───────────────────────────────────────────────────────────── */
   --th-input: #0a1e30;
   --th-input-border: #2a4a66;
+  --th-field: #0a1e30;
+  /* secondary/disabled field fill (dark) */
+
+  /* ── Rating ───────────────────────────────────────────────────────────── */
+  --th-star: #f0641f;
+  /* ember — rating stars (constant across themes) */
 
   /* ── Hero ─────────────────────────────────────────────────────────────── */
   --th-hero: #0e2c47;
@@ -121,6 +187,10 @@
   --th-hero-body: #c6daeb;
   --th-hero-muted: #86a0b6;
   --th-hero-line: rgba(255, 255, 255, 0.1);
+  --th-hero-chip: rgba(255, 255, 255, 0.07);
+  /* hero glass chip fill (dark) */
+  --th-hero-chip-bd: rgba(255, 255, 255, 0.16);
+  /* hero glass chip border (dark) */
 
   /* ── State ────────────────────────────────────────────────────────────── */
   --th-success: #39b57a;

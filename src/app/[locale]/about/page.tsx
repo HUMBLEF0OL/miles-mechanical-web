@@ -8,12 +8,21 @@ import { Icon } from '@/components/ui/Icon'
 import { Logo } from '@/components/ui/Logo'
 import { CredentialBadge } from '@/components/ui/CredentialBadge'
 import { Card, CardHeader, CardTitle, CardContent } from '@/components/ui/Card'
+import { Band } from '@/components/marketing'
 import { credentials, values, timeline, owner, pages } from '@/content'
 
 const PATH = '/about'
 const SEO_TITLE = pages.about.seo.title
 const SEO_DESC = pages.about.seo.description
 const { eyebrow, headline, subcopy } = pages.about.hero
+
+/** Proof-stat strip — the four headline trust numbers (sourced from business facts). */
+const ABOUT_STATS: { value: string; label: string; star?: boolean }[] = [
+  { value: `${business.yearsExperience}+`, label: 'Years in business' },
+  { value: String(business.rating), label: `${business.reviewCount} Google reviews`, star: true },
+  { value: String(business.areas.length), label: 'Cities served' },
+  { value: business.emergency, label: 'Emergency answer' },
+]
 
 export async function generateMetadata({
   params,
@@ -37,19 +46,41 @@ export default async function AboutPage({ params }: PageProps) {
       {/* ── 1. Page hero ───────────────────────────────────────────────── */}
       <section aria-labelledby="about-heading" className="max-w-3xl">
         {eyebrow ? (
-          <p className="font-sans text-xs font-semibold uppercase tracking-[0.18em] text-ember sm:text-sm">
+          <p className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-ember sm:text-sm">
             {eyebrow}
           </p>
         ) : null}
         <h1
           id="about-heading"
-          className="mt-3 font-display text-4xl font-black uppercase leading-[0.95] tracking-[-0.01em] text-heading sm:text-5xl"
+          className="mt-3 font-display text-4xl font-extrabold uppercase leading-[0.95] tracking-[-0.01em] text-heading sm:text-5xl"
         >
           {headline}
         </h1>
         <p className="mt-5 max-w-[52ch] font-sans text-lg leading-relaxed text-sub">
           {subcopy}
         </p>
+      </section>
+
+      {/* ── 1b. Proof-stat strip ───────────────────────────────────────── */}
+      <section aria-label="Miles Mechanical by the numbers" className="mt-10 sm:mt-12">
+        <dl className="grid grid-cols-2 gap-4 lg:grid-cols-4">
+          {ABOUT_STATS.map((stat) => (
+            <div
+              key={stat.label}
+              className="flex flex-col-reverse rounded-card border border-line bg-card p-6 text-center shadow-e1"
+            >
+              <dt className="mt-2 font-sans text-sm font-medium text-muted">{stat.label}</dt>
+              <dd className="font-display text-4xl font-black leading-none text-primary">
+                {stat.value}
+                {stat.star ? (
+                  <span className="text-ember-strong" aria-hidden>
+                    ★
+                  </span>
+                ) : null}
+              </dd>
+            </div>
+          ))}
+        </dl>
       </section>
 
       {/* ── 2. Owner story (FR-RV-5) ───────────────────────────────────── */}
@@ -149,7 +180,7 @@ export default async function AboutPage({ params }: PageProps) {
               >
                 <Icon name="check" size={14} />
               </span>
-              <span className="font-sans text-xs font-semibold uppercase tracking-[0.18em] text-ember">
+              <span className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-ember">
                 {entry.marker}
               </span>
               <h3 className="mt-1 font-display text-lg font-extrabold uppercase tracking-[-0.01em] text-heading">
@@ -177,10 +208,11 @@ export default async function AboutPage({ params }: PageProps) {
         </div>
       </section>
 
-      {/* ── 6. CTA ─────────────────────────────────────────────────────── */}
-      <section
+      {/* ── 6. CTA (full-bleed navy band) ─────────────────────── */}
+      <Band
         aria-labelledby="about-cta-heading"
-        className="mt-16 rounded-card bg-hero px-7 py-12 text-hero-ink sm:mt-20 sm:px-11"
+        className="mt-16 bg-hero text-hero-ink sm:mt-20"
+        innerClassName="py-12"
       >
         <h2
           id="about-cta-heading"
@@ -215,7 +247,7 @@ export default async function AboutPage({ params }: PageProps) {
             Call {business.phoneDisplay}
           </a>
         </div>
-      </section>
+      </Band>
     </main>
   )
 }

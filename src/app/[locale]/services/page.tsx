@@ -40,13 +40,13 @@ export default async function ServicesPage({ params }: PageProps) {
       {/* ── Page hero (FR-CR-2) ─────────────────────────────────────────── */}
       <section aria-labelledby="services-heading" className="max-w-3xl">
         {HERO.eyebrow ? (
-          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-ember sm:text-sm">
+          <p className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-ember sm:text-sm">
             {HERO.eyebrow}
           </p>
         ) : null}
         <h1
           id="services-heading"
-          className="mt-3 font-display text-4xl font-black uppercase leading-[0.95] tracking-[-0.01em] text-heading sm:text-5xl"
+          className="mt-3 font-display text-4xl font-extrabold uppercase leading-[0.95] tracking-[-0.01em] text-heading sm:text-5xl"
         >
           {HERO.headline}
         </h1>

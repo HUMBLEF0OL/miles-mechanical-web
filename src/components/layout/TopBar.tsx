@@ -13,11 +13,11 @@ export function TopBar({ className }: TopBarProps) {
   return (
     <div
       className={cn(
-        'bg-hero text-hero-body text-sm',
+        'bg-hero text-hero-body text-xs font-medium',
         className,
       )}
     >
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-2 sm:px-6 lg:px-8">
+      <div className="mx-auto flex max-w-content items-center justify-between gap-4 px-4 py-2 sm:px-6 lg:px-8">
         <span className="truncate">
           {business.areas.join(' · ')} &amp; surrounding
         </span>

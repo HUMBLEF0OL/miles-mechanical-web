@@ -9,13 +9,13 @@ import type { IconName } from '@/components/ui/Icon'
  * asset-light: everything degrades gracefully if a photo or number is missing.
  */
 
-/** Trust / credential badge labels (FR-RV-3). */
+/** Trust / credential badge labels (FR-RV-3). Mirrors the Hi-Fi credential set. */
 export const credentials: string[] = [
   'Licensed & insured',
-  'AHS-approved',
+  'American Home Shield approved',
+  '10-yr parts / 1-yr labour',
   '20+ years',
-  '10-yr parts warranty',
-  'Family-owned',
+  'Military discount',
 ]
 
 /** Longer proof points for hero/credentials panels. */
@@ -94,6 +94,6 @@ export const owner = {
   photo: null as string | null,
   story: [
     'Miles Mechanical is Charles Miles — and the small, trusted team he’s built around the same idea for over twenty years: do honest work, charge a fair price, and treat every home like it belongs to a neighbour.',
-    'There’s no call center and no commission-driven sales script. When you call, you reach the people who do the work. We’d rather fix what you have than sell you what you don’t need — that’s how you keep customers for twenty years instead of twenty minutes.',
+    'There’s no call centre and no commission-driven sales script. When you call, you reach the people who do the work. We’d rather fix what you have than sell you what you don’t need — that’s how you keep customers for twenty years instead of twenty minutes.',
   ],
 }

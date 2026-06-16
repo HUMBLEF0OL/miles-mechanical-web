@@ -48,6 +48,10 @@ export const env = {
   NEXT_PUBLIC_APP_NAME: readString('NEXT_PUBLIC_APP_NAME', 'Miles Mechanical'),
   NEXT_PUBLIC_APP_URL: readString('NEXT_PUBLIC_APP_URL', 'http://localhost:3000'),
   NEXT_PUBLIC_API_BASE_URL: readString('NEXT_PUBLIC_API_BASE_URL', '/api'),
+  // Literal `process.env.NEXT_PUBLIC_*` reference (not readString) so Next.js
+  // inlines it into the client bundle — dynamic lookups aren't replaced, so the
+  // value would be undefined in the browser. Empty string = "no endpoint".
+  NEXT_PUBLIC_FORM_ENDPOINT: process.env.NEXT_PUBLIC_FORM_ENDPOINT ?? '',
 } as const
 
 export const isProd = env.NODE_ENV === 'production'

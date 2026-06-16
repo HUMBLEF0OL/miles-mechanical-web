@@ -27,7 +27,7 @@ v4 — there is **no `tailwind.config.*`**; token registration lives in CSS.
 ## How a token flows
 
 ```
-theme.css   --th-heading: #111827   (+ .dark override)
+theme.css   --th-heading: #111827   (+ [data-theme='dark'] override)
    │
 globals.css @theme  --color-heading: var(--th-heading)
    │

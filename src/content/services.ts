@@ -141,7 +141,7 @@ export const services: ServiceContent[] = [
       {
         question: 'What warranty comes with a new install?',
         answer:
-          'New installs are backed by manufacturer parts coverage plus our labor warranty. We confirm the exact terms in writing before the job starts.',
+          'New installs are backed by manufacturer parts coverage plus our labour warranty. We confirm the exact terms in writing before the job starts.',
       },
     ],
     seoTitle: 'HVAC Installation & Replacement — Dallas Metro',
@@ -290,7 +290,7 @@ export const services: ServiceContent[] = [
     heroEyebrow: 'No Cooling · No Heat',
     heroHeadline: 'We answer the phone at 2 a.m.',
     heroSubcopy:
-      'When the AC dies in July or the heat fails on a freezing night, you can’t wait days for a callback. We answer 24/7 — a real person, not a call center — and get to you fast.',
+      'When the AC dies in July or the heat fails on a freezing night, you can’t wait days for a callback. We answer 24/7 — a real person, not a call centre — and get to you fast.',
     included: [
       'Live 24/7 phone and text — a real person answers',
       'Priority response for no-cooling and no-heat calls',
@@ -332,3 +332,13 @@ export function getService(slug: string): ServiceContent | undefined {
 
 /** All service slugs — drives generateStaticParams and the sitemap children. */
 export const serviceSlugs = services.map((service) => service.slug)
+
+/**
+ * The three services featured in the home-page "What we do" grid (hi-fi spec:
+ * the home grid surfaces a curated trio, not the full list). Order and selection
+ * mirror the hi-fi desktop home: AC repair, Heating & furnace, Install & replace.
+ */
+const FEATURED_SLUGS = ['ac-repair', 'heating-furnace', 'installation-replacement'] as const
+export const featuredServices: ServiceContent[] = FEATURED_SLUGS.map(
+  (slug) => services.find((service) => service.slug === slug),
+).filter((service): service is ServiceContent => Boolean(service))

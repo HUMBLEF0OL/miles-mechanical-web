@@ -75,16 +75,15 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
                 <ErrorBoundary>
                   {/* Marketing chrome — shared across every route (FR-CR-5, FR-LC-1).
                       Order mirrors the wireframes: utility strip → header → page →
-                      footer, with a fixed mobile click-to-call bar. The footer
-                      wrapper carries extra bottom padding on mobile so the fixed
-                      bar (~72px) never overlaps the footer's bottom row. */}
+                      footer, with a fixed mobile click-to-call bar. The footer is
+                      a full-bleed navy band that caps its own content; it carries
+                      extra bottom padding on mobile so the fixed call bar (~72px)
+                      never overlaps the footer's bottom row. */}
                   <div className="flex min-h-screen flex-col">
                     <TopBar />
                     <SiteHeader />
                     <div className="flex-1">{children}</div>
-                    <div className="container-page pb-24 md:pb-10">
-                      <SiteFooter />
-                    </div>
+                    <SiteFooter className="pb-24 md:pb-0" />
                   </div>
                   <StickyCallBar />
                 </ErrorBoundary>

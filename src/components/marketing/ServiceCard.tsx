@@ -18,7 +18,7 @@ export interface ServiceCardProps {
 }
 
 const ACCENT_TILE: Record<ServiceAccent, string> = {
-  cool: 'bg-primary-tint text-primary-ink',
+  cool: 'bg-primary-tint text-primary',
   heat: 'bg-ember-tint text-ember',
 }
 
@@ -40,7 +40,7 @@ export function ServiceCard({
 }: ServiceCardProps) {
   const tileClasses = emergency ? 'bg-alarm text-white' : ACCENT_TILE[accent]
   const linkClasses = emergency
-    ? 'text-ember font-bold'
+    ? 'text-ember-strong font-bold'
     : 'text-primary font-semibold'
 
   return (

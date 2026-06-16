@@ -64,82 +64,121 @@ export default async function ServiceAreaPage({ params }: PageProps) {
   )
 
   return (
-    <main className="container-page py-12 sm:py-16">
+    <main className="container-page pb-12 sm:pb-16">
       <div className="space-y-12 sm:space-y-16">
-        {/* ── 1. Localized hero ──────────────────────────────────────────── */}
+        {/* ── 1. Localized hero — full-bleed navy band ───────────────────── */}
         <section
           aria-labelledby="area-hero-heading"
-          className="relative grid grid-cols-1 overflow-hidden rounded-card bg-hero lg:grid-cols-[1.2fr_1fr]"
+          className="full-bleed relative overflow-hidden bg-hero"
         >
           <div
             aria-hidden
             className="pointer-events-none absolute -top-24 right-[30%] h-80 w-80 rounded-full bg-[radial-gradient(circle,var(--color-mm-ember-500)_0%,transparent_65%)] opacity-20"
           />
 
-          {/* Left: localized headline + CTAs */}
-          <div className="relative px-7 py-12 text-hero-ink sm:px-11 sm:py-14">
-            <p className="text-xs font-semibold uppercase tracking-[0.18em] text-mm-ember-300 sm:text-sm">
-              Serving {area.city}, TX
-            </p>
+          <div className="band-inner grid grid-cols-1 lg:grid-cols-[1.2fr_1fr]">
+            {/* Left: localized headline + CTAs */}
+            <div className="relative py-12 text-hero-ink sm:py-14 lg:pr-10">
+              <p className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-ember-strong sm:text-sm">
+                Serving {area.city}, TX
+              </p>
 
-            <h1
-              id="area-hero-heading"
-              className="mt-4 font-display text-4xl font-black uppercase leading-[0.95] tracking-[-0.01em] sm:text-5xl"
-            >
-              {area.heroHeadline}
-            </h1>
-
-            <p className="mt-5 max-w-[52ch] font-sans text-lg leading-relaxed text-hero-body">
-              {area.heroSubcopy}
-            </p>
-
-            <div className="mt-8 flex flex-wrap gap-3">
-              <Link
-                href={`/${locale}/contact`}
-                className={cn(
-                  'inline-flex h-14 items-center justify-center gap-2.5 rounded-control bg-ember px-8',
-                  'font-sans text-lg font-semibold text-white transition-colors hover:bg-ember-strong',
-                  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2',
-                )}
+              <h1
+                id="area-hero-heading"
+                className="mt-4 font-display text-4xl font-black uppercase leading-[0.95] tracking-[-0.01em] sm:text-5xl"
               >
-                Get a quote
-              </Link>
+                {(() => {
+                  const idx = area.heroHeadline.lastIndexOf(area.city)
+                  if (idx === -1) return area.heroHeadline
+                  return (
+                    <>
+                      {area.heroHeadline.slice(0, idx)}
+                      <span className="text-ember-strong">
+                        {area.heroHeadline.slice(idx)}
+                      </span>
+                    </>
+                  )
+                })()}
+              </h1>
 
-              {/* tel CTA — real anchor for click-to-call semantics. */}
-              <a
-                href={`tel:${business.phoneTel}`}
-                className={cn(
-                  'inline-flex h-14 items-center justify-center gap-2.5 rounded-control border-[1.5px] border-hero-line px-8',
-                  'font-sans text-lg font-semibold text-hero-ink transition-colors hover:bg-white/10',
-                  'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2',
-                )}
-              >
-                <Icon name="phone" size={18} aria-hidden />
-                Call {business.phoneDisplay}
-              </a>
+              <p className="mt-5 max-w-[52ch] font-sans text-lg leading-relaxed text-hero-body">
+                {area.heroSubcopy}
+              </p>
+
+              <div className="mt-8 flex flex-wrap gap-3">
+                <Link
+                  href={`/${locale}/contact`}
+                  className={cn(
+                    'inline-flex h-14 items-center justify-center gap-2.5 rounded-control bg-ember px-8',
+                    'font-sans text-lg font-semibold text-white transition-colors hover:bg-ember-strong',
+                    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2',
+                  )}
+                >
+                  Get a quote
+                </Link>
+
+                {/* tel CTA — real anchor for click-to-call semantics. */}
+                <a
+                  href={`tel:${business.phoneTel}`}
+                  className={cn(
+                    'inline-flex h-14 items-center justify-center gap-2.5 rounded-control border-[1.5px] border-hero-line px-8',
+                    'font-sans text-lg font-semibold text-hero-ink transition-colors hover:bg-white/10',
+                    'focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2',
+                  )}
+                >
+                  <Icon name="phone" size={18} aria-hidden />
+                  Call {business.phoneDisplay}
+                </a>
+              </div>
             </div>
-          </div>
 
-          {/* Right: asset-light "we come to you" service-area panel.
-              No storefront -> no map pin (per task + wireframe note). */}
-          <div className="relative flex flex-col items-center justify-center gap-4 overflow-hidden border-t border-hero-line bg-gradient-to-br from-hero-strong to-hero px-10 py-12 text-center lg:border-l lg:border-t-0">
-            <Logo
-              variant="mark-no-badge"
-              tone="dark"
-              size={200}
-              decorative
-              className="pointer-events-none absolute -bottom-10 -right-8 opacity-[0.12]"
-            />
-            <span className="relative flex size-16 items-center justify-center rounded-control bg-white/10 text-mm-ember-300">
-              <Icon name="truck" size={34} aria-hidden />
-            </span>
-            <p className="relative font-display text-2xl font-extrabold uppercase tracking-[-0.01em] text-hero-ink">
-              We come to you
-            </p>
-            <p className="relative max-w-[34ch] font-sans text-[15px] leading-relaxed text-hero-body">
-              No storefront, no showroom markup — a mobile {business.tagline} crew
-              that shows up at your {area.city} door, on time.
-            </p>
+            {/* Right: asset-light "we come to you" service-area trust panel.
+                No storefront -> no map pin (per task + wireframe note); the
+                check-marked proof list carries the local social-proof points. */}
+            <div className="relative mb-12 flex flex-col justify-center gap-5 overflow-hidden rounded-card border border-hero-line bg-gradient-to-br from-hero-strong to-hero px-8 py-10 sm:px-10 lg:mb-0 lg:rounded-none lg:border-y-0 lg:border-l lg:border-r-0 lg:bg-transparent lg:px-10 lg:py-12">
+              <Logo
+                variant="mark-no-badge"
+                tone="dark"
+                size={200}
+                decorative
+                className="pointer-events-none absolute -bottom-10 -right-8 opacity-[0.12]"
+              />
+
+              <div className="relative flex items-center gap-3">
+                <span className="flex size-12 flex-none items-center justify-center rounded-control bg-hero-chip text-ember-strong">
+                  <Icon name="truck" size={26} aria-hidden />
+                </span>
+                <p className="font-display text-2xl font-extrabold uppercase tracking-[-0.01em] text-hero-ink">
+                  We come to you
+                </p>
+              </div>
+
+              <div className="relative h-px bg-hero-line" aria-hidden />
+
+              <ul className="relative flex flex-col gap-3">
+                {[
+                  'No storefront — no showroom markup',
+                  `Same-day service in ${area.city} where we can`,
+                  'Licensed & insured',
+                ].map((point) => (
+                  <li
+                    key={point}
+                    className="inline-flex items-center gap-2.5 font-sans text-[15px] font-semibold text-hero-body"
+                  >
+                    <Icon name="check" size={18} className="text-hero-muted" aria-hidden />
+                    {point}
+                  </li>
+                ))}
+                <li className="inline-flex items-center gap-2.5 font-sans text-[15px] font-semibold text-hero-body">
+                  <Icon name="check" size={18} className="text-hero-muted" aria-hidden />
+                  {business.rating}
+                  <span className="text-ember-strong" aria-hidden>
+                    ★
+                  </span>{' '}
+                  from local homeowners
+                </li>
+              </ul>
+            </div>
           </div>
         </section>
 

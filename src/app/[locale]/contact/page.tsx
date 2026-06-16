@@ -56,13 +56,13 @@ export default async function Page({ params }: PageProps) {
       {/* ── 1. Page hero ──────────────────────────────────────────────── */}
       <section aria-labelledby="contact-heading" className="max-w-3xl">
         {pages.contact.hero.eyebrow ? (
-          <p className="font-sans text-xs font-semibold uppercase tracking-[0.18em] text-ember sm:text-sm">
+          <p className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-ember sm:text-sm">
             {pages.contact.hero.eyebrow}
           </p>
         ) : null}
         <h1
           id="contact-heading"
-          className="mt-3 font-display text-4xl font-black uppercase leading-[0.95] tracking-[-0.01em] text-heading sm:text-5xl"
+          className="mt-3 font-display text-4xl font-extrabold uppercase leading-[0.95] tracking-[-0.01em] text-heading sm:text-5xl"
         >
           {pages.contact.hero.headline}
         </h1>
@@ -76,7 +76,7 @@ export default async function Page({ params }: PageProps) {
         {/* Standard call affordance — mm-blue, NOT alarm red. */}
         <div className="flex flex-wrap items-center gap-6 rounded-card border border-line bg-subtle px-7 py-7 sm:px-9">
           <div className="min-w-[240px] flex-1">
-            <p className="font-sans text-xs font-semibold uppercase tracking-[0.18em] text-ember">
+            <p className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-ember">
               Fastest way to reach us
             </p>
             <h2

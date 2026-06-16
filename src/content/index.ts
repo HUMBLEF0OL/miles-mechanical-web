@@ -4,6 +4,7 @@
 
 export {
   services,
+  featuredServices,
   getService,
   serviceSlugs,
   type ServiceContent,

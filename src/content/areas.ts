@@ -50,7 +50,7 @@ export const areas: AreaContent[] = [
       'Honest, licensed AC and heating across Dallas — from a family-owned team that’s worked these neighbourhoods for 20+ years. Same-day repairs and a real person on the phone.',
     intro: [
       'Dallas summers don’t ease in — they slam the door shut at 100°+ for weeks on end, and a tired AC picks exactly that week to quit. We’ve spent two decades keeping Dallas homes cool through it, which means we know the housing stock: the older units in East Dallas and Lakewood bungalows, the bigger systems in newer builds out toward the suburbs.',
-      'Because we’re local, we’re not routing you through a call center three states away. You talk to the people who’ll actually show up. We fix what can be fixed, size replacements to the real home, and tell you straight when a 20-year-old condenser is finally done.',
+      'Because we’re local, we’re not routing you through a call centre three states away. You talk to the people who’ll actually show up. We fix what can be fixed, size replacements to the real home, and tell you straight when a 20-year-old condenser is finally done.',
     ],
     neighbourhoods: [
       'Lakewood',
@@ -64,9 +64,9 @@ export const areas: AreaContent[] = [
       'Older Dallas homes often run undersized or aging ductwork — we diagnose airflow, not just the unit, so the whole house actually gets comfortable.',
     review: {
       quote:
-        'AC died in the middle of a July heat wave. Miles had someone out the same afternoon and we were cool by dinner. Fair price, no runaround.',
-      author: 'Marcus T.',
-      initial: 'M',
+        'Charles explained exactly what was wrong and showed me the worn part. Honest pricing and he stood behind the work. We’ve found our HVAC guy.',
+      author: 'David R.',
+      initial: 'D',
     },
     seoTitle: 'AC & Heating Repair in Dallas, TX',
     seoDescription:

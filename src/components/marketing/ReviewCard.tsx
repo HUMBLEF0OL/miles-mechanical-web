@@ -18,14 +18,14 @@ export function ReviewCard({ quote, author, city, initial, className }: ReviewCa
       </p>
       <div className="flex items-center gap-3">
         <div
-          className="bg-primary-tint text-primary-ink rounded-control flex size-[38px] flex-none items-center justify-center text-sm font-bold"
+          className="bg-primary-tint text-primary rounded-control flex size-[38px] flex-none items-center justify-center text-sm font-bold"
           aria-hidden="true"
         >
           {initial}
         </div>
         <div className="min-w-0">
           <p className="text-heading font-semibold leading-tight">{author}</p>
-          <p className="text-muted mt-0.5 text-xs leading-tight">{city}</p>
+          <p className="text-muted mt-0.5 text-xs leading-tight">{city}, TX</p>
         </div>
       </div>
     </Card>

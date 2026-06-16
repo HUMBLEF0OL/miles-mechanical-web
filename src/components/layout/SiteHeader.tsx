@@ -1,11 +1,12 @@
 'use client'
 
-import Link from 'next/link'
 import { useState } from 'react'
 import { business } from '@/config/business'
 import { cn } from '@/lib/utils/cn'
 import { Icon } from '@/components/ui/Icon'
 import { Logo } from '@/components/ui/Logo'
+import { ThemeToggle } from '@/components/ui/ThemeToggle'
+import { Link } from '@/i18n/navigation'
 
 export interface SiteHeaderProps {
   className?: string
@@ -33,9 +34,9 @@ export function SiteHeader({ className }: SiteHeaderProps) {
 
   return (
     <header className={cn('bg-page border-b border-line-soft', className)}>
-      <div className="mx-auto flex max-w-7xl items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
+      <div className="mx-auto flex max-w-content items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
         <Link href="/" aria-label={`${business.name} home`}>
-          <Logo variant="full" size={40} />
+          <Logo variant="full" size={40} responsiveBreak />
         </Link>
 
         <nav
@@ -66,6 +67,9 @@ export function SiteHeader({ className }: SiteHeaderProps) {
             Request service
           </Link>
 
+          {/* Light/dark toggle — visible on every breakpoint. */}
+          <ThemeToggle />
+
           <button
             type="button"
             aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
@@ -85,7 +89,7 @@ export function SiteHeader({ className }: SiteHeaderProps) {
           aria-label="Mobile"
           className="border-t border-line-soft md:hidden"
         >
-          <ul className="mx-auto flex max-w-7xl flex-col px-4 py-2 sm:px-6">
+          <ul className="mx-auto flex max-w-content flex-col px-4 py-2 sm:px-6">
             {NAV_LINKS.map((link) => (
               <li key={link.href}>
                 <Link

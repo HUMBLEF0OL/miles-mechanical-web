@@ -31,7 +31,7 @@ export const reviews: Review[] = [
     quote:
       'AC died in the middle of a July heat wave. Miles had someone out the same afternoon and we were cool by dinner. Fair price, no runaround.',
     author: 'Marcus T.',
-    city: 'Dallas',
+    city: 'Garland',
     initial: 'M',
     service: 'AC repair',
   },

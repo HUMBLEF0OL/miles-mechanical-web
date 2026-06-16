@@ -27,6 +27,21 @@ brand pass across metadata and components.
 
 ## Done
 
+- **2026-06-16 — Hi-Fi design-doc fidelity pass + independent audit.** Brought the
+  live marketing site into line with `docs/design-system/Miles Mechanical Hi-Fi.html`.
+  Drove a per-template gap audit (Hi-Fi source ⟷ live), then implemented: IBM Plex
+  Mono ember eyebrows/kickers site-wide (mono + `tracking-[0.16em]`, `text-ember` on
+  light / `text-ember-strong` on dark heroes); home services grid → curated trio
+  (`featuredServices`) + "See all services"; home final CTA → dark `bg-hero` ember
+  band; `ServiceCard` cool icon `text-primary` + emergency link `text-ember-strong`;
+  `ReviewCard` avatar `text-primary` + "City, TX"; About 4-up proof-stat strip
+  (20+/4.9★/3/24·7) + full credential set; City H1 ember city name + check-marked
+  "we come to you" trust panel (incl. 4.9★); single-line header wordmark on desktop
+  (`Logo responsiveBreak`); interior page H1s → `font-extrabold`; British-spelling
+  consistency ("call centre"/"labour"). Reviews page uses the new filterable
+  `ReviewsGallery` (accessible `role="group"` + `aria-pressed`). Independently audited
+  via parallel code review + live browser (all 8 templates, mobile + desktop, dark
+  mode verified). Typecheck/lint/122 tests/`next build` (40 pages)/harness all green.
 - **2026-06-16 — Semantic color-token migration + brand metadata pass.** Migrated
   pages and components off raw-hue utilities (`bg-mm-blue-600`) onto semantic role
   tokens (`bg-primary`, `text-faint`, `bg-card`); expanded `theme.css`'s semantic

@@ -57,7 +57,7 @@ export const pages = {
       eyebrow: 'Texans Serving Texans',
       headline: 'Twenty years of doing it right',
       subcopy:
-        'No call center, no commission scripts. Just a family-owned crew that fixes what’s broken, charges fairly, and treats your home like a neighbour’s.',
+        'No call centre, no commission scripts. Just a family-owned crew that fixes what’s broken, charges fairly, and treats your home like a neighbour’s.',
     },
   } satisfies PageContent,
 
@@ -85,7 +85,7 @@ export const pages = {
       eyebrow: 'Let’s Get You Comfortable',
       headline: 'Request service or a free quote',
       subcopy:
-        'Call or text for the fastest response, or send the form below. Your request goes straight to the team — no call center, no bots.',
+        'Call or text for the fastest response, or send the form below. Your request goes straight to the team — no call centre, no bots.',
     },
   } satisfies PageContent,
 } as const
@@ -97,7 +97,7 @@ export const pages = {
 export const whatHappensNext = {
   title: 'What happens next',
   steps: [
-    'Your request goes straight to the team — no call center.',
+    'Your request goes straight to the team — no call centre.',
     'A real person calls or texts you back, usually within the hour during business hours.',
     'We confirm the details and book the soonest slot that works for you.',
   ],

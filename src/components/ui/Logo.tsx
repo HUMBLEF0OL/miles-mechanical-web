@@ -15,6 +15,12 @@ export interface LogoProps {
   /** Size of the square badge in px (also drives wordmark scale). Default 40. */
   size?: number;
   /**
+   * When true, the two-word wordmark stacks on small screens but sits on a
+   * single line at `sm`+ (the desktop header treatment). Default false keeps the
+   * always-stacked lockup used in the footer and standalone marks.
+   */
+  responsiveBreak?: boolean;
+  /**
    * When true the lockup is purely decorative (e.g. a faint watermark): it is
    * removed from the accessibility tree (`aria-hidden`) and carries no
    * accessible name, so screen readers don't announce a redundant brand label.
@@ -41,6 +47,7 @@ export function Logo({
   tone = 'light',
   size = 40,
   decorative = false,
+  responsiveBreak = false,
   className,
 }: LogoProps) {
   const isDark = tone === 'dark';
@@ -137,7 +144,8 @@ export function Logo({
       style={{ fontSize: variant === 'wordmark' ? size : wordSize }}
     >
       Miles
-      <br />
+      {responsiveBreak ? ' ' : null}
+      <br className={responsiveBreak ? 'sm:hidden' : undefined} aria-hidden />
       Mechanical
       <span
         className={cn(

@@ -7,6 +7,7 @@ import { Input } from '@/components/ui/Input'
 import { Select } from '@/components/ui/Select'
 import { Textarea } from '@/components/ui/Textarea'
 import { business } from '@/config/business'
+import { env } from '@/config'
 
 const SERVICE_OPTIONS = [
   'AC repair',
@@ -17,25 +18,48 @@ const SERVICE_OPTIONS = [
 ] as const
 
 /**
- * LeadForm — the §10 "Request service" form. Presentational lead-capture form
- * built from the Input/Select/Textarea/Button atoms.
+ * LeadForm — the §10 "Request service" form. Lead-capture form built from the
+ * Input/Select/Textarea/Button atoms.
  *
- * Phase 1 has no backend: onSubmit shows the FR-LC-3 confirmation client-side.
- * A hosted form service (Formspree / Web3Forms) will be wired in here in a
- * later phase — POST the collected FormData to the endpoint, then flip to the
- * same confirmation (or surface an error state).
+ * Per the hi-fi handoff, forms post to a hosted form service (no owned backend
+ * in Phase 1). Set NEXT_PUBLIC_FORM_ENDPOINT (e.g. a Formspree / Web3Forms URL)
+ * and the form POSTs the collected FormData there, then shows the FR-LC-3
+ * confirmation. When the env var is unset the form falls back to the
+ * client-side confirmation, so the scaffold works before the endpoint exists.
  */
-export function LeadForm() {
-  const [submitted, setSubmitted] = useState(false)
+const FORM_ENDPOINT = env.NEXT_PUBLIC_FORM_ENDPOINT
 
-  function handleSubmit(event: FormEvent<HTMLFormElement>) {
+type SubmitStatus = 'idle' | 'submitting' | 'submitted' | 'error'
+
+export function LeadForm() {
+  const [status, setStatus] = useState<SubmitStatus>('idle')
+
+  async function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
-    // TODO(Phase 2): submit to a hosted form service (Formspree / Web3Forms).
-    // Example: await fetch(endpoint, { method: 'POST', body: new FormData(event.currentTarget) })
-    setSubmitted(true)
+    // Capture the form before any await — React clears the synthetic event target.
+    const form = event.currentTarget
+
+    // No hosted endpoint configured yet → keep the Phase 1 client-side confirmation.
+    if (!FORM_ENDPOINT) {
+      setStatus('submitted')
+      return
+    }
+
+    setStatus('submitting')
+    try {
+      const response = await fetch(FORM_ENDPOINT, {
+        method: 'POST',
+        headers: { Accept: 'application/json' },
+        body: new FormData(form),
+      })
+      if (!response.ok) throw new Error(`Form endpoint returned ${response.status}`)
+      setStatus('submitted')
+    } catch {
+      setStatus('error')
+    }
   }
 
-  if (submitted) {
+  if (status === 'submitted') {
     return (
       <div
         role="status"
@@ -137,8 +161,24 @@ export function LeadForm() {
           placeholder="Describe the issue"
         />
 
-        <Button type="submit" variant="primary" size="lg" className="w-full">
-          Send my request
+        {status === 'error' ? (
+          <p role="alert" className="text-center font-sans text-sm font-semibold text-alarm">
+            Something went wrong sending your request. Please try again or call{' '}
+            <a href={`tel:${business.phoneTel}`} className="underline">
+              {business.phoneDisplay}
+            </a>
+            .
+          </p>
+        ) : null}
+
+        <Button
+          type="submit"
+          variant="primary"
+          size="lg"
+          className="w-full"
+          disabled={status === 'submitting'}
+        >
+          {status === 'submitting' ? 'Sending…' : 'Send my request'}
         </Button>
 
         <p className="text-center font-sans text-xs text-muted">
