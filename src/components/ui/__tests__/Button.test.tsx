@@ -32,9 +32,9 @@ describe('Button', () => {
   })
 
   it('applies variant classes', () => {
-    render(<Button variant="danger">Delete</Button>)
+    render(<Button variant="emergency">Call now</Button>)
     const button = screen.getByRole('button')
-    expect(button.className).toContain('red')
+    expect(button.className).toContain('alarm')
   })
 
   it('is disabled when disabled prop is true', () => {

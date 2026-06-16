@@ -29,7 +29,7 @@ export function ThemeToggle({ className }: ThemeToggleProps) {
       type="button"
       onClick={() => setTheme(isDark ? 'light' : 'dark')}
       className={cn(
-        'text-muted hover:bg-subtle hover:text-heading inline-flex size-9 items-center justify-center rounded-md transition-colors',
+        'text-muted hover:bg-subtle hover:text-heading inline-flex size-9 items-center justify-center rounded-control transition-colors',
         className
       )}
       aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}

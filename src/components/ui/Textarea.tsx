@@ -14,14 +14,14 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(function 
   const textareaId = id ?? label?.toLowerCase().replace(/\s+/g, '-')
 
   return (
-    <div className="flex flex-col gap-1">
+    <div className="flex flex-col gap-2">
       {label && (
         <label
           htmlFor={textareaId}
-          className="text-sm font-medium text-gray-700 dark:text-gray-300"
+          className="font-sans text-sm font-semibold text-mm-steel-800"
         >
           {label}
-          {props.required && <span className="ml-1 text-red-500">*</span>}
+          {props.required && <span className="ml-1 text-alarm">*</span>}
         </label>
       )}
 
@@ -29,12 +29,12 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(function 
         ref={ref}
         id={textareaId}
         className={cn(
-          'w-full rounded-md border px-3 py-2 text-sm transition-colors',
-          'placeholder:text-gray-400',
-          'focus:ring-2 focus:ring-offset-1 focus:outline-none',
+          'min-h-24 w-full resize-y rounded-control border-[1.5px] bg-page px-3.5 py-3 font-sans text-base leading-relaxed text-heading transition-colors',
+          'placeholder:text-mm-steel-400',
+          'focus:outline-none',
           error
-            ? 'border-red-400 focus:ring-red-400'
-            : 'focus:border-brand-500 focus:ring-brand-500 border-gray-300 dark:border-gray-600 dark:bg-slate-800',
+            ? 'border-alarm focus:border-alarm focus:ring-[3px] focus:ring-alarm/15'
+            : 'border-mm-steel-300 focus:border-mm-blue-600 focus:ring-[3px] focus:ring-mm-blue-600/20',
           'disabled:cursor-not-allowed disabled:opacity-50',
           className
         )}
@@ -44,13 +44,13 @@ export const Textarea = forwardRef<HTMLTextAreaElement, TextareaProps>(function 
       />
 
       {hint && !error && (
-        <p id={`${textareaId}-hint`} className="text-xs text-gray-500">
+        <p id={`${textareaId}-hint`} className="font-sans text-xs text-mm-steel-500">
           {hint}
         </p>
       )}
 
       {error && (
-        <p id={`${textareaId}-error`} role="alert" className="text-xs text-red-500">
+        <p id={`${textareaId}-error`} role="alert" className="font-sans text-xs font-medium text-alarm">
           {error}
         </p>
       )}

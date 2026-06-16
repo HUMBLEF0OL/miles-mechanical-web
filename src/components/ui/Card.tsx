@@ -1,14 +1,22 @@
 import { cn } from '@/lib/utils/cn'
 import type { ReactNode } from 'react'
 
+type CardTone = 'default' | 'dark'
+
 interface CardProps {
+  tone?: CardTone
   className?: string
   children: ReactNode
 }
 
-export function Card({ className, children }: CardProps) {
+const TONE_STYLES: Record<CardTone, string> = {
+  default: 'border-line bg-page',
+  dark: 'bg-mm-blue-900 text-white border-mm-blue-900',
+}
+
+export function Card({ tone = 'default', className, children }: CardProps) {
   return (
-    <div className={cn('border-line bg-page rounded-lg border p-6 shadow-sm', className)}>
+    <div className={cn('rounded-card border p-6 shadow-e1', TONE_STYLES[tone], className)}>
       {children}
     </div>
   )
@@ -29,7 +37,7 @@ interface CardTitleProps {
 }
 
 export function CardTitle({ className, children }: CardTitleProps) {
-  return <h3 className={cn('text-heading text-lg font-semibold', className)}>{children}</h3>
+  return <h3 className={cn('text-heading font-sans text-lg font-bold', className)}>{children}</h3>
 }
 
 interface CardContentProps {

@@ -70,24 +70,21 @@ export function Modal({
         aria-labelledby={title ? 'modal-title' : undefined}
         aria-describedby={description ? 'modal-desc' : undefined}
         className={cn(
-          'relative w-full rounded-xl bg-white shadow-xl dark:bg-slate-800',
+          'bg-page rounded-card shadow-e3 relative w-full',
           'animate-fade-in',
           SIZE_STYLES[size],
           className
         )}
       >
         {(title || description) && (
-          <div className="border-b border-gray-200 px-6 py-4 dark:border-gray-700">
+          <div className="border-line border-b px-6 py-4">
             {title && (
-              <h2
-                id="modal-title"
-                className="text-lg font-semibold text-gray-900 dark:text-gray-100"
-              >
+              <h2 id="modal-title" className="text-heading text-lg font-semibold">
                 {title}
               </h2>
             )}
             {description && (
-              <p id="modal-desc" className="mt-1 text-sm text-gray-500">
+              <p id="modal-desc" className="text-muted mt-1 text-sm">
                 {description}
               </p>
             )}
@@ -96,7 +93,7 @@ export function Modal({
 
         <button
           onClick={onClose}
-          className="absolute top-4 right-4 rounded-md p-1 text-gray-400 hover:text-gray-600 dark:hover:text-gray-300"
+          className="text-muted hover:text-heading focus-visible:ring-brand-500 absolute top-4 right-4 rounded-control p-1 transition-colors focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:outline-none"
           aria-label="Close modal"
         >
           <svg

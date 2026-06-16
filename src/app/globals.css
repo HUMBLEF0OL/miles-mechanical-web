@@ -10,12 +10,53 @@
 ──────────────────────────────────────────────────────────────────────────── */
 
 @theme {
-  /* Brand colors */
-  --color-brand-50: #f0f9ff;
-  --color-brand-100: #e0f2fe;
-  --color-brand-500: #0ea5e9;
-  --color-brand-600: #0284c7;
-  --color-brand-900: #0c4a6e;
+  /* Brand colors — aliased to the mm-blue scale (on-brand focus rings, etc.) */
+  --color-brand-50: #f3f8fb;
+  --color-brand-100: #e6eff6;
+  --color-brand-500: #2e73ac;
+  --color-brand-600: #155c93;
+  --color-brand-900: #0b2a45;
+
+  /* Miles blue — primary brand / cool (air conditioning) */
+  --color-mm-blue-50: #f3f8fb;
+  --color-mm-blue-100: #e6eff6;
+  --color-mm-blue-200: #c6daeb;
+  --color-mm-blue-300: #93b8d9;
+  --color-mm-blue-400: #5c95c4;
+  --color-mm-blue-500: #2e73ac;
+  --color-mm-blue-600: #155c93;
+  --color-mm-blue-700: #114b78;
+  --color-mm-blue-800: #0e3a5c;
+  --color-mm-blue-900: #0b2a45;
+
+  /* Miles ember — warm accent (heating) */
+  --color-mm-ember-50: #fff6f0;
+  --color-mm-ember-100: #fceadd;
+  --color-mm-ember-200: #fcd7bf;
+  --color-mm-ember-300: #fbb488;
+  --color-mm-ember-400: #f78a4d;
+  --color-mm-ember-500: #f0641f;
+  --color-mm-ember-600: #dd4e16;
+  --color-mm-ember-700: #b23a0e;
+
+  /* Miles steel — neutrals (text, borders, surfaces) */
+  --color-mm-steel-50: #f6f8fa;
+  --color-mm-steel-100: #ecf0f3;
+  --color-mm-steel-200: #dce2e7;
+  --color-mm-steel-300: #bfc8cf;
+  --color-mm-steel-400: #93a0aa;
+  --color-mm-steel-500: #6b7882;
+  --color-mm-steel-600: #4b5965;
+  --color-mm-steel-700: #303e4b;
+  --color-mm-steel-800: #1e2a35;
+  --color-mm-steel-900: #141c24;
+
+  /* Semantic state colors */
+  --color-success: #1e8a57;
+  --color-warning: #c6820b;
+  --color-alarm: #d81e2c;
+  --color-alarm-700: #b5141f; /* darker alarm — emergency hover/pressed */
+  --color-info: #155c93;
 
   /* Semantic text colors */
   --color-heading: var(--th-heading);
@@ -35,19 +76,30 @@
   --color-line-soft: var(--th-line-soft);
 
   /* Typography */
-  --font-sans: ui-sans-serif, system-ui, sans-serif;
-  --font-mono: ui-monospace, 'Cascadia Code', monospace;
+  --font-display: 'Archivo', var(--font-archivo), sans-serif;
+  --font-sans: var(--font-plex-sans), 'IBM Plex Sans', system-ui, sans-serif;
+  --font-mono: var(--font-plex-mono), 'IBM Plex Mono', monospace;
 
   /* Spacing */
   --spacing-18: 4.5rem;
   --spacing-22: 5.5rem;
 
-  /* Border radius */
+  /* Border radius — boxy / engineered */
+  --radius-hair: 2px;
+  --radius-control: 4px;
+  --radius-card: 6px;
+  --radius-badge: 14px;
   --radius-4xl: 2rem;
+
+  /* Elevation */
+  --shadow-e1: 0 1px 2px rgba(20, 28, 36, 0.08);
+  --shadow-e2: 0 4px 12px rgba(20, 28, 36, 0.1);
+  --shadow-e3: 0 10px 28px rgba(20, 28, 36, 0.14);
 
   /* Animations */
   --animate-fade-in: fade-in 0.2s ease-out;
   --animate-slide-in: slide-in 0.3s ease-out;
+  --animate-pulse-alarm: pulse-alarm 2s infinite;
 }
 
 @keyframes fade-in {
@@ -67,6 +119,19 @@
   }
   to {
     transform: translateX(0);
+  }
+}
+
+/* Emergency / call-to-action pulse — alarm red, reserved for emergency actions. */
+@keyframes pulse-alarm {
+  0% {
+    box-shadow: 0 0 0 0 rgba(216, 30, 44, 0.5);
+  }
+  70% {
+    box-shadow: 0 0 0 16px rgba(216, 30, 44, 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(216, 30, 44, 0);
   }
 }
 

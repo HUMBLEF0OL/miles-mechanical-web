@@ -8,6 +8,7 @@ import { ThemeProvider } from '@/components/providers/ThemeProvider'
 import { ToastProvider } from '@/components/providers/ToastProvider'
 import { siteConfig } from '@/config'
 import { JsonLd, organizationJsonLd, websiteJsonLd } from '@/lib/seo'
+import { archivo, plexMono, plexSans } from '@/lib/fonts'
 import { routing } from '@/i18n/routing'
 
 interface LocaleLayoutProps {
@@ -57,7 +58,12 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
   const dir = RTL_LOCALES.has(locale) ? 'rtl' : 'ltr'
 
   return (
-    <html lang={locale} dir={dir} suppressHydrationWarning>
+    <html
+      lang={locale}
+      dir={dir}
+      suppressHydrationWarning
+      className={`${archivo.variable} ${plexSans.variable} ${plexMono.variable}`}
+    >
       <body>
         <JsonLd data={[organizationJsonLd(), websiteJsonLd(locale)]} />
         <NextIntlClientProvider messages={messages}>

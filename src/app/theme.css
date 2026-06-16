@@ -8,41 +8,41 @@
 
 :root {
   /* Text */
-  --th-heading: #111827; /* gray-900 — headings, strong labels */
-  --th-sub: #4b5563; /* gray-600 — secondary body text */
-  --th-muted: #6b7280; /* gray-500 — descriptions, placeholders */
-  --th-faint: #9ca3af; /* gray-400 — meta info, table headers */
-  --th-ghost: #d1d5db; /* gray-300 — step numbers, decorative */
-  --th-code: #0284c7; /* brand-600 — code paths, monospace accents */
+  --th-heading: #0b2a45; /* blue-900 — headings, strong labels */
+  --th-sub: #4b5965; /* steel-600 — secondary body text */
+  --th-muted: #6b7882; /* steel-500 — descriptions, placeholders */
+  --th-faint: #93a0aa; /* steel-400 — meta info, table headers */
+  --th-ghost: #bfc8cf; /* steel-300 — step numbers, decorative */
+  --th-code: #155c93; /* blue-600 — code paths, monospace accents */
 
   /* Backgrounds */
   --th-page: #ffffff; /* white — page and card background */
-  --th-subtle: #f3f4f6; /* gray-100 — subtle fill, badges */
-  --th-inset: #e5e7eb; /* gray-200 — grid gap, inset areas */
+  --th-subtle: #f6f8fa; /* steel-50 — subtle fill, badges */
+  --th-inset: #ecf0f3; /* steel-100 — grid gap, inset areas */
 
   /* Borders */
-  --th-line: #e5e7eb; /* gray-200 — standard borders */
-  --th-line-soft: #f3f4f6; /* gray-100 — subtle borders, dividers */
+  --th-line: #dce2e7; /* steel-200 — standard borders */
+  --th-line-soft: #ecf0f3; /* steel-100 — subtle borders, dividers */
 
   /* Layout */
-  --radius: 0.5rem;
+  --radius: 0.375rem;
 }
 
 .dark {
   /* Text */
-  --th-heading: #f3f4f6; /* gray-100 */
-  --th-sub: #9ca3af; /* gray-400 */
-  --th-muted: #9ca3af; /* gray-400 */
-  --th-faint: #6b7280; /* gray-500 */
-  --th-ghost: #4b5563; /* gray-600 */
-  --th-code: #0ea5e9; /* brand-500 */
+  --th-heading: #ffffff; /* white */
+  --th-sub: #c6daeb; /* blue-200 */
+  --th-muted: #93b8d9; /* blue-300 */
+  --th-faint: #5c95c4; /* blue-400 */
+  --th-ghost: #114b78; /* blue-700 */
+  --th-code: #f0641f; /* ember-500 */
 
   /* Backgrounds */
-  --th-page: #030712; /* gray-950 */
-  --th-subtle: #1f2937; /* gray-800 */
-  --th-inset: #1f2937; /* gray-800 */
+  --th-page: #0b2a45; /* blue-900 */
+  --th-subtle: #0e3a5c; /* blue-800 */
+  --th-inset: #114b78; /* blue-700 */
 
   /* Borders */
-  --th-line: #1f2937; /* gray-800 */
-  --th-line-soft: #1f2937; /* gray-800 */
+  --th-line: #114b78; /* blue-700 */
+  --th-line-soft: #0e3a5c; /* blue-800 */
 }
