@@ -24,7 +24,7 @@ export default function GlobalError({ error, reset }: GlobalErrorProps) {
     <html lang={siteConfig.defaultLocale} suppressHydrationWarning>
       <body>
         <div className="flex min-h-screen flex-col items-center justify-center gap-4 text-center">
-          <p className="text-6xl font-bold text-gray-200 dark:text-gray-700">500</p>
+          <p className="text-6xl font-bold text-gray-200">500</p>
           <h1 className="text-2xl font-semibold">Something went wrong</h1>
           <p className="text-muted">An unexpected error occurred. Please try again.</p>
           <button

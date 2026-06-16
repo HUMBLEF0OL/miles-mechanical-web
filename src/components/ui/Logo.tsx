@@ -1,7 +1,7 @@
 import { cn } from '@/lib/utils/cn';
 
 type LogoVariant = 'full' | 'mark' | 'wordmark' | 'mark-no-badge';
-type LogoTone = 'light' | 'dark';
+type LogoTone = 'light' | 'dark' | 'auto';
 
 export interface LogoProps {
   /** Lockup to render. */
@@ -10,6 +10,7 @@ export interface LogoProps {
    * Surface the logo sits on.
    * - `light` (default): for use on light surfaces — blue badge, white M stroke, dark wordmark.
    * - `dark`: for use on dark surfaces — white badge, blue M stroke, white wordmark.
+   * - `auto`: follows the active theme — light treatment in light mode, dark treatment in dark mode.
    */
   tone?: LogoTone;
   /** Size of the square badge in px (also drives wordmark scale). Default 40. */
@@ -32,7 +33,6 @@ export interface LogoProps {
 // Brand hex is allowed in raw SVG attributes (SVG attrs cannot be tokenized).
 const BLUE = '#155C93';
 const EMBER = '#F0641F';
-const WHITE = '#FFFFFF';
 
 /**
  * The M monogram — a squared badge with two polylines: a cool blue left/up
@@ -50,11 +50,34 @@ export function Logo({
   responsiveBreak = false,
   className,
 }: LogoProps) {
-  const isDark = tone === 'dark';
   // On light surfaces the badge is blue with white strokes; on dark surfaces
-  // the badge is white with blue strokes. The ember (heating) stroke is constant.
-  const badgeFill = isDark ? WHITE : BLUE;
-  const acStroke = isDark ? BLUE : WHITE;
+  // the badge is white with blue strokes. The ember (heating) stroke is
+  // constant. `auto` flips between the two via the `dark:` CSS variant so the
+  // lockup tracks the active theme without a hydration flash.
+  const badgeFillClass =
+    tone === 'auto'
+      ? 'fill-mm-blue-600 dark:fill-white'
+      : tone === 'dark'
+        ? 'fill-white'
+        : 'fill-mm-blue-600';
+  const acStrokeClass =
+    tone === 'auto'
+      ? 'stroke-white dark:stroke-mm-blue-600'
+      : tone === 'dark'
+        ? 'stroke-mm-blue-600'
+        : 'stroke-white';
+  const wordmarkClass =
+    tone === 'auto'
+      ? 'text-mm-blue-900 dark:text-white'
+      : tone === 'dark'
+        ? 'text-white'
+        : 'text-mm-blue-900';
+  const descriptorClass =
+    tone === 'auto'
+      ? 'text-mm-steel-500 dark:text-mm-blue-300'
+      : tone === 'dark'
+        ? 'text-mm-blue-300'
+        : 'text-mm-steel-500';
 
   // a11y for the outer wrapper: a single name, or hidden when decorative.
   const wrapperA11y = decorative
@@ -71,11 +94,11 @@ export function Logo({
       style={{ flex: 'none' }}
       aria-hidden="true"
     >
-      <rect x="2" y="2" width="92" height="92" rx="14" fill={badgeFill} />
+      <rect x="2" y="2" width="92" height="92" rx="14" className={badgeFillClass} />
       <polyline
         points="28 68 28 30 48 53"
         fill="none"
-        stroke={acStroke}
+        className={acStrokeClass}
         strokeWidth="12"
         strokeLinecap="round"
         strokeLinejoin="round"
@@ -139,7 +162,7 @@ export function Logo({
     <span
       className={cn(
         'font-display font-extrabold uppercase leading-[0.95] tracking-[0.01em]',
-        isDark ? 'text-white' : 'text-mm-blue-900',
+        wordmarkClass,
       )}
       style={{ fontSize: variant === 'wordmark' ? size : wordSize }}
     >
@@ -150,7 +173,7 @@ export function Logo({
       <span
         className={cn(
           'mt-1.5 block font-semibold tracking-[0.24em]',
-          isDark ? 'text-mm-blue-300' : 'text-mm-steel-500',
+          descriptorClass,
         )}
         style={{
           fontSize: variant === 'wordmark' ? size * 0.35 : descriptorSize,

@@ -7,6 +7,14 @@ export const alt = siteConfig.name
 export const size = { width: 1200, height: 630 }
 export const contentType = 'image/png'
 
+// The default next/og Latin font can't render glyphs outside its subset (e.g.
+// the ★ in "rated 4.9★"), which makes the build throw "Failed to download
+// dynamic font". Strip any non-Latin-1 characters from text rendered into the
+// image so generation stays self-contained and warning-free.
+function ogText(value: string): string {
+  return value.replace(/[^\u0000-\u00ff]/g, '').replace(/\s+/g, ' ').trim()
+}
+
 export default function OpengraphImage() {
   return new ImageResponse(
     <div
@@ -26,7 +34,7 @@ export default function OpengraphImage() {
     >
       <div style={{ fontSize: 72, fontWeight: 700 }}>{siteConfig.name}</div>
       <div style={{ fontSize: 32, marginTop: 24, opacity: 0.85, maxWidth: 900 }}>
-        {siteConfig.description}
+        {ogText(siteConfig.description)}
       </div>
     </div>,
     { ...size }

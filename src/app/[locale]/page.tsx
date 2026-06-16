@@ -11,6 +11,7 @@ import {
   Band,
 } from '@/components/marketing'
 import { CredentialBadge, Icon } from '@/components/ui'
+import { siteConfig } from '@/config'
 import { business } from '@/config/business'
 import {
   pages,
@@ -30,7 +31,12 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>
 }): Promise<Metadata> {
   const { locale } = await params
-  return buildMetadata({ title: SEO_TITLE, description: SEO_DESC, path: PATH, locale })
+  return {
+    ...buildMetadata({ title: SEO_TITLE, description: SEO_DESC, path: PATH, locale }),
+    // Home tab shows the bare brand name (no "%s | Miles Mechanical" template).
+    // The descriptive SEO_TITLE is still used for Open Graph / Twitter sharing.
+    title: { absolute: siteConfig.name },
+  }
 }
 
 /** Eyebrow + H2 section heading with the on-brand ember bar motif. */

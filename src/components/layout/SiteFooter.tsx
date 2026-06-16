@@ -95,7 +95,15 @@ export function SiteFooter({ className }: SiteFooterProps) {
             &copy; {business.name} {business.tagline} {currentYear} &middot;
             Licensed &amp; insured
           </span>
-          <span>NAP placeholder — reconcile before launch</span>
+          <span>
+            Serving {business.region} &middot;{' '}
+            <a
+              href={`tel:${business.phoneTel}`}
+              className="rounded-control hover:text-hero-ink focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 focus-visible:ring-offset-hero"
+            >
+              {business.phoneDisplay}
+            </a>
+          </span>
         </div>
       </div>
     </footer>

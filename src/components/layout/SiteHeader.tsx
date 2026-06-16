@@ -36,7 +36,7 @@ export function SiteHeader({ className }: SiteHeaderProps) {
     <header className={cn('bg-page border-b border-line-soft', className)}>
       <div className="mx-auto flex max-w-content items-center justify-between gap-4 px-4 py-4 sm:px-6 lg:px-8">
         <Link href="/" aria-label={`${business.name} home`}>
-          <Logo variant="full" size={40} responsiveBreak />
+          <Logo variant="full" tone="auto" size={40} responsiveBreak />
         </Link>
 
         <nav

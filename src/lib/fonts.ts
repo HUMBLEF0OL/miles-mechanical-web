@@ -17,9 +17,12 @@ export const plexSans = IBM_Plex_Sans({
 })
 
 // IBM Plex Mono — monospace accents (code paths, technical figures).
+// Not used for above-the-fold LCP text, so skip preloading to avoid competing
+// with the display/body fonts for early bandwidth (improves LCP).
 export const plexMono = IBM_Plex_Mono({
   weight: ['400', '500'],
   subsets: ['latin'],
   variable: '--font-plex-mono',
   display: 'swap',
+  preload: false,
 })
