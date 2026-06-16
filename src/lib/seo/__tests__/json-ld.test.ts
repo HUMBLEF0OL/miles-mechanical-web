@@ -19,12 +19,12 @@ describe('organizationJsonLd', () => {
 })
 
 describe('websiteJsonLd', () => {
-  it('sets inLanguage and includes a SearchAction', () => {
+  it('sets inLanguage and omits SearchAction (no on-site search route)', () => {
     const site = websiteJsonLd('fr')
     expect(site['@type']).toBe('WebSite')
     expect(site['@id']).toBe('http://localhost:3000#website')
     expect(site.inLanguage).toBe('fr')
-    expect((site.potentialAction as Record<string, unknown>)['@type']).toBe('SearchAction')
+    expect(site.potentialAction).toBeUndefined()
   })
 })
 

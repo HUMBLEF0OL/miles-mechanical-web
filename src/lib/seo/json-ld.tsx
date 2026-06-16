@@ -68,7 +68,11 @@ export function hvacBusinessJsonLd(): JsonLdObject {
   }
 }
 
-/** WebSite — sitewide, includes a SearchAction for sitelinks search box. */
+/**
+ * WebSite — sitewide identity node. No `potentialAction`/SearchAction: the site
+ * has no on-site search route, and advertising a sitelinks search box that 404s
+ * is a misleading signal. Re-add it here once a `/search` page ships.
+ */
 export function websiteJsonLd(locale: string): JsonLdObject {
   return {
     '@context': 'https://schema.org',
@@ -78,14 +82,6 @@ export function websiteJsonLd(locale: string): JsonLdObject {
     url: siteConfig.url,
     inLanguage: locale,
     publisher: { '@id': `${siteConfig.url}#organization` },
-    potentialAction: {
-      '@type': 'SearchAction',
-      target: {
-        '@type': 'EntryPoint',
-        urlTemplate: `${localizedUrl('/search', locale)}?q={search_term_string}`,
-      },
-      'query-input': 'required name=search_term_string',
-    },
   }
 }
 

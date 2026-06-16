@@ -39,6 +39,29 @@ function readNodeEnv(): 'development' | 'test' | 'production' {
   return 'development'
 }
 
+/**
+ * Public origin for absolute links + metadata. Fails loud at build/SSR time if a
+ * production deploy still points at localhost — otherwise every canonical, Open
+ * Graph, sitemap, and JSON-LD URL ships wrong. Guarded to the server: this var is
+ * read dynamically (not inlined), so on the client it always falls back to
+ * localhost and the check there would be a false positive.
+ */
+function readAppUrl(): string {
+  const url = readString('NEXT_PUBLIC_APP_URL', 'http://localhost:3000')
+  if (
+    typeof window === 'undefined' &&
+    process.env.NODE_ENV === 'production' &&
+    /localhost|127\.0\.0\.1/.test(url)
+  ) {
+    throw new Error(
+      'NEXT_PUBLIC_APP_URL is unset (defaulting to localhost) in a production build. ' +
+        'Set it to the real public origin (e.g. https://www.milesmechanicalac.com) or ' +
+        'every canonical, Open Graph, sitemap, and JSON-LD URL will be wrong.'
+    )
+  }
+  return url
+}
+
 export const env = {
   // ─── Runtime ──────────────────────────────────────────────────────────────
   NODE_ENV: readNodeEnv(),
@@ -46,7 +69,7 @@ export const env = {
 
   // ─── Public (safe to expose to the browser) ───────────────────────────────
   NEXT_PUBLIC_APP_NAME: readString('NEXT_PUBLIC_APP_NAME', 'Miles Mechanical'),
-  NEXT_PUBLIC_APP_URL: readString('NEXT_PUBLIC_APP_URL', 'http://localhost:3000'),
+  NEXT_PUBLIC_APP_URL: readAppUrl(),
   NEXT_PUBLIC_API_BASE_URL: readString('NEXT_PUBLIC_API_BASE_URL', '/api'),
   // Literal `process.env.NEXT_PUBLIC_*` reference (not readString) so Next.js
   // inlines it into the client bundle — dynamic lookups aren't replaced, so the

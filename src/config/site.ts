@@ -24,7 +24,9 @@ export const siteConfig = {
   // Social cards.
   ogImage: '/opengraph-image', // default social card (next/og route)
   ogLocaleMap: { en: 'en_US', fr: 'fr_FR' }, // OG locale / alternateLocale
-  twitter: '@handle',
+  // X/Twitter @handle for the `twitter:site` card tag. Empty = tag omitted
+  // (better than a bogus handle). Set when the business creates a profile.
+  twitter: '',
 
   // Canonical URL normalization policy.
   trailingSlash: false,
@@ -32,11 +34,17 @@ export const siteConfig = {
   // → Organization JSON-LD.
   organization: {
     name: env.NEXT_PUBLIC_APP_NAME,
-    logo: '/logo.png',
-    sameAs: [] as string[], // social profile URLs
+    // Brand mark served by the app's `icon.svg` metadata route (no `public/`
+    // dir ships a logo.png). Swap for a raster `/logo.png` once a public asset
+    // exists — Google rich results prefer a square raster logo.
+    logo: '/icon.svg',
+    // Social/citation profile URLs (e.g. Google Business Profile, Facebook,
+    // Yelp). Strengthens entity disambiguation — add as profiles go live.
+    sameAs: [] as string[],
   },
 
-  // Search Console / Bing verification — optional, empty by default.
+  // Search Console / Bing verification — paste the token from the provider's
+  // "HTML tag" method. Empty = no meta tag emitted (verify via DNS instead).
   verification: {
     google: '',
     other: {} as Record<string, string>, // e.g. { 'msvalidate.01': '...' }
