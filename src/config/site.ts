@@ -13,7 +13,8 @@ import { env } from './env'
  */
 export const siteConfig = {
   name: env.NEXT_PUBLIC_APP_NAME,
-  description: 'A Next.js 16 boilerplate for agent-driven development',
+  description:
+    'Miles Mechanical — family-owned AC & heating repair, installation, and 24/7 emergency HVAC service across Dallas, Garland, and Sachse. Honest pricing, 20+ years, rated 4.9★.',
   url: env.NEXT_PUBLIC_APP_URL,
 
   // i18n — mirrors src/i18n/routing.ts (harness-enforced).

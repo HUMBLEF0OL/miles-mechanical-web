@@ -45,7 +45,7 @@ export const env = {
   PORT: readPort('PORT', 3000),
 
   // ─── Public (safe to expose to the browser) ───────────────────────────────
-  NEXT_PUBLIC_APP_NAME: readString('NEXT_PUBLIC_APP_NAME', 'Starter'),
+  NEXT_PUBLIC_APP_NAME: readString('NEXT_PUBLIC_APP_NAME', 'Miles Mechanical'),
   NEXT_PUBLIC_APP_URL: readString('NEXT_PUBLIC_APP_URL', 'http://localhost:3000'),
   NEXT_PUBLIC_API_BASE_URL: readString('NEXT_PUBLIC_API_BASE_URL', '/api'),
 } as const

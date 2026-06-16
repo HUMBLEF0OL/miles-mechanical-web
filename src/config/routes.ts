@@ -1,5 +1,16 @@
 export const routes = {
   home: '/',
+
+  // ── Marketing (Phase 1) ──────────────────────────────────────────────────
+  // Per-service (/services/[slug]) and per-city (/areas/[city]) pages are
+  // content-driven (src/content) and expanded into the sitemap/llms.txt from
+  // their slug lists, so they need no individual route keys here (FR-SA-3).
+  services: '/services',
+  about: '/about',
+  reviews: '/reviews',
+  contact: '/contact',
+
+  // ── Auth / app (not built in Phase 1; kept for the SEO noindex contract) ──
   login: '/login',
   signup: '/signup',
   forgotPassword: '/forgot-password',
@@ -23,7 +34,11 @@ export type RouteKey = keyof typeof routes
  * it up (see the `seo` skill).
  */
 export const seoRoutes = {
-  home: { indexable: true, changeFrequency: 'monthly', priority: 1, lastModified: '2026-06-15' },
+  home: { indexable: true, changeFrequency: 'monthly', priority: 1, lastModified: '2026-06-16' },
+  services: { indexable: true, changeFrequency: 'monthly', priority: 0.9, lastModified: '2026-06-16' },
+  reviews: { indexable: true, changeFrequency: 'weekly', priority: 0.8, lastModified: '2026-06-16' },
+  about: { indexable: true, changeFrequency: 'yearly', priority: 0.6, lastModified: '2026-06-16' },
+  contact: { indexable: true, changeFrequency: 'yearly', priority: 0.8, lastModified: '2026-06-16' },
 } as const satisfies Partial<
   Record<
     RouteKey,

@@ -3,6 +3,7 @@ export type { BuildMetadataOptions } from './metadata'
 export {
   JsonLd,
   organizationJsonLd,
+  hvacBusinessJsonLd,
   websiteJsonLd,
   webPageJsonLd,
   breadcrumbJsonLd,

@@ -1,7 +1,18 @@
 import { routes, seoRoutes } from '@/config'
 import type { SeoRouteKey } from '@/config'
 
-type SeoDescriptor = (typeof seoRoutes)[SeoRouteKey]
+/**
+ * Normalized descriptor shape. Declared concretely (not via indexed access of
+ * the `seoRoutes` literal) so it stays a single object type — once `seoRoutes`
+ * has more than one key, `(typeof seoRoutes)[SeoRouteKey]` is a union and can't
+ * be `extend`ed. Mirrors the descriptor in `src/config/routes.ts`.
+ */
+interface SeoDescriptor {
+  indexable: boolean
+  changeFrequency: 'always' | 'hourly' | 'daily' | 'weekly' | 'monthly' | 'yearly' | 'never'
+  priority: number
+  lastModified: string
+}
 
 export interface PublicRoute extends SeoDescriptor {
   key: SeoRouteKey

@@ -1,4 +1,5 @@
 import { siteConfig } from '@/config'
+import { business } from '@/config/business'
 import { localizedUrl } from './metadata'
 
 /**
@@ -23,6 +24,47 @@ export function organizationJsonLd(): JsonLdObject {
     ...(siteConfig.organization.sameAs.length > 0
       ? { sameAs: siteConfig.organization.sameAs }
       : {}),
+  }
+}
+
+/**
+ * HVACBusiness — the LocalBusiness subtype for a service-area HVAC company
+ * (NFR-4, Scope acceptance §5.7). Miles Mechanical has no public storefront, so
+ * this uses `areaServed` cities instead of a street address and omits geo/map
+ * data. Shares the sitewide `@id` family so crawlers tie it to the Organization.
+ */
+export function hvacBusinessJsonLd(): JsonLdObject {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'HVACBusiness',
+    '@id': `${siteConfig.url}#localbusiness`,
+    name: business.name,
+    description: `Family-owned AC & heating repair, installation, and 24/7 emergency HVAC service across the ${business.region}.`,
+    url: siteConfig.url,
+    telephone: business.phoneTel,
+    email: business.email,
+    image: absolute(siteConfig.organization.logo),
+    logo: absolute(siteConfig.organization.logo),
+    priceRange: '$$',
+    areaServed: business.areas.map((city) => ({
+      '@type': 'City',
+      name: city,
+    })),
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: business.rating,
+      reviewCount: business.reviewCount,
+      bestRating: 5,
+    },
+    openingHoursSpecification: [
+      {
+        '@type': 'OpeningHoursSpecification',
+        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+        opens: '07:00',
+        closes: '19:00',
+      },
+    ],
+    parentOrganization: { '@id': `${siteConfig.url}#organization` },
   }
 }
 

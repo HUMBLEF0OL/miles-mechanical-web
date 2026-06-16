@@ -1,4 +1,4 @@
-# starter
+# Miles Mechanical
 
 ## Start a new app from this template
 
@@ -23,7 +23,7 @@ without committing; `setup` makes the single initial commit. See
 ## Quick Start
 
 ```bash
-cd starter
+cd miles-mechanical-web
 npm run dev
 ```
 

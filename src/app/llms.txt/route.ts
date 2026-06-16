@@ -1,5 +1,6 @@
 import { siteConfig } from '@/config'
 import { localizedUrl, publicRoutes } from '@/lib/seo'
+import { services, areas } from '@/content'
 
 /**
  * `/llms.txt` — the GEO (Generative Engine Optimization) centerpiece. Follows
@@ -28,6 +29,19 @@ export function GET(): Response {
     '',
     ...publicRoutes().map(
       (route) => `- [${labelFor(route.key)}](${localizedUrl(route.path, siteConfig.defaultLocale)})`
+    ),
+    '',
+    '## Services',
+    '',
+    ...services.map(
+      (service) =>
+        `- [${service.title}](${localizedUrl(`/services/${service.slug}`, siteConfig.defaultLocale)})`
+    ),
+    '',
+    '## Service areas',
+    '',
+    ...areas.map(
+      (area) => `- [${area.city}](${localizedUrl(`/areas/${area.slug}`, siteConfig.defaultLocale)})`
     ),
     '',
   ]

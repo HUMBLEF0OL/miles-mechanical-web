@@ -1,18 +1,22 @@
+import Link from 'next/link'
 import { cn } from '@/lib/utils/cn'
 import { business } from '@/config/business'
 import { Logo } from '@/components/ui/Logo'
 import { RatingStars } from '@/components/ui/RatingStars'
 import { Icon } from '@/components/ui/Icon'
+import { services, areas } from '@/content'
 
-const services = [
-  'AC repair',
-  'Heating & furnace',
-  'Install & replace',
-  'Maintenance',
-  'Mini-split',
+const FOOTER_LINK_CLASSES =
+  'rounded-control transition-colors hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 focus-visible:ring-offset-mm-blue-900'
+
+const COMPANY_LINKS = [
+  { label: 'About', href: '/about' },
+  { label: 'Reviews', href: '/reviews' },
+  { label: 'Contact', href: '/contact' },
 ] as const
 
-const currentYear = new Date().getFullYear()
+// Stable copyright year — avoids `new Date()` churn / hydration drift.
+const currentYear = 2026
 
 export interface SiteFooterProps {
   className?: string
@@ -50,31 +54,36 @@ export function SiteFooter({ className }: SiteFooterProps) {
         {/* Services */}
         <FooterColumn title="Services">
           {services.map((service) => (
-            <span key={service}>{service}</span>
+            <Link key={service.slug} href={`/services/${service.slug}`} className={FOOTER_LINK_CLASSES}>
+              {service.title}
+            </Link>
           ))}
-          <span className="font-semibold text-mm-ember-300">
-            Emergency {business.emergency}
-          </span>
         </FooterColumn>
 
         {/* Service area */}
         <FooterColumn title="Service area">
-          {business.areas.map((area) => (
-            <span key={area}>{area}</span>
+          {areas.map((area) => (
+            <Link key={area.slug} href={`/areas/${area.slug}`} className={FOOTER_LINK_CLASSES}>
+              {area.city}
+            </Link>
           ))}
           <span className="text-mm-blue-300">+ surrounding cities</span>
         </FooterColumn>
 
-        {/* Contact */}
-        <FooterColumn title="Contact">
+        {/* Company + contact */}
+        <FooterColumn title="Company">
+          {COMPANY_LINKS.map((link) => (
+            <Link key={link.href} href={link.href} className={FOOTER_LINK_CLASSES}>
+              {link.label}
+            </Link>
+          ))}
           <a
             href={`tel:${business.phoneTel}`}
-            className="inline-flex items-center gap-2 font-bold text-white rounded-control focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 focus-visible:ring-offset-mm-blue-900"
+            className="mt-1 inline-flex items-center gap-2 rounded-control font-bold text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2 focus-visible:ring-offset-mm-blue-900"
           >
             <Icon name="phone" size={16} className="text-mm-ember-500" />
             {business.phoneDisplay}
           </a>
-          <span>{business.hoursDisplay}</span>
           <span className="font-semibold text-mm-ember-300">
             {business.emergency} emergency line
           </span>

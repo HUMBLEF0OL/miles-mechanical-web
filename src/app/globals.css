@@ -54,6 +54,7 @@
   /* Semantic state colors */
   --color-success: #1e8a57;
   --color-warning: #c6820b;
+  --color-alarm-300: #f4969c; /* lighter alarm — emergency accents on dark surfaces (AA contrast) */
   --color-alarm: #d81e2c;
   --color-alarm-700: #b5141f; /* darker alarm — emergency hover/pressed */
   --color-info: #155c93;

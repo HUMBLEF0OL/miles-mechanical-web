@@ -1,11 +1,12 @@
 'use client'
 
-import { type FormEvent } from 'react'
+import { useState, type FormEvent } from 'react'
 import { Button } from '@/components/ui/Button'
 import { Icon } from '@/components/ui/Icon'
 import { Input } from '@/components/ui/Input'
 import { Select } from '@/components/ui/Select'
 import { Textarea } from '@/components/ui/Textarea'
+import { business } from '@/config/business'
 
 const SERVICE_OPTIONS = [
   'AC repair',
@@ -19,15 +20,50 @@ const SERVICE_OPTIONS = [
  * LeadForm — the §10 "Request service" form. Presentational lead-capture form
  * built from the Input/Select/Textarea/Button atoms.
  *
- * Phase 1 has no backend: onSubmit only preventDefault's. A hosted form service
- * (Formspree / Web3Forms) will be wired in here in a later phase — POST the
- * collected FormData to the endpoint and surface success/error state.
+ * Phase 1 has no backend: onSubmit shows the FR-LC-3 confirmation client-side.
+ * A hosted form service (Formspree / Web3Forms) will be wired in here in a
+ * later phase — POST the collected FormData to the endpoint, then flip to the
+ * same confirmation (or surface an error state).
  */
 export function LeadForm() {
+  const [submitted, setSubmitted] = useState(false)
+
   function handleSubmit(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
     // TODO(Phase 2): submit to a hosted form service (Formspree / Web3Forms).
     // Example: await fetch(endpoint, { method: 'POST', body: new FormData(event.currentTarget) })
+    setSubmitted(true)
+  }
+
+  if (submitted) {
+    return (
+      <div
+        role="status"
+        aria-live="polite"
+        className="rounded-card border border-line bg-page p-8 text-center shadow-e2 sm:p-12"
+      >
+        <span className="mx-auto mb-5 flex size-14 items-center justify-center rounded-control bg-success/10 text-success">
+          <Icon name="check" size={30} aria-hidden />
+        </span>
+        <h2 className="font-display text-3xl font-extrabold uppercase leading-none text-mm-blue-900">
+          Request received
+        </h2>
+        <p className="mx-auto mt-4 max-w-prose font-sans text-[15px] leading-relaxed text-mm-steel-700">
+          <strong className="font-semibold">What happens next:</strong> your request goes
+          straight to Mr. Miles — no call centre, no bots. A real person calls you back,
+          usually within the hour during business hours.
+        </p>
+        <p className="mt-6 font-sans text-sm text-mm-steel-500">
+          Need us sooner?{' '}
+          <a
+            href={`tel:${business.phoneTel}`}
+            className="rounded-control font-bold text-mm-blue-600 hover:text-mm-blue-700 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2"
+          >
+            Call {business.phoneDisplay}
+          </a>
+        </p>
+      </div>
+    )
   }
 
   return (

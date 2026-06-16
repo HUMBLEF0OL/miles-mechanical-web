@@ -14,6 +14,12 @@ export interface LogoProps {
   tone?: LogoTone;
   /** Size of the square badge in px (also drives wordmark scale). Default 40. */
   size?: number;
+  /**
+   * When true the lockup is purely decorative (e.g. a faint watermark): it is
+   * removed from the accessibility tree (`aria-hidden`) and carries no
+   * accessible name, so screen readers don't announce a redundant brand label.
+   */
+  decorative?: boolean;
   className?: string;
 }
 
@@ -25,11 +31,16 @@ const WHITE = '#FFFFFF';
 /**
  * The M monogram — a squared badge with two polylines: a cool blue left/up
  * stroke for air conditioning and a warm ember right stroke for heating.
+ *
+ * The accessible name lives once on the outer wrapper (or is suppressed when
+ * `decorative`); the inner SVGs are always `aria-hidden` so the lockup is never
+ * announced twice.
  */
 export function Logo({
   variant = 'full',
   tone = 'light',
   size = 40,
+  decorative = false,
   className,
 }: LogoProps) {
   const isDark = tone === 'dark';
@@ -37,6 +48,11 @@ export function Logo({
   // the badge is white with blue strokes. The ember (heating) stroke is constant.
   const badgeFill = isDark ? WHITE : BLUE;
   const acStroke = isDark ? BLUE : WHITE;
+
+  // a11y for the outer wrapper: a single name, or hidden when decorative.
+  const wrapperA11y = decorative
+    ? ({ 'aria-hidden': true } as const)
+    : ({ role: 'img', 'aria-label': 'Miles Mechanical' } as const);
 
   const Badge = (
     <svg
@@ -46,8 +62,7 @@ export function Logo({
       fill="none"
       className="rounded-badge"
       style={{ flex: 'none' }}
-      role="img"
-      aria-label="Miles Mechanical"
+      aria-hidden="true"
     >
       <rect x="2" y="2" width="92" height="92" rx="14" fill={badgeFill} />
       <polyline
@@ -70,20 +85,23 @@ export function Logo({
   );
 
   if (variant === 'mark') {
-    return <span className={cn('inline-flex', className)}>{Badge}</span>;
+    return (
+      <span className={cn('inline-flex', className)} {...wrapperA11y}>
+        {Badge}
+      </span>
+    );
   }
 
   if (variant === 'mark-no-badge') {
     return (
-      <span className={cn('inline-flex', className)}>
+      <span className={cn('inline-flex', className)} {...wrapperA11y}>
         <svg
           width={size}
           height={(size * 64) / 96}
           viewBox="0 0 96 64"
           fill="none"
           style={{ flex: 'none' }}
-          role="img"
-          aria-label="Miles Mechanical"
+          aria-hidden="true"
         >
           <polyline
             points="28 52 28 14 48 37"
@@ -137,11 +155,7 @@ export function Logo({
 
   if (variant === 'wordmark') {
     return (
-      <span
-        className={cn('inline-flex', className)}
-        role="img"
-        aria-label="Miles Mechanical"
-      >
+      <span className={cn('inline-flex', className)} {...wrapperA11y}>
         {wordmark}
       </span>
     );
@@ -149,11 +163,7 @@ export function Logo({
 
   // variant === 'full'
   return (
-    <span
-      className={cn('inline-flex items-center gap-[0.45em]', className)}
-      role="img"
-      aria-label="Miles Mechanical"
-    >
+    <span className={cn('inline-flex items-center gap-[0.45em]', className)} {...wrapperA11y}>
       {Badge}
       {wordmark}
     </span>

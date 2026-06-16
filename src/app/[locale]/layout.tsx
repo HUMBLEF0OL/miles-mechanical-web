@@ -7,9 +7,11 @@ import { QueryProvider } from '@/components/providers/QueryProvider'
 import { ThemeProvider } from '@/components/providers/ThemeProvider'
 import { ToastProvider } from '@/components/providers/ToastProvider'
 import { siteConfig } from '@/config'
-import { JsonLd, organizationJsonLd, websiteJsonLd } from '@/lib/seo'
+import { JsonLd, organizationJsonLd, hvacBusinessJsonLd, websiteJsonLd } from '@/lib/seo'
 import { archivo, plexMono, plexSans } from '@/lib/fonts'
 import { routing } from '@/i18n/routing'
+import { TopBar, SiteHeader, SiteFooter } from '@/components/layout'
+import { StickyCallBar } from '@/components/marketing'
 
 interface LocaleLayoutProps {
   children: React.ReactNode
@@ -65,12 +67,27 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
       className={`${archivo.variable} ${plexSans.variable} ${plexMono.variable}`}
     >
       <body>
-        <JsonLd data={[organizationJsonLd(), websiteJsonLd(locale)]} />
+        <JsonLd data={[organizationJsonLd(), hvacBusinessJsonLd(), websiteJsonLd(locale)]} />
         <NextIntlClientProvider messages={messages}>
           <QueryProvider>
             <ThemeProvider>
               <ToastProvider>
-                <ErrorBoundary>{children}</ErrorBoundary>
+                <ErrorBoundary>
+                  {/* Marketing chrome — shared across every route (FR-CR-5, FR-LC-1).
+                      Order mirrors the wireframes: utility strip → header → page →
+                      footer, with a fixed mobile click-to-call bar. The footer
+                      wrapper carries extra bottom padding on mobile so the fixed
+                      bar (~72px) never overlaps the footer's bottom row. */}
+                  <div className="flex min-h-screen flex-col">
+                    <TopBar />
+                    <SiteHeader />
+                    <div className="flex-1">{children}</div>
+                    <div className="container-page pb-24 md:pb-10">
+                      <SiteFooter />
+                    </div>
+                  </div>
+                  <StickyCallBar />
+                </ErrorBoundary>
               </ToastProvider>
             </ThemeProvider>
           </QueryProvider>

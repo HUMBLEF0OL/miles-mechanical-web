@@ -96,7 +96,7 @@ export function Hero() {
           variant="mark-no-badge"
           tone="dark"
           size={220}
-          aria-hidden
+          decorative
           className="pointer-events-none absolute -bottom-10 -right-8 opacity-[0.12]"
         />
 
