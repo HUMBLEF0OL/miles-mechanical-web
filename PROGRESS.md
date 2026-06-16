@@ -27,7 +27,14 @@ brand pass across metadata and components.
 
 ## Done
 
-- **2026-06-16 — Hi-Fi design-doc fidelity pass + independent audit.** Brought the
+- **2026-06-16 — Vercel-aware public-origin resolution.** `readAppUrl()` in
+  `src/config/env.ts` now resolves the absolute origin in order: explicit
+  `NEXT_PUBLIC_APP_URL` → Vercel-injected `VERCEL_PROJECT_PRODUCTION_URL` /
+  `VERCEL_URL` (scheme added) → `http://localhost:3000`, so deploys/previews
+  build without manual env config while the production localhost guard still
+  fails loud. Added `normalizeOrigin()` to strip trailing slashes (matches
+  `site.ts` `trailingSlash: false`), preventing double-slash canonical/OG/sitemap
+  URLs. Build (40 pages)/harness (15 checks) green.
   live marketing site into line with `docs/design-system/Miles Mechanical Hi-Fi.html`.
   Drove a per-template gap audit (Hi-Fi source ⟷ live), then implemented: IBM Plex
   Mono ember eyebrows/kickers site-wide (mono + `tracking-[0.16em]`, `text-ember` on

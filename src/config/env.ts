@@ -40,14 +40,38 @@ function readNodeEnv(): 'development' | 'test' | 'production' {
 }
 
 /**
- * Public origin for absolute links + metadata. Fails loud at build/SSR time if a
- * production deploy still points at localhost — otherwise every canonical, Open
- * Graph, sitemap, and JSON-LD URL ships wrong. Guarded to the server: this var is
- * read dynamically (not inlined), so on the client it always falls back to
- * localhost and the check there would be a false positive.
+ * Public origin for absolute links + metadata. Resolution order (server-side):
+ *   1. `NEXT_PUBLIC_APP_URL` — the explicit, authoritative origin.
+ *   2. Vercel's injected `VERCEL_PROJECT_PRODUCTION_URL` (stable prod domain)
+ *      then `VERCEL_URL` (per-deployment) — so previews/deploys work without
+ *      manual config. These are host-only (no scheme), so `https://` is added.
+ *   3. `http://localhost:3000` fallback for local dev.
+ *
+ * Fails loud at build/SSR time if a production deploy still resolves to
+ * localhost — otherwise every canonical, Open Graph, sitemap, and JSON-LD URL
+ * ships wrong. Guarded to the server: this var is read dynamically (not
+ * inlined), so on the client it always falls back to localhost and the check
+ * there would be a false positive.
+ *
+ * The returned origin is always normalized to drop a trailing slash, matching
+ * the `trailingSlash: false` canonical policy in `site.ts` — a trailing slash
+ * would otherwise produce double-slash URLs (e.g. `https://host//en`).
  */
+function normalizeOrigin(url: string): string {
+  return url.replace(/\/+$/, '')
+}
+
 function readAppUrl(): string {
-  const url = readString('NEXT_PUBLIC_APP_URL', 'http://localhost:3000')
+  const explicit = readString('NEXT_PUBLIC_APP_URL', '')
+  const vercelHost =
+    process.env.VERCEL_PROJECT_PRODUCTION_URL ?? process.env.VERCEL_URL ?? ''
+  const url =
+    explicit !== ''
+      ? explicit
+      : vercelHost !== ''
+        ? `https://${vercelHost}`
+        : 'http://localhost:3000'
+
   if (
     typeof window === 'undefined' &&
     process.env.NODE_ENV === 'production' &&
@@ -55,11 +79,11 @@ function readAppUrl(): string {
   ) {
     throw new Error(
       'NEXT_PUBLIC_APP_URL is unset (defaulting to localhost) in a production build. ' +
-        'Set it to the real public origin (e.g. https://www.milesmechanicalac.com) or ' +
-        'every canonical, Open Graph, sitemap, and JSON-LD URL will be wrong.'
+      'Set it to the real public origin (e.g. https://www.milesmechanicalac.com) or ' +
+      'every canonical, Open Graph, sitemap, and JSON-LD URL will be wrong.'
     )
   }
-  return url
+  return normalizeOrigin(url)
 }
 
 export const env = {
