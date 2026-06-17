@@ -176,7 +176,10 @@ export default async function AboutPage({ params }: PageProps) {
             <li key={entry.title} className={cn('relative', index !== timeline.length - 1 && 'pb-10')}>
               <span
                 aria-hidden
-                className="absolute -left-[2.6rem] top-1 flex h-6 w-6 items-center justify-center rounded-full bg-ember text-white"
+                // Centered on the timeline rule: the <ol> has pl-8 (2rem) + a 2px
+                // left border, so the line's center sits 2rem+1px left of the li
+                // content edge. -translate-x-1/2 then centers the circle on it.
+                className="absolute left-[calc(-2rem_-_1px)] top-1 flex h-6 w-6 -translate-x-1/2 items-center justify-center rounded-full bg-ember text-white"
               >
                 <Icon name="check" size={14} />
               </span>
