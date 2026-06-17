@@ -13,7 +13,7 @@ export interface ServiceCardProps {
   href: string
   /** Icon tile tint for non-emergency cards. Defaults to 'cool'. */
   accent?: ServiceAccent
-  /** Renders the dark emergency variant with an alarm-tinted tile and a Call 24/7 link. */
+  /** Renders the dark emergency variant with an alarm-tinted tile and a "Call now" link. */
   emergency?: boolean
 }
 
@@ -28,7 +28,7 @@ const ACCENT_TILE: Record<ServiceAccent, string> = {
  * A boxy card with a 48px rounded-control icon tile, a bold title, a muted
  * description, and a "Learn more →" link. The `emergency` variant switches the
  * whole card to the dark tone with an alarm-red tile (reserved for emergency
- * actions) and an ember "Call 24/7 →" link.
+ * actions) and an ember "Call now →" link.
  */
 export function ServiceCard({
   iconName,
@@ -72,7 +72,7 @@ export function ServiceCard({
           linkClasses,
         )}
       >
-        {emergency ? 'Call 24/7 →' : 'Learn more →'}
+        {emergency ? 'Call now →' : 'Learn more →'}
       </Link>
     </Card>
   )

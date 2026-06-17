@@ -7,7 +7,7 @@ export interface TopBarProps {
 
 /**
  * TopBar — thin announcement strip above the header (§10).
- * Left: service-area line. Right: business hours + a 24/7 emergency callout.
+ * Left: service-area line. Right: business hours + an after-hours emergency callout.
  */
 export function TopBar({ className }: TopBarProps) {
   return (

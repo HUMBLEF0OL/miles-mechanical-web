@@ -39,14 +39,17 @@ export function hvacBusinessJsonLd(): JsonLdObject {
     '@type': 'HVACBusiness',
     '@id': `${siteConfig.url}#localbusiness`,
     name: business.name,
-    description: `Family-owned AC & heating repair, installation, and 24/7 emergency HVAC service across the ${business.region}.`,
+    legalName: business.legalName,
+    description: `Family-owned AC & heating repair, installation, and after-hours emergency HVAC service across the ${business.region}.`,
     url: siteConfig.url,
     telephone: business.phoneTel,
     email: business.email,
     image: absolute(siteConfig.organization.logo),
     logo: absolute(siteConfig.organization.logo),
     priceRange: '$$',
-    areaServed: business.areas.map((city) => ({
+    // Full confirmed service area (BRD §2.1), not just the cities with landing
+    // pages — broadens the local-search footprint.
+    areaServed: business.serviceArea.map((city) => ({
       '@type': 'City',
       name: city,
     })),
@@ -56,14 +59,13 @@ export function hvacBusinessJsonLd(): JsonLdObject {
       reviewCount: business.reviewCount,
       bestRating: 5,
     },
-    openingHoursSpecification: [
-      {
-        '@type': 'OpeningHoursSpecification',
-        dayOfWeek: ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-        opens: '07:00',
-        closes: '19:00',
-      },
-    ],
+    // Derived from the single hours source in business.ts (no drift).
+    openingHoursSpecification: business.hours.map((block) => ({
+      '@type': 'OpeningHoursSpecification',
+      dayOfWeek: [...block.days],
+      opens: block.opens,
+      closes: block.closes,
+    })),
     parentOrganization: { '@id': `${siteConfig.url}#organization` },
   }
 }

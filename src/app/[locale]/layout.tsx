@@ -12,6 +12,7 @@ import { archivo, plexMono, plexSans } from '@/lib/fonts'
 import { routing } from '@/i18n/routing'
 import { TopBar, SiteHeader, SiteFooter } from '@/components/layout'
 import { StickyCallBar } from '@/components/marketing'
+import { Analytics } from '@/components/analytics'
 
 interface LocaleLayoutProps {
   children: React.ReactNode
@@ -67,6 +68,7 @@ export default async function LocaleLayout({ children, params }: LocaleLayoutPro
       className={`${archivo.variable} ${plexSans.variable} ${plexMono.variable}`}
     >
       <body>
+        <Analytics />
         <JsonLd data={[organizationJsonLd(), hvacBusinessJsonLd(), websiteJsonLd(locale)]} />
         <NextIntlClientProvider messages={messages}>
           <QueryProvider>

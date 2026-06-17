@@ -81,6 +81,13 @@ export default async function ReviewsPage({ params }: PageProps) {
               {business.reviewCount} Google reviews · rated {business.rating} out of 5
             </p>
 
+            <p className="relative font-sans text-sm text-hero-muted">
+              Plus {business.secondaryRating.rating}★ across{' '}
+              {business.secondaryRating.reviewCount} reviews on{' '}
+              {business.secondaryRating.source} — {business.reviewCountTotal}+ five-star
+              reviews in total.
+            </p>
+
             <div className="relative h-px bg-hero-line" aria-hidden />
 
             <a

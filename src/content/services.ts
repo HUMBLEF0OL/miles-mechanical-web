@@ -87,7 +87,7 @@ export const services: ServiceContent[] = [
       {
         question: 'How fast can you come out for a broken AC?',
         answer:
-          'During business hours we usually reach Dallas-area homes the same day. For no-cooling emergencies we answer 24/7 — call or text and we’ll get to you fast.',
+          'During business hours we usually reach Dallas-area homes the same day. For no-cooling emergencies we answer after hours too — call or text and we’ll get to you fast.',
       },
       {
         question: 'Will you try to sell me a whole new system?',
@@ -286,13 +286,13 @@ export const services: ServiceContent[] = [
     accent: 'heat',
     emergency: true,
     cardDescription:
-      'No cooling or no heat? We answer 24/7 and get to you fast.',
+      'No cooling or no heat? We answer day or night and get to you fast.',
     heroEyebrow: 'No Cooling · No Heat',
     heroHeadline: 'We answer the phone at 2 a.m.',
     heroSubcopy:
-      'When the AC dies in July or the heat fails on a freezing night, you can’t wait days for a callback. We answer 24/7 — a real person, not a call centre — and get to you fast.',
+      'When the AC dies in July or the heat fails on a freezing night, you can’t wait days for a callback. We answer day or night — a real person, not a call centre — and get to you fast.',
     included: [
-      'Live 24/7 phone and text — a real person answers',
+      'After-hours phone and text — a real person answers',
       'Priority response for no-cooling and no-heat calls',
       'Up-front emergency pricing before any work begins',
       'Stocked trucks for the most common after-hours failures',
@@ -304,7 +304,7 @@ export const services: ServiceContent[] = [
     ],
     faqs: [
       {
-        question: 'Do you really answer 24/7?',
+        question: 'Do you answer after hours?',
         answer:
           'Yes. After-hours calls reach a real person, not an answering service that just takes a message. If your home has no cooling or no heat, call or text and we’ll respond.',
       },
@@ -319,9 +319,9 @@ export const services: ServiceContent[] = [
           'No cooling in extreme heat, no heat in a freeze, burning smells, or anything that feels unsafe. When in doubt, call — we’ll help you decide.',
       },
     ],
-    seoTitle: '24/7 Emergency HVAC Service — Dallas Metro',
+    seoTitle: 'Emergency HVAC Service — Dallas Metro',
     seoDescription:
-      '24/7 emergency AC and heating service across Dallas, Garland and Sachse. A real person answers, fast dispatch, up-front pricing. Call Miles Mechanical now.',
+      'After-hours emergency AC and heating service across Dallas, Garland and Sachse. A real person answers, fast dispatch, up-front pricing. Call Miles Mechanical now.',
   },
 ]
 

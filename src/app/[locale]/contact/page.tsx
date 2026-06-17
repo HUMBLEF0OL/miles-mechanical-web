@@ -35,7 +35,7 @@ const CONTACT_FACTS = [
   },
   {
     icon: 'alert' as const,
-    label: '24/7 emergency',
+    label: 'After-hours emergency',
     value: 'Call or text anytime',
     detail: 'After-hours? A real person answers — fast.',
   },
@@ -102,7 +102,7 @@ export default async function Page({ params }: PageProps) {
           </a>
         </div>
 
-        {/* 24/7 emergency line — the one reserved alarm-red use. */}
+        {/* After-hours emergency line — the one reserved alarm-red use. */}
         <EmergencyCTA />
       </section>
 

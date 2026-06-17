@@ -8,6 +8,7 @@ import { Select } from '@/components/ui/Select'
 import { Textarea } from '@/components/ui/Textarea'
 import { business } from '@/config/business'
 import { env } from '@/config'
+import { trackEvent } from '@/lib/analytics'
 
 const SERVICE_OPTIONS = [
   'AC repair',
@@ -39,8 +40,11 @@ export function LeadForm() {
     // Capture the form before any await — React clears the synthetic event target.
     const form = event.currentTarget
 
+    const service = String(new FormData(form).get('service') ?? '')
+
     // No hosted endpoint configured yet → keep the Phase 1 client-side confirmation.
     if (!FORM_ENDPOINT) {
+      trackEvent('generate_lead', { method: 'fallback', service })
       setStatus('submitted')
       return
     }
@@ -53,8 +57,10 @@ export function LeadForm() {
         body: new FormData(form),
       })
       if (!response.ok) throw new Error(`Form endpoint returned ${response.status}`)
+      trackEvent('generate_lead', { method: 'endpoint', service })
       setStatus('submitted')
     } catch {
+      trackEvent('lead_form_error', { service })
       setStatus('error')
     }
   }

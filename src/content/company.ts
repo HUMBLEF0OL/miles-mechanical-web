@@ -13,6 +13,7 @@ import type { IconName } from '@/components/ui/Icon'
 export const credentials: string[] = [
   'Licensed & insured',
   'American Home Shield approved',
+  'Carrier equipment installer',
   '10-yr parts / 1-yr labour',
   '20+ years',
   'Military discount',

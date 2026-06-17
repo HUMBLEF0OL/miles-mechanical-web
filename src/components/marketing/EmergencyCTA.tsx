@@ -33,16 +33,16 @@ export function EmergencyCTA({ className }: EmergencyCTAProps) {
             No Cooling · No Heat
           </p>
           <h2 className="mt-1.5 font-display text-3xl font-extrabold uppercase leading-none sm:text-4xl">
-            We answer 24/7.
+            We answer after hours.
           </h2>
           <p className="mt-2.5 font-sans text-[15px] leading-snug text-white/85">
-            After-hours? Call or text and we&apos;ll get to you fast.
+            {business.emergencyNote}
           </p>
         </div>
 
         <a
           href={`tel:${business.phoneTel}`}
-          aria-label={`Call Miles Mechanical 24/7 emergency line at ${business.phoneDisplay}`}
+          aria-label={`Call Miles Mechanical's after-hours line at ${business.phoneDisplay}`}
           className={cn(
             'inline-flex min-h-12 items-center gap-2.5 rounded-control bg-white px-7 py-4',
             'font-sans text-lg font-bold text-alarm shadow-e2',

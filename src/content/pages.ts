@@ -29,7 +29,7 @@ export const pages = {
     seo: {
       title: 'Honest AC & Heating in Dallas, Garland & Sachse',
       description:
-        'Family-owned HVAC for the Dallas metro for 20+ years. Fair pricing, licensed work, 24/7 emergency service, and a 4.9★ Google rating. Call or request service.',
+        'Family-owned HVAC for the Dallas metro for 20+ years. Fair pricing, licensed work, fast after-hours service, and a 4.9★ Google rating. Call or request service.',
     },
   } satisfies { seo: PageSeo },
 
@@ -37,7 +37,7 @@ export const pages = {
     seo: {
       title: 'HVAC Services — AC, Heating, Install & More',
       description:
-        'AC repair, installation, heating and furnace service, seasonal maintenance, mini-splits, and 24/7 emergency HVAC across Dallas, Garland and Sachse.',
+        'AC repair, installation, heating and furnace service, seasonal maintenance, mini-splits, and after-hours emergency HVAC across Dallas, Garland and Sachse.',
     },
     hero: {
       eyebrow: 'What We Do',

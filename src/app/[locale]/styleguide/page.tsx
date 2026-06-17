@@ -106,7 +106,7 @@ const SERVICES: ReadonlyArray<{
     iconName: 'alert',
     title: 'Emergency service',
     description:
-      'No cooling or no heat after hours? Call or text and we answer 24/7 — a real person, fast.',
+      'No cooling or no heat after hours? Call or text and we answer day or night — a real person, fast.',
     emergency: true,
   },
 ]
@@ -339,7 +339,7 @@ export default function StyleguidePage() {
                   Done right.
                 </p>
                 <p className="font-display text-xl font-bold uppercase">
-                  We answer 24/7
+                  We answer after hours
                 </p>
               </div>
             </div>
@@ -357,7 +357,7 @@ export default function StyleguidePage() {
                   Licensed &amp; insured · American Home Shield approved.
                 </p>
                 <p className="font-mono text-sm text-faint">
-                  font-mono — IBM Plex Mono · (214) 555-0148
+                  font-mono — IBM Plex Mono · (214) 584-4164
                 </p>
               </div>
             </div>
@@ -375,7 +375,7 @@ export default function StyleguidePage() {
                 <Button variant="ghost">View details</Button>
                 <Button variant="ember">Get a free quote</Button>
                 <Button variant="emergency" leftIcon={<Icon name="call" size={18} />}>
-                  Call 24/7
+                  Call now
                 </Button>
               </div>
             </div>

@@ -5,12 +5,13 @@
 |---|---|
 | **Project** | Miles Mechanical AC & Heating — Marketing Website Redesign |
 | **Document type** | Phase 1 Scope Document |
-| **Derived from** | [Business Requirements Document v0.1](../brd/Miles-Mechanical-Website-BRD.md) |
-| **Version** | 0.1 (Draft) |
-| **Date** | June 16, 2026 |
+| **Derived from** | [Business Requirements Document v0.2](../brd/Miles-Mechanical-Website-BRD.md) |
+| **Version** | 0.2 (Draft) |
+| **Date** | June 17, 2026 |
 | **Prepared by** | Amit Rana |
-| **Prepared for** | Charles Miles, Owner/Operator |
+| **Prepared for** | Charles Miles, Owner/Operator — Miles Mechanical A/C And Heating LLC |
 | **Status** | Draft for review |
+| **Revision note** | v0.2 rehydrated to align with BRD v0.2: resolved primary phone & hours, added email, expanded confirmed service area (11 cities), updated review counts (Birdeye 5.0★/67), and Carrier-installer credential. |
 
 ---
 
@@ -37,8 +38,8 @@ Phase 1 must, on its own, resolve the current digital failures and stand up the 
 ## 3. In Scope — Phase 1
 
 ### 3.1 Capabilities (the four prioritized surfaces)
-- **Reviews & trust showcase** — curated, static content.
-- **Service-area SEO landing pages** — Dallas, Garland, Sachse (template expandable).
+- **Reviews & trust showcase** — curated, static content (Google 4.9★/56 + Birdeye 5.0★/67; owner-named testimonials).
+- **Service-area SEO landing pages** — built for Dallas, Garland, Sachse in Phase 1, on a template that expands to the full confirmed 11-city service area (BRD §2.1) with no rebuild.
 - **Lead capture & quote** — click-to-call + hosted-form lead/quote form on every page.
 - **Appointment-request form** — a lead-capture variant that captures preferred date/time *as data* (not a real-time scheduler).
 
@@ -61,7 +62,7 @@ Phase 1 must, on its own, resolve the current digital failures and stand up the 
 | `/reviews` | Reviews & trust showcase (aggregate rating + testimonials) | FR-RV-1, FR-RV-2 |
 | `/contact` | Lead/quote + appointment-request entry point | FR-LC-2, FR-BK-1 |
 
-> Per-service and per-area pages are driven by a **scalable, content-driven template** (FR-SA-3) so new services/cities can be added without a rebuild.
+> Per-service and per-area pages are driven by a **scalable, content-driven template** (FR-SA-3) so new services/cities can be added without a rebuild. The confirmed service area (BRD §2.1) is Dallas, Addison, Richardson, Sachse, Garland, Murphy, Wylie, Carrollton, Rowlett, Plano, and University Park — Phase 1 builds Dallas/Garland/Sachse; the remaining cities are content-only additions post-launch.
 
 ### 3.3 Functional requirements in Phase 1
 
@@ -77,9 +78,9 @@ Only **M (must-have)** and **S (should-have)** items from the BRD are in scope. 
 - **FR-BK-1 (M)** — Appointment-**request** form capturing preferred date/time as a lead (via FR-LC-2 mechanism). *No real-time availability.*
 
 **Reviews & trust**
-- **FR-RV-1 (M)** — Prominent aggregate Google rating + count (4.9★ / 56 reviews).
+- **FR-RV-1 (M)** — Prominent aggregate rating + count (Google 4.9★/56 + Birdeye 5.0★/67; e.g., a "120+ five-star reviews" headline), easy to update as it grows.
 - **FR-RV-2 (M)** — Curated testimonials section.
-- **FR-RV-3 (M)** — Trust badges/credentials: licensed, insured, AHS-approved, warranty terms, 20+ years.
+- **FR-RV-3 (M)** — Trust badges/credentials: licensed, insured, AHS-approved, Carrier installer, warranty terms (10-yr parts / 1-yr labor), 20+ years.
 - **FR-RV-4 (S)** — Link/integration to live Google reviews; easy refresh of featured reviews.
 - **FR-RV-5 (S)** — Feature the owner as a personal-trust element *(pending owner approval — see §6)*.
 
@@ -109,9 +110,9 @@ Only **M (must-have)** and **S (should-have)** items from the BRD are in scope. 
 
 ### 3.5 Brand & content deliverables
 - Logo/wordmark + defined color palette and typography (AST-3).
-- Page-ready copy refined from existing brand voice — "Texans serving Texans," honest pricing (AST-5).
-- Curated featured testimonials selected from the Google corpus (AST-6).
-- Reconciled NAP and hours applied as a single source of truth across the site (AST-1, AST-2).
+- Page-ready copy refined from existing brand voice — "Texans serving Texans," Texas-weather urgency, honest pricing (AST-5).
+- Curated featured testimonials selected from the Google + Birdeye corpus, including owner-named reviews (AST-6).
+- Reconciled NAP applied as a single source of truth across the site: phone **(214) 584-4164**, email **milesmechanical85@yahoo.com** (pending owner confirmation / branded-address decision), hours **Mon–Fri 9–5, Sat 10–3, Sun closed** (AST-1, AST-2).
 
 ---
 
@@ -153,14 +154,15 @@ These are owner-side inputs the build depends on. Blocking items must be resolve
 
 | # | Item | Needed for | Blocking? |
 |---|---|---|---|
-| 1 | **Primary phone number** — (214) 584-4164 vs (214) 429-7734 | FR-LC-1, NAP | **Yes** |
-| 2 | **True hours & after-hours/emergency policy** | FR-LC-4, header/footer | **Yes** |
-| 3 | **Owner branding approval** (name/photo) | FR-RV-5, About | No (degrade gracefully) |
-| 4 | **Confirmed service-area city list** | FR-SA-1 | Partial (start with 3) |
+| 1 | **Primary phone** — confirm (214) 584-4164 (corroborated x5) is primary; decide fate of Google's (214) 429-7734 | FR-LC-1, NAP | No (default to 584-4164) |
+| 2 | **True hours & after-hours/emergency policy** — confirm M–F 9–5 / Sat 10–3 / Sun closed; clarify whether 24/7 emergency is real or after-hours-by-text | FR-LC-4, header/footer | **Yes** (for emergency CTA wording) |
+| 3 | **Owner branding approval** (name/photo) — strong default *yes* (already named in reviews) | FR-RV-5, About | No (degrade gracefully) |
+| 4 | **Confirmed service-area city list** — 11 cities known; confirm + pick any beyond the initial 3 | FR-SA-1 | No (start with 3) |
 | 5 | **Domain/hosting access** for DNS + TLS reconfiguration | NFR-1 | **Yes** |
-| 6 | **Credentials** — license #(s), insurance, AHS, warranty terms | FR-RV-3 | **Yes** |
-| 7 | **Photography** — job/equipment photos | FR-CR-4 gallery | No (gallery is S) |
+| 6 | **Credentials** — license #(s), insurance, AHS, Carrier-installer status, warranty terms | FR-RV-3 | **Yes** |
+| 7 | **Photography** — job/equipment photos (Carrier installs, "up to code" shots exist on listings) | FR-CR-4 gallery | No (gallery is S) |
 | 8 | **Hosted form service selection** (Formspree / Web3Forms / host-native) | FR-LC-2, FR-BK-1 | **Yes** |
+| 9 | **Email display** — publish milesmechanical85@yahoo.com or set up a branded address first | FR-CR-5 footer | No |
 
 > Note: booking remains a styled **request form** in Phase 1 regardless of whether a field-service tool is later adopted (BRD constraint §10).
 
@@ -190,4 +192,4 @@ Separately shippable and separately priced; each is where owned server logic and
 
 ---
 
-*Derived from the Miles Mechanical Website BRD v0.1. Facts flagged as open questions in the BRD (phone, hours, owner branding, city list, hosting access) must be confirmed with the owner before launch.*
+*Derived from the Miles Mechanical Website BRD v0.2 (rehydrated June 17, 2026). Primary phone and service-area list are now corroborated by research; remaining items flagged in the BRD (hours/emergency policy, hosting access, credentials, email display) must be confirmed with the owner before launch.*

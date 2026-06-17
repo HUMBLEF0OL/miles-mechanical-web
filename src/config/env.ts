@@ -99,6 +99,9 @@ export const env = {
   // inlines it into the client bundle — dynamic lookups aren't replaced, so the
   // value would be undefined in the browser. Empty string = "no endpoint".
   NEXT_PUBLIC_FORM_ENDPOINT: process.env.NEXT_PUBLIC_FORM_ENDPOINT ?? '',
+  // GA4 measurement ID. Literal reference so Next.js inlines it client-side.
+  // Empty string = analytics disabled (no script, events no-op).
+  NEXT_PUBLIC_GA_ID: process.env.NEXT_PUBLIC_GA_ID ?? '',
 } as const
 
 export const isProd = env.NODE_ENV === 'production'

@@ -14,7 +14,7 @@ import { env } from './env'
 export const siteConfig = {
   name: env.NEXT_PUBLIC_APP_NAME,
   description:
-    'Miles Mechanical — family-owned AC & heating repair, installation, and 24/7 emergency HVAC service across Dallas, Garland, and Sachse. Honest pricing, 20+ years, rated 4.9★.',
+    'Miles Mechanical — family-owned AC & heating repair, installation, and fast after-hours emergency HVAC service across Dallas, Garland, Sachse and the northeast Dallas metro. Honest pricing, 20+ years, rated 4.9★.',
   url: env.NEXT_PUBLIC_APP_URL,
 
   // i18n — mirrors src/i18n/routing.ts (harness-enforced).
@@ -38,9 +38,14 @@ export const siteConfig = {
     // dir ships a logo.png). Swap for a raster `/logo.png` once a public asset
     // exists — Google rich results prefer a square raster logo.
     logo: '/icon.svg',
-    // Social/citation profile URLs (e.g. Google Business Profile, Facebook,
-    // Yelp). Strengthens entity disambiguation — add as profiles go live.
-    sameAs: [] as string[],
+    // Social/citation profile URLs — strengthens entity disambiguation
+    // (NFR-4). Verified live business profiles (BRD Appendix A).
+    sameAs: [
+      'https://www.facebook.com/clientcomfortconnections/',
+      'https://www.yelp.com/biz/miles-mechanical-ac-and-heating-dallas-2',
+      'https://reviews.birdeye.com/miles-mechanical-a-c-and-heating-llc-165407154968661',
+      'https://www.mapquest.com/us/texas/miles-mechanical-ac-heating-378220466',
+    ] as string[],
   },
 
   // Search Console / Bing verification — paste the token from the provider's
