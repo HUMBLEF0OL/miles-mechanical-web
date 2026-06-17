@@ -171,27 +171,37 @@ export default async function AboutPage({ params }: PageProps) {
           Twenty years, in short
         </h2>
         <div aria-hidden className="mt-3 h-1 w-16 bg-ember" />
-        <ol className="mt-8 space-y-0 border-l-2 border-line pl-8">
-          {timeline.map((entry, index) => (
-            <li key={entry.title} className={cn('relative', index !== timeline.length - 1 && 'pb-10')}>
-              <span
-                aria-hidden
-                // Centered on the timeline rule: the <ol> has pl-8 (2rem) + a 2px
-                // left border, so the line's center sits 2rem+1px left of the li
-                // content edge. -translate-x-1/2 then centers the circle on it.
-                className="absolute left-[calc(-2rem_-_1px)] top-1 flex h-6 w-6 -translate-x-1/2 items-center justify-center rounded-full bg-ember text-white"
-              >
-                <Icon name="check" size={14} />
-              </span>
-              <span className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-ember">
-                {entry.marker}
-              </span>
-              <h3 className="mt-1 font-display text-lg font-extrabold uppercase tracking-[-0.01em] text-heading">
-                {entry.title}
-              </h3>
-              <p className="mt-2 max-w-[60ch] font-sans leading-relaxed text-sub">{entry.body}</p>
-            </li>
-          ))}
+        <ol className="mt-8 space-y-0">
+          {timeline.map((entry, index) => {
+            const isLast = index === timeline.length - 1
+            return (
+              <li key={entry.title} className="flex gap-5">
+                {/* Marker column: the circle caps the top of the row and the
+                    connector grows down to meet the next circle. The last item
+                    omits the connector, so the rule starts and ends exactly on a
+                    circle — no overshoot above the first or below the last. */}
+                <div className="flex flex-col items-center">
+                  <span
+                    aria-hidden
+                    className="flex h-6 w-6 shrink-0 items-center justify-center rounded-full bg-ember text-white"
+                  >
+                    <Icon name="check" size={14} />
+                  </span>
+                  {!isLast ? <span aria-hidden className="w-0.5 grow bg-line" /> : null}
+                </div>
+
+                <div className={cn(!isLast && 'pb-10')}>
+                  <span className="font-mono text-xs font-semibold uppercase tracking-[0.16em] text-ember">
+                    {entry.marker}
+                  </span>
+                  <h3 className="mt-1 font-display text-lg font-extrabold uppercase tracking-[-0.01em] text-heading">
+                    {entry.title}
+                  </h3>
+                  <p className="mt-2 max-w-[60ch] font-sans leading-relaxed text-sub">{entry.body}</p>
+                </div>
+              </li>
+            )
+          })}
         </ol>
       </section>
 
